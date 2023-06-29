@@ -1,0 +1,27 @@
+.intro-section {
+  background-color: white;
+}
+
+.picture {
+  width:45%;
+  margin-right: 30px;
+  margin-bottom: 100px;
+}
+
+
+img {
+  width: 100%;
+}
+
+.text {
+  width: 45%;
+}
+
+#highlight {
+    background-color:#FEF35A;
+}
+
+.content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

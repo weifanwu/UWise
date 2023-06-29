@@ -1,0 +1,41 @@
+#container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 11/5;
+}
+
+#video {
+    padding: 0px 10px;
+    width: 75%;
+    height: 91%;
+    margin: 3px auto;
+    border-radius: 10px;
+}
+
+.chatBox {
+    padding: 10px 25px;
+    margin: 3px auto;
+    height: 91%;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+.all-lectures {
+    margin-top: 15px;
+    margin-left: 35px;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 30px;
+}
+
+.lecture {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+@media screen and (max-width: 1300px)
+{
+.chatBox { display: none; }
+}

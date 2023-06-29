@@ -1,0 +1,32 @@
+.pic-card {
+    width: 30%;
+    padding-right: 20px;
+}
+
+.pic-circle {
+    width: 10%;
+}
+
+.pic-location {
+    width: 20%;
+    padding-right: 20px;
+}
+
+.container {
+    color: black;
+    padding: 10px 10px;
+    display: flex;
+}
+
+.container:hover h3 {
+    color: #dd8a04;
+}
+
+.container:hover {
+    background-color: #d8d8d8;
+  }
+
+a {
+    text-decoration: none; /* Removes the underline */
+}
+  

@@ -1,0 +1,109 @@
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+  filter: brightness(60%);
+}
+
+#title {
+    margin: auto;
+    background-color: white;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+    width: 98%;
+}
+
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+
+.hero-container > h1 {
+  color: #fff;
+  font-size: 50px;
+  margin-top: -100px;
+}
+
+.hero-container > p {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.hero-btns {
+  margin-top: 32px;
+}
+
+.hero-btns .btn {
+  margin: 6px;
+}
+
+.fa-play-circle {
+  margin-left: 4px;
+}
+
+@media screen and (max-width: 960px) {
+  .hero-container > h1 {
+    font-size: 70px;
+    margin-top: -150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-container > h1 {
+    font-size: 50px;
+    margin-top: -100px;
+  }
+
+  .hero-container > p {
+    font-size: 30px;
+  }
+
+  .btn-mobile {
+    display: block;
+    text-decoration: none;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+h1 {
+    text-align: center;
+}
+
+.intro-section {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  flex-wrap: wrap;
+  width: 98%;
+  margin-bottom: 15px;
+}
+
+#weChat {
+  padding: 14px;
+  background-color: white;
+  position: fixed;
+  bottom: 50%;
+  right: 3px;
+  width: 80px;
+  height: 90px;
+  border: 0.01px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 1px black;
+}

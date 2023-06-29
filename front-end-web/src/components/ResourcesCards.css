@@ -1,0 +1,22 @@
+.resource-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home-cards {
+    margin: 20px auto;
+    padding: 40px;
+    height: 400px;
+    width: 600px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.card {
+    margin: 5px 30px;
+    padding: 10px;
+    height: 120px;
+    width: 240px;
+    border: 1px solid black;
+    border-radius: 10px;
+}

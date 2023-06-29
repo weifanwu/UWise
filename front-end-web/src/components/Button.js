@@ -21,13 +21,13 @@ export const Button = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-      <a href={src}>
+      <Link to={src}>
         <button
           className={`btn ${checkButtonStyle} ${checkButtonSize}`}
           type={type}
         >
           {children}
         </button>
-      </a>
+      </Link>
   );
 };

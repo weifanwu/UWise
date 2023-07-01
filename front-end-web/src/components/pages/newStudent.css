@@ -7,7 +7,7 @@ body {
     background-color: #F9F9F9;
 }
 
-.contents {
+.allContent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

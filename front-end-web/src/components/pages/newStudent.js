@@ -13,6 +13,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import { styled } from '@mui/system';
+import "./newStudent.css";
 
 
 export default function Student(props) {
@@ -73,42 +74,26 @@ export default function Student(props) {
                         {drawer}
                     </DrawerNav>
                     <div className="allContent">
-                        {!view ? (cards.map((card) => {
-                            return <>
-                                {
-                                  card["group"] !== "专业申请" ? (
-                                    <ViewCard
-                                      class="card"
-                                      image={card["image"]}
-                                      title={card["title"]}
-                                      content={card["content"]}
-                                      link={card["link"]}
-                                      hover={() => {
-                                        console.log("Nothing");
-                                      }}
-                                      click={() => {
-                                        setArticle({ title: card["title"], content: card["article"] });
-                                        setView(false);
-                                      }}
-                                    />
-                                  ) : (
-                                    <ViewCard
-                                      class="circle"
-                                      image={card["image"]}
-                                      title={card["title"]}
-                                      content={card["content"]}
-                                      link={card["link"]}
-                                      hover={() => {
-                                        console.log("Nothing");
-                                      }}
-                                      click={() => {
-                                        setArticle({ title: card["title"], content: card["article"] });
-                                      }}
-                                    />
-                                  )
-                                }
-                            </> 
-                        })) : (<Article title={article["title"]} content={article["content"]}/>)}
+                      {
+                        cards.map((card) => {
+                          return <>
+                                  <ViewCard
+                                    class="card"
+                                    image={card["image"]}
+                                    title={card["title"]}
+                                    content={card["content"]}
+                                    link={card["link"]}
+                                    hover={() => {
+                                      console.log("Nothing");
+                                    }}
+                                    click={() => {
+                                      setArticle({ title: card["title"], content: card["article"] });
+                                      setView(false);
+                                    }}
+                                  />                                
+                          </> 
+                      })
+                      }
                     </div>
             </div>
         </>

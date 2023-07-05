@@ -49,3 +49,14 @@
   color: #242424;
   transition: 250ms;
 }
+
+.back {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  background-color: transparent;
+  color: black;
+  padding: 8px 20px;
+  border: 1px solid black;
+  transition: all 0.3s ease-out;
+}

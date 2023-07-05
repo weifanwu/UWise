@@ -10,6 +10,7 @@ import ClassHome from './components/pages/Class';
 import News from './components/pages/news';
 import Resources from './components/pages/Resources';
 import ResourceMap from './components/pages/ResourceMap';
+import Major from './components/pages/Major';
 
 function App() {
   const [name, setName] = useState("");

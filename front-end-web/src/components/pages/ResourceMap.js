@@ -5,8 +5,6 @@ import "./ResourceMap.css";
 import ViewCard from "./ViewCard";
 import Checkbox from "../CheckBox";
 import L from "leaflet";
-import Drawer from '@mui/material/Drawer';
-import { styled } from '@mui/system';
 
 
 

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ViewCard from './ViewCard';
 import "./ViewCard.css";
-import Article from "./Article";
 import "./Article.css";
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
@@ -14,19 +12,27 @@ import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import { styled } from '@mui/system';
 import "./newStudent.css";
+import Major from "./Major";
 
 
 export default function Student(props) {
+    const myMap = new Map();
+    myMap.set('办理银行卡', 'bank');
+    myMap.set('宿舍攻略', 'dorm');
+    myMap.set('专业申请', 'department');
+    myMap.set('社团', 'club');
+    myMap.set('热门课程', 'class');
+    myMap.set('考驾照', 'drive');
+    myMap.set('美食', 'food');
 
     const [cards, setCards] = useState([]);
-    const [view, setView] = useState(false);
-    const [article, setArticle] = useState({});
+    const [page, setPage] = useState(true);
+    const [major, setMajor] = useState('');
 
     const handle = (text) => {
-        fetch('https://uwise-back-end.herokuapp.com/newStudent?resource=' + text)
+        fetch('http://localhost:4567/newStudent?resource=' + myMap.get(text))
           .then(response => response.json())
           .then(data => {
-            setView(false);
             setCards(data);
             window.scrollTo({
                 top: 0,
@@ -36,7 +42,7 @@ export default function Student(props) {
           .catch(error => {
             console.error(error);
           });
-      };
+    };
 
     useEffect(() => {
         handle("办理银行卡");
@@ -67,34 +73,34 @@ export default function Student(props) {
     );
 
     return <>
-            <div id="main">
-                    <DrawerNav
-                        variant="permanent"
-                    >
-                        {drawer}
-                    </DrawerNav>
-                    <div className="allContent">
-                      {
-                        cards.map((card) => {
-                          return <>
-                                  <ViewCard
-                                    class="card"
-                                    image={card["image"]}
-                                    title={card["title"]}
-                                    content={card["content"]}
-                                    link={card["link"]}
-                                    hover={() => {
-                                      console.log("Nothing");
-                                    }}
-                                    click={() => {
-                                      setArticle({ title: card["title"], content: card["article"] });
-                                      setView(false);
-                                    }}
-                                  />                                
-                          </> 
-                      })
-                      }
-                    </div>
-            </div>
+            <div>
+              { page ? <>
+              <DrawerNav variant="permanent">
+              {drawer}
+              </DrawerNav>
+              <div className="allContent">
+                {(cards.map((card) => {
+                  return <>
+                    <ViewCard
+                      class={(card["group"] === "department") ? "circle" : "card"}
+                      image={card["image"]}
+                      title={card["title"]}
+                      content={card["content"]}
+                      link={card["link"]}
+                      hover={() => {
+                        console.log("Nothing");
+                      } }
+                      click={() => {
+                        setMajor(card["major"]);
+                        setPage(false);
+                      } } />
+                  </>;
+                }))}
+              </div>
+            </> :
+            <Major major={major} click={() => {
+              setPage(true);
+            }}/>}
+        </div>
         </>
 }

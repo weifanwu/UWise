@@ -1,10 +1,6 @@
-.pic-card {
-    width: 30%;
-    padding-right: 20px;
-}
-
-.pic-circle {
-    width: 10%;
+.container-location {
+    width: 100%;
+    display: flex;
 }
 
 .pic-location {
@@ -12,22 +8,56 @@
     padding-right: 20px;
 }
 
-.container {
-    width: 20%;
+.pic-card {
+    width: 40%;
+}
+
+.pic-circle  {
+    width: 100%;
+}
+
+.container-card {
+    width: 100%;
     color: black;
     padding: 10px 10px;
     display: flex;
+    flex-wrap: wrap;
 }
 
-.container:hover h3 {
+.container-circle {
+    width: 32%;
+    color: rgb(0, 0, 0);
+    padding: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-card:hover h3 {
     color: #dd8a04;
 }
 
-.container:hover {
+.container-card:hover {
     background-color: #d8d8d8;
   }
+
+.container-circle:hover h3 {
+    color: #dd8a04;
+}
+
+.container-circle:hover {
+    background-color: #d8d8d8;
+  }
+
+.container-location:hover {
+    background-color: #d8d8d8;
+}
+
+
 
 a {
     text-decoration: none; /* Removes the underline */
 }
-  
+
+.introduce {
+    color: black;
+}

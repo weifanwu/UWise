@@ -10,7 +10,7 @@ body {
 .allContent {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    margin-left: 200px;
 }
 
 .resource {
@@ -38,11 +38,6 @@ body {
     border: 1px solid black;
     border-radius: 2px;
     overflow-y:scroll;
-}
-
-.allContent {
-    display: flex;
-    margin-left: 200px;
 }
 
 .drawer {

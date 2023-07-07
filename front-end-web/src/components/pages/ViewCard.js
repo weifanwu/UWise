@@ -15,7 +15,9 @@ function ViewCard(props) {
             <div className={"container-" + props.class} onClick={() => {
                 console.log("This is the link: " + props.link);
                 handleClick();
-            }}>
+            }} onMouseEnter={() => {
+                props.hover();
+              }}>
                 <img className={"pic-" + props.class} src={props.image} />
                 <div className="introduce">
                     <h3>{props.title}</h3>

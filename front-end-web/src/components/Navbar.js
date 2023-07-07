@@ -70,13 +70,21 @@ function Navbar() {
                 新闻
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link
                 to='/resources'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
                 静态资源
+              </Link>
+            </li> */}
+            <li className='nav-item'>
+              <Link
+                to='/services'
+                className='nav-links'
+              >
+                课程
               </Link>
             </li>
           </ul>

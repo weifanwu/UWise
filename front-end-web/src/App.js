@@ -24,7 +24,7 @@ function App() {
           <Route path='/products' element={<Products />}/>
           <Route path='/class' element={<ClassHome classname={name}/>} />
           <Route path='/newStudent' element={<Student />} />
-          <Route path='/resources' element={<Resources />} />
+          {/* <Route path='/resources' element={<Resources />} /> */}
           <Route path='/news' element={<News />} />
           <Route path='/map' element={<ResourceMap />} />
         </Routes>

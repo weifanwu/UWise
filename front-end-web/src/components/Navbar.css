@@ -170,3 +170,7 @@ nav ul ul {
 nav ul li:hover > ul {
   display: block; /* Show the sub-navigation bar when the parent list item is hovered over */
 }
+
+.新生 {
+  color: red;
+}

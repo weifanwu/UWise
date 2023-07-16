@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import Student from './components/pages/newStudent';
@@ -10,10 +10,12 @@ import ClassHome from './components/pages/Class';
 import News from './components/pages/news';
 import Resources from './components/pages/Resources';
 import ResourceMap from './components/pages/ResourceMap';
+import Profile from './components/pages/Profile';
 import Major from './components/pages/Major';
 
 function App() {
   const [name, setName] = useState("");
+
   return (
     <>
       <Router>
@@ -27,6 +29,7 @@ function App() {
           {/* <Route path='/resources' element={<Resources />} /> */}
           <Route path='/news' element={<News />} />
           <Route path='/map' element={<ResourceMap />} />
+          <Route path='/login' element={<Profile />} />
         </Routes>
       </Router>
     </>

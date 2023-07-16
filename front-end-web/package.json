@@ -19,8 +19,10 @@
     "react-draggable": "^4.4.5",
     "react-icons": "^4.8.0",
     "react-leaflet": "^4.2.1",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "reactjs-popup": "^2.0.5"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",

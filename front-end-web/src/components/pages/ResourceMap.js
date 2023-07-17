@@ -73,7 +73,7 @@ export default function ResourceMap(props) {
                     })}
             </div>
             <div className="map">
-                <MapContainer  style={{ height: "70vh", width: "93vh"}} center={[47.65440627742146, -122.30476957834502]} zoom={14} scrollWheelZoom={true}>
+                <MapContainer  style={{ height: "70vh", width: "93vh", zIndex: "0"}} center={[47.65440627742146, -122.30476957834502]} zoom={14} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

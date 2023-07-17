@@ -4,9 +4,10 @@ import './Navbar.css';
 import Attention  from './attention.js';
 import { Modal } from 'antd';
 import jwt_decode from 'jwt-decode'
+import Login from "./Login";
 
 function Navbar() {
-  var YOUR_CLIENT_ID = "73295202240-g4r4fqevidd18jjvoinih26ng5f5cd59.apps.googleusercontent.com";
+  const [pop, setPop] = useState(false);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [log, setLog] = useState(false);
@@ -15,8 +16,8 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
+  const change = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   const handleOk = () => {
@@ -48,22 +49,6 @@ function Navbar() {
 
   useEffect(() => {
       showButton();
-
-      /* global google */ 
-
-      google.accounts.id.initialize({
-        client_id: YOUR_CLIENT_ID,
-        callback: handleCredentialResponse
-      });
-      
-      // Display the One Tap prompt
-      
-      // Display the Sign In With Google Button
-      google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { theme: 'outline', size: 'large' }
-      );
-      console.log("wefe");
   }, []);
 
   window.addEventListener('resize', showButton);
@@ -138,16 +123,28 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && (log ? 
-            <Link to="/login" state={{ "info" : info }} >
-              <img style={{ height: "5vh", width: "5vh"}} src={info["image"]}/> 
-            </Link>
-          : <button buttonStyle='btn--outline' onClick={showModal}>登陆/注册</button>)}
+          <div>
+            {button && (log ? 
+              <Link to="/login" state={{ "info" : info }} >
+                <img style={{ height: "5vh", width: "5vh"}} src={info["image"]} onMouseEnter={() => {
+                  setPop(!pop);
+                }} onMouseLeave={() => {setPop(!pop);}}/> 
+              </Link>
+            : <button buttonStyle='btn--outline' onClick={() => {
+              change();
+            }}>登陆/注册</button>)}
+            { pop &&
+              <div className='profile'>
+                Name : {info["firstName"]}
+                <img style={{ height: "2vh", width: "2vh"}} src={info["image"]}/> 
+              </div>
+            }
+          </div>
         </div>
       </nav>
-      <Modal title="登陆 注册" open={isModalOpen} okButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}>
-        <div id='buttonDiv' ></div>
-      </Modal>
+      <Login handleCredentialResponse={handleCredentialResponse} isModalOpen={isModalOpen} setIsModalOpen={() => {
+        change();
+      }} />
     </>
   );
 }

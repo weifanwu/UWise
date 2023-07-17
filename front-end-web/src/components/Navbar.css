@@ -174,3 +174,10 @@ nav ul li:hover > ul {
 .新生 {
   color: red;
 }
+
+.profile {
+  background-color: white;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}

@@ -11,6 +11,9 @@ function Profile(props) {
             <h3>头像：</h3>
             <img style={{ height: "20vh", width: "20vh"}} src={info.image} />
             <p>简介：一个字，帅！</p>
+            <button onClick={async () => {
+                    window.open("http://localhost:8000/auth/logout", "_self");
+                }}>Google登出</button>
         </div>
     </>
 }

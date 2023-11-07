@@ -1,32 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import Attention  from './attention.js';
-import { Modal } from 'antd';
-import jwt_decode from 'jwt-decode'
 import Login from "./Login";
+import { Dropdown, Space, Divider, Button, theme, Input } from 'antd';
+import { useDispatch } from "react-redux";
+import { incrementAsync } from "../redux/slices";
+import { useSelector } from 'react-redux';
 
-function Navbar() {
-  const [pop, setPop] = useState(false);
+function Navbar(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [log, setLog] = useState(false);
   const [info, setInfo] = useState({});
+  const [inputValue, setInputValue] = useState('');
+
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { useToken } = theme;
 
+  const dispatch = useDispatch();
   const change = () => {
-    setIsModalOpen(!isModalOpen);
+    props.setIsModalOpen(!props.isModalOpen);
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
   };
 
   const handleOk = () => {
-    console.log("enter");
-    setIsModalOpen(false);
+    props.setIsModalOpen(false);
   };
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    props.setIsModalOpen(false);
   };
 
   const showButton = () => {
@@ -37,15 +43,38 @@ function Navbar() {
     }
   };
 
-  function handleCredentialResponse(response) {
-      var userObject = jwt_decode(response.credential);
-      const image = userObject["picture"];
-      const firstName = userObject["family_name"];
-      const lastName = userObject["given_name"];
-      setInfo( {"image" : image, "firstName" : firstName, "lastName" : lastName } );
-      handleOk();
-      setLog(true);
+  useEffect(() => {
+    dispatch(incrementAsync());
+  }, [])
+
+  const { token } = useToken();
+
+  const contentStyle = {
+    backgroundColor: token.colorBgElevated,
+    borderRadius: token.borderRadiusLG,
+    boxShadow: token.boxShadowSecondary,
   }
+
+  function removeCode() {
+    fetch('http://localhost:8000/buy/removeCode', {
+      method: 'POST',
+      credentials: "include",
+      body: JSON.stringify({ secret: inputValue }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+    .then(response => response.text())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  }
+
 
   useEffect(() => {
       showButton();
@@ -79,7 +108,7 @@ function Navbar() {
                 Course Review
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link
                 to='/newStudent'
                 className='nav-links'
@@ -87,8 +116,8 @@ function Navbar() {
               >
                 华大资源
               </Link>
-            </li>
-            <li className='nav-item'>
+            </li> */}
+            {/* <li className='nav-item'>
               <Link
                 to='/news'   
                 className='nav-links'
@@ -96,7 +125,7 @@ function Navbar() {
               >
                 新闻
               </Link>
-            </li>
+            </li> */}
             {/* <li className='nav-item'>
               <Link
                 to='/resources'
@@ -106,43 +135,67 @@ function Navbar() {
                 静态资源
               </Link>
             </li> */}
-            {/* <li className='nav-item'>
-              <Link
+            <li className='nav-item' data-bs-toggle="dropdown">
+                <Dropdown
+                  dropdownRender={() => (
+                    <div style={contentStyle}>
+                      <Input
+                      onChange={handleChange}
+                      placeholder="请输入激活码" />
+                      <Divider style={{ margin: 0 }} />
+                      <Space style={{ padding: 8 }}>
+                        <Button onClick={() => {
+                          props.getClasses();
+                          fetch('http://localhost:8000/buy/addClass', {
+                            method: 'POST',
+                            credentials: "include",
+                            body: JSON.stringify({ secret: inputValue, email: props.email }),
+                            headers: {
+                              Accept: "application/json",
+                              "Content-Type": "application/json",
+                              "Access-Control-Allow-Credentials": true,
+                            },
+                          })
+                          .then(response => response.text())
+                          .then(() => {
+                            removeCode();                            
+                            dispatch(incrementAsync());
+                          })
+                          .catch(error => {
+                              console.error('Error:', error);
+                          });
+                        }} type="primary">激活</Button>
+                      </Space>
+                    </div>
+                  )}
+                >
+                <Link
                 to='/services'
                 className='nav-links'
-              >
-                课程
-              </Link>
-            </li> */}
-            <li className='nav-item'>
+                >课程</Link>
+                </Dropdown>
+            {/* </li>
+            <li className ='nav-item'>
               <Link
                 to='/map'
                 className='nav-links'
               >
                 HuskyMap
-              </Link>
+              </Link> */}
             </li>
           </ul>
           <div>
-            {button && (log ? 
+            {button && (props.picture !== "" ? 
               <Link to="/login" state={{ "info" : info }} >
-                <img style={{ height: "5vh", width: "5vh"}} src={info["image"]} onMouseEnter={() => {
-                  setPop(!pop);
-                }} onMouseLeave={() => {setPop(!pop);}}/> 
+                <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
               </Link>
             : <button buttonStyle='btn--outline' onClick={() => {
               change();
             }}>登陆/注册</button>)}
-            { pop &&
-              <div className='profile'>
-                Name : {info["firstName"]}
-                <img style={{ height: "2vh", width: "2vh"}} src={info["image"]}/> 
-              </div>
-            }
           </div>
         </div>
       </nav>
-      <Login handleCredentialResponse={handleCredentialResponse} isModalOpen={isModalOpen} setIsModalOpen={() => {
+      <Login isModalOpen={props.isModalOpen} setIsModalOpen={() => {
         change();
       }} />
     </>

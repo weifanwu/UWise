@@ -3,6 +3,8 @@ import './Cards.css';
 import CardItem from './CardItem';
 
 function Cards(props) {
+  
+
   return (
     <div className='cards'>
       <h1>公开课：</h1>
@@ -15,7 +17,7 @@ function Cards(props) {
               text='CSE154: Web Development'
               label='200 USD'
               courseName="CSE154"
-              path='/class'
+              path='/payment'
               update={props.update}
             />
             <CardItem
@@ -23,18 +25,16 @@ function Cards(props) {
               src='images/img-2.jpg'
               text='CSE121: Introduction to computer science'
               label='100 USD'
-              path='/class'
+              path='/payment'
               courseName="CSE121"
               update={props.update}
             />
-          </ul>
-          <ul className='cards__items'>
             <CardItem
               className="classes"
               src='images/img-3.jpg'
               text='Math208: Matrix'
               label='300 USD'
-              path='/class'
+              path='/payment'
               courseName="Math208"
               update={props.update}
             />
@@ -43,7 +43,7 @@ function Cards(props) {
               src='images/img-4.jpg'
               text='CSE373: Algorithm And Data Structure'
               label='1000 USD'
-              path='/class'
+              path='/payment'
               courseName="CSE373"
               update={props.update}
             />
@@ -52,7 +52,7 @@ function Cards(props) {
               src='images/img-8.jpg'
               text='Math124: Calculus'
               label='434 USD'
-              path='/class'
+              path='/payment'
               courseName="Math124"
               update={props.update}
             />

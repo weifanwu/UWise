@@ -1,34 +1,17 @@
 import React, { useEffect } from 'react';
 import "./Login.css";
-
+import 'bootstrap/dist/css/bootstrap.css';// http://localhost:8000/auth/google
 export default function Log(props) {
-
-    var YOUR_CLIENT_ID = "73295202240-g4r4fqevidd18jjvoinih26ng5f5cd59.apps.googleusercontent.com";
-
-    useEffect(() => {
-
-        /* global google */ 
-
-        google.accounts.id.initialize({
-          client_id: YOUR_CLIENT_ID,
-          callback: props.handleCredentialResponse
-        });
-
-        // Display the Sign In With Google Button
-        google.accounts.id.renderButton(
-          document.getElementById("buttonDiv"),
-          { theme: 'outline', size: 'large' }
-        );
-
-    }, []);
 
     return <>
         <div className={(props.isModalOpen ? " showModal" : "hiddenModal")} onClick={() => {
             props.setIsModalOpen();
         }}>
             <div className='log-content'>
-                <h3>Google登陆</h3>
-                <div id='buttonDiv'></div>
+                <div className='log-title'><img style={{ marginLeft: "50px",width: "40px", height: "40px" }} src="../images/uwise5.png" className="logo" /><span style={{ font: "50px" }}>UWise 登录</span></div>
+                <button onClick={() => {
+                    window.open("http://localhost:8000/auth/google", "_self");
+                }} style={{ marginTop: "8px",border: "1px solid black", borderRadius: "6px", width: "280px" }} class="btn btn-outline-dark"><img style={{ width: "30px", height: "30px", marginRight: "10px" }} src='../images/google.png'></img>Google Login</button>
             </div>
         </div>
     </>

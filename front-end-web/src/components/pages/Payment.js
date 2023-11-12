@@ -20,7 +20,7 @@ export default function Payment(props) {
                 } else if (!value.includes(currentClass)) {
                     alert('Please buy this class first!');
                 } else {
-                    navigate('/class');
+                    navigate('/class/jOTfBlKSQYY');
                 }
             }}>进入</button>
         </div>

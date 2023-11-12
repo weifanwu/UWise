@@ -13,7 +13,7 @@ function Cards(props) {
           <ul className='cards__items'>
             <CardItem
               className="classes"
-              src='images/img-9.jpg'
+              src='images/uwise5.png'
               text='CSE154: Web Development'
               label='200 USD'
               courseName="CSE154"
@@ -22,7 +22,7 @@ function Cards(props) {
             />
             <CardItem
               className="classes"
-              src='images/img-2.jpg'
+              src='images/uwise5.png'
               text='CSE121: Introduction to computer science'
               label='100 USD'
               path='/payment'
@@ -31,7 +31,7 @@ function Cards(props) {
             />
             <CardItem
               className="classes"
-              src='images/img-3.jpg'
+              src='images/uwise5.png'
               text='Math208: Matrix'
               label='300 USD'
               path='/payment'
@@ -40,7 +40,7 @@ function Cards(props) {
             />
             <CardItem
               className="classes"
-              src='images/img-4.jpg'
+              src='images/uwise5.png'
               text='CSE373: Algorithm And Data Structure'
               label='1000 USD'
               path='/payment'
@@ -49,7 +49,7 @@ function Cards(props) {
             />
             <CardItem
               className="classes"
-              src='images/img-8.jpg'
+              src='images/uwise5.png'
               text='Math124: Calculus'
               label='434 USD'
               path='/payment'

@@ -81,7 +81,7 @@ function App() {
           <Route path='/' exact element={<Home />} />
           <Route path='/services' element={<Services update={setName}/>} />
           <Route path='/products' element={<Products />}/>
-          <Route path='/class' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
+          <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames}/>} />
           <Route path='/newStudent' element={<Student />} />
           {/* <Route path='/resources' element={<Resources />} /> */}

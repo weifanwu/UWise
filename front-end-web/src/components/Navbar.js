@@ -6,6 +6,7 @@ import { Dropdown, Space, Divider, Button, theme, Input } from 'antd';
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "../redux/slices";
 import { useSelector } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
@@ -84,7 +85,7 @@ function Navbar(props) {
 
   return (
     <>
-      <nav className='navbar'>
+      <nav className='nav'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             <img src="../images/uwise5.png" className="logo" />
@@ -189,7 +190,7 @@ function Navbar(props) {
               <Link to="/login" state={{ "info" : info }} >
                 <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
               </Link>
-            : <button buttonStyle='btn--outline' onClick={() => {
+            : <button class="btn btn-light" onClick={() => {
               change();
             }}>登陆/注册</button>)}
           </div>

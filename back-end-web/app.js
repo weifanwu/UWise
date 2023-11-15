@@ -28,7 +28,7 @@ app.use(async (req, res, next) => {
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://uwise-frontend.onrender.com",
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     maxAge: 3600,

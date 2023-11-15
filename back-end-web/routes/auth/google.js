@@ -20,7 +20,7 @@ router.get('/google',
 
 router.get('/google/callback',
   passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/services',
+    successRedirect: 'https://uwise-frontend.onrender.com/services',
     failureRedirect: '/auth/google/failure'
   })
 );
@@ -91,7 +91,7 @@ router.get('/logout', (req, res, next) => {
     if (error) {
       return next(error);
     } else {
-      res.redirect("http://localhost:3000");
+      res.redirect("https://uwise-frontend.onrender.com");
     }
   });
 });

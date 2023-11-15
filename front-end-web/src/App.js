@@ -30,7 +30,7 @@ function App() {
   };
 
   const getClasses = () => {
-    fetch("http://localhost:8000/auth/getClasses", {
+    fetch("https://uwise.onrender.com/auth/getClasses", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -48,9 +48,11 @@ function App() {
   }
 
   useEffect(() => {
-    getClasses();
+    if (profile) {
+      getClasses();
+    }
     const getUser = () => {
-      fetch("http://localhost:8000/auth/login/success", {
+      fetch("https://uwise.onrender.com/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {

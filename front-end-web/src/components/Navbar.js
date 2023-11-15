@@ -57,7 +57,7 @@ function Navbar(props) {
   }
 
   function removeCode() {
-    fetch('http://localhost:8000/buy/removeCode', {
+    fetch('https://uwise.onrender.com/buy/removeCode', {
       method: 'POST',
       credentials: "include",
       body: JSON.stringify({ secret: inputValue }),
@@ -109,7 +109,7 @@ function Navbar(props) {
                 Course Review
               </Link>
             </li>
-            {/* <li className='nav-item'>
+            <li className='nav-item'>
               <Link
                 to='/newStudent'
                 className='nav-links'
@@ -117,7 +117,7 @@ function Navbar(props) {
               >
                 华大资源
               </Link>
-            </li> */}
+            </li>
             {/* <li className='nav-item'>
               <Link
                 to='/news'   
@@ -147,7 +147,7 @@ function Navbar(props) {
                       <Space style={{ padding: 8 }}>
                         <Button onClick={() => {
                           props.getClasses();
-                          fetch('http://localhost:8000/buy/addClass', {
+                          fetch('https://uwise.onrender.com/buy/addClass', {
                             method: 'POST',
                             credentials: "include",
                             body: JSON.stringify({ secret: inputValue, email: props.email }),
@@ -175,14 +175,14 @@ function Navbar(props) {
                 className='nav-links'
                 >课程</Link>
                 </Dropdown>
-            {/* </li>
+            </li>
             <li className ='nav-item'>
               <Link
                 to='/map'
                 className='nav-links'
               >
                 HuskyMap
-              </Link> */}
+              </Link>
             </li>
           </ul>
           <div>

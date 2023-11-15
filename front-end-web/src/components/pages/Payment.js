@@ -1,28 +1,75 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { incrementAsync } from "../../redux/slices";
+import { Tabs, Card, Button, Breadcrumb } from 'antd';
+import { Typography, Box, Stack } from "@mui/material";
 
 export default function Payment(props) {
+    const items = [
+        {
+          key: '1',
+          label: '课程大纲',
+          children: <img src="images/uwise-syllabus.jpg"/>,
+        },
+        {
+          key: '2',
+          label: '笔记',
+          children: <img src="images/uwise-notes.jpg"/>,
+        },
+        {
+            key: '3',
+            label: '导师信息',
+            children: <img src="images/uwise-teacher.jpg"/>,
+          }
+      ];
     const navigate =  useNavigate();
     const currentClass = props.classname;
     const value  = useSelector((state) => state.classes.value);
     console.log("this is the classes");
     console.log(value);
     return <>
-        <div>
-            <h1>{currentClass}</h1>
-            <h3>课程介绍：</h3>
-            <p>很6的一节课</p>
-            <button onClick={() => {
-                if (!props.userInfo) {
-                    props.setIsModalOpen(!props.isModalOpen)
-                } else if (!value.includes(currentClass)) {
-                    alert('Please buy this class first!');
-                } else {
-                    navigate('/class/jOTfBlKSQYY');
-                }
-            }}>进入</button>
+        <Breadcrumb
+            style={{ margin: "20px 0px 15px 100px" }}
+            separator=">"
+            items={[
+            {
+                title: 'Home',
+                href: '/',
+            },
+            {
+                title: '公开课',
+                href: '/services',
+            },
+            {
+                title: currentClass,
+            }
+            ]}
+        />
+        <div style={{ height: "100%", background: '#F4F6F6' }}>
+            <Stack direction="row" style={{ background: 'white', margin: "10px 220px", padding: '20px', borderRadius: '8px'  }}>
+                <Card style={{ width: 180, height: 100, background: "#7E5109" }}>
+                    <Typography fontSize={30} color="white">{currentClass}</Typography>
+                </ Card>
+                <Box style={{ margin: '20px 100px 0px 20px' }}>
+                    <Typography fontSize={18} >主讲导师：吴蔚钒</Typography>
+                    <Typography fontSize={15} >失效时间：2024/06/12</Typography>
+                </Box>
+                <Box>
+                    <Button style={{ marginTop: 30, marginLeft: 300 }} onClick={() => {
+                    if (!props.userInfo) {
+                        props.setIsModalOpen(!props.isModalOpen)
+                    } else if (!value.includes(currentClass)) {
+                        alert('Please buy this class first!');
+                    } else {
+                        navigate('/class/jOTfBlKSQYY');
+                    }
+                    }}>进入</Button>
+                </Box>
+            </Stack>
+            <Tabs 
+                defaultActiveKey="1" items={items} 
+                style={{ margin: "20px 220px", background: 'white', padding: '16px', borderRadius: '8px' }}
+            />
         </div>
     </>
 }

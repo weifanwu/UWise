@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const incrementAsync = createAsyncThunk(
     'classes/fetchClass',
     async () => {
-      const response = await fetch("http://localhost:8000/auth/getClasses", {
+      const response = await fetch("https://uwise.onrender.com/auth/getClasses", {
         method: "GET",
         credentials: "include",
         headers: {

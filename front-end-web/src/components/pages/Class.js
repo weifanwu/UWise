@@ -5,12 +5,12 @@ import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Videos from "./Videos";
 
-const ClassHome = () => {
+const ClassHome = (props) => {
   const { id } = useParams();
   const width = '100%';
   const aspectRatio = 3 / 2;
   const height = `calc(${width} / ${aspectRatio})`;
-  const title = "CSE154";
+  const title = props.classname;
   const channelId = "UWise";
   const channelTitle = "UWise Class";
   const viewCount = 1345;

@@ -8,7 +8,7 @@ const GOOGLE_CLIENT_SECRET = "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";
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:8000/auth/google/callback",
+  callbackURL: "https://uwise.onrender.com/auth/google/callback",
   passReqToCallback: true,
 },
 

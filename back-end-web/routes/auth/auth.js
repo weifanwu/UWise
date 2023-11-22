@@ -4,11 +4,13 @@ const crypto = require('crypto');
 
 const GOOGLE_CLIENT_ID = "73295202240-g4r4fqevidd18jjvoinih26ng5f5cd59.apps.googleusercontent.com";
 const GOOGLE_CLIENT_SECRET = "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";
-
+const callback_url = process.env.BACKEND_HOST + "auth/google/callback";
+console.log("this is the callback url: ");
+console.log(callback_url);
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "https://uwise.onrender.com/auth/google/callback",
+  callbackURL: callback_url,
   passReqToCallback: true,
 },
 

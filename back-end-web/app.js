@@ -6,6 +6,7 @@ var logger = require('morgan');
 var connect = require('./models/models.js');
 var google = require('./routes/auth/google');
 var redis = require('./routes/database/redis');
+require('dotenv').config()
 const cors = require('cors');
 
 var app = express();
@@ -28,7 +29,7 @@ app.use(async (req, res, next) => {
 
 app.use(
   cors({
-    origin: "https://uwise-frontend.onrender.com",
+    origin: process.env.FRONTEND_HOST,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     maxAge: 3600,

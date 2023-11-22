@@ -11,6 +11,7 @@ import News from './components/pages/news';
 import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
+const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
   const [name, setName] = useState("");
@@ -20,7 +21,6 @@ function App() {
   const ProtectedRoute = ({ children, classname }) => {
   const navigate = useNavigate();
     // Add your authentication logic here
-    console.log()
     if (profile) {
       return children;
     } else {
@@ -30,7 +30,7 @@ function App() {
   };
 
   const getClasses = () => {
-    fetch("https://uwise.onrender.com/auth/getClasses", {
+    fetch(host + "auth/getClasses", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -52,7 +52,7 @@ function App() {
       getClasses();
     }
     const getUser = () => {
-      fetch("https://uwise.onrender.com/auth/login/success", {
+      fetch(host + "auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {

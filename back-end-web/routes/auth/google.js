@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 const User = require('../../models/userSchema.js');
 const passport = require('passport');
+const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
+require('dotenv').config()
+
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -20,7 +23,7 @@ router.get('/google',
 
 router.get('/google/callback',
   passport.authenticate('google', {
-    successRedirect: 'https://uwise-frontend.onrender.com/services',
+    successRedirect: frontend_url + 'services',
     failureRedirect: '/auth/google/failure'
   })
 );
@@ -91,7 +94,7 @@ router.get('/logout', (req, res, next) => {
     if (error) {
       return next(error);
     } else {
-      res.redirect("https://uwise-frontend.onrender.com");
+      res.redirect(frontend_url);
     }
   });
 });

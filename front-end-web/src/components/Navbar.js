@@ -5,7 +5,6 @@ import Login from "./Login";
 import { Dropdown, Space, Divider, Button, theme, Input } from 'antd';
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "../redux/slices";
-import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function Navbar(props) {
@@ -49,6 +48,7 @@ function Navbar(props) {
   }, [])
 
   const { token } = useToken();
+  const host = process.env.REACT_APP_BACKEND_HOST;
 
   const contentStyle = {
     backgroundColor: token.colorBgElevated,
@@ -57,7 +57,8 @@ function Navbar(props) {
   }
 
   function removeCode() {
-    fetch('https://uwise.onrender.com/buy/removeCode', {
+    const host = process.env.REACT_APP_BACKEND_HOST;
+    fetch(host + 'buy/removeCode', {
       method: 'POST',
       credentials: "include",
       body: JSON.stringify({ secret: inputValue }),
@@ -147,7 +148,7 @@ function Navbar(props) {
                       <Space style={{ padding: 8 }}>
                         <Button onClick={() => {
                           props.getClasses();
-                          fetch('https://uwise.onrender.com/buy/addClass', {
+                          fetch(host + 'buy/addClass', {
                             method: 'POST',
                             credentials: "include",
                             body: JSON.stringify({ secret: inputValue, email: props.email }),

@@ -4,7 +4,6 @@ import {
   Button,
   Cascader,
   Checkbox,
-  ColorPicker,
   DatePicker,
   Form,
   Input,
@@ -108,9 +107,6 @@ const Profile = () => {
         </Form.Item>
         <Form.Item label="Slider">
           <Slider />
-        </Form.Item>
-        <Form.Item label="ColorPicker">
-          <ColorPicker />
         </Form.Item>
       </Form>
       <Button style={{ marginLeft: "370px" }} onClick={async () => {

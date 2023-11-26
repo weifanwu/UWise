@@ -30,7 +30,7 @@ function App() {
   };
 
   const getClasses = () => {
-    fetch(host + "auth/getClasses", {
+    fetch(host + "/auth/getClasses", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -52,7 +52,7 @@ function App() {
       getClasses();
     }
     const getUser = () => {
-      fetch(host + "auth/login/success", {
+      fetch(host + "/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {

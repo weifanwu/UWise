@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Login from "./Login";
-import { Dropdown, Space, Divider, Button, theme, Input } from 'antd';
+import { Dropdown, Space, Divider, Button, theme, Input, message } from 'antd';
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "../redux/slices";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -58,7 +58,7 @@ function Navbar(props) {
 
   function removeCode() {
     const host = process.env.REACT_APP_BACKEND_HOST;
-    fetch(host + 'buy/removeCode', {
+    fetch(host + '/buy/removeCode', {
       method: 'POST',
       credentials: "include",
       body: JSON.stringify({ secret: inputValue }),
@@ -84,6 +84,34 @@ function Navbar(props) {
 
   window.addEventListener('resize', showButton);
 
+  async function handleActivation() {
+    props.getClasses();
+    try {
+      const response = await fetch(host + '/buy/addClass', {
+        method: 'POST',
+        credentials: "include",
+        body: JSON.stringify({ secret: inputValue, email: props.email }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      });
+      console.log("this is the response");
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      message.success("兑换成功！");
+      removeCode();
+      dispatch(incrementAsync());
+    } catch (error) {
+      message.error("激活码错误❌");
+      console.error("There is an error:", error);
+    }
+  };
+  
+  
   return (
     <>
       <nav className='nav'>
@@ -146,27 +174,7 @@ function Navbar(props) {
                       placeholder="请输入激活码" />
                       <Divider style={{ margin: 0 }} />
                       <Space style={{ padding: 8 }}>
-                        <Button onClick={() => {
-                          props.getClasses();
-                          fetch(host + 'buy/addClass', {
-                            method: 'POST',
-                            credentials: "include",
-                            body: JSON.stringify({ secret: inputValue, email: props.email }),
-                            headers: {
-                              Accept: "application/json",
-                              "Content-Type": "application/json",
-                              "Access-Control-Allow-Credentials": true,
-                            },
-                          })
-                          .then(response => response.text())
-                          .then(() => {
-                            removeCode();                            
-                            dispatch(incrementAsync());
-                          })
-                          .catch(error => {
-                              console.error('Error:', error);
-                          });
-                        }} type="primary">激活</Button>
+                      <Button onClick={handleActivation} type="primary">激活</Button>
                       </Space>
                     </div>
                   )}

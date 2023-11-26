@@ -1,27 +1,123 @@
-import React from "react";
-import { useLocation } from 'react-router-dom';
-import { Button } from "antd";
-function Profile(props) {
-    const location = useLocation();
-    const { info } = location.state;
-    const host = process.env.REACT_APP_BACKEND_HOST;
+import React, { useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Cascader,
+  Checkbox,
+  ColorPicker,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+  Slider,
+  Switch,
+  TreeSelect,
+  Upload,
+  Card
+} from 'antd';
 
-    return (
-        <>
-            <div style={{ background: '#F4F6F6' }}>
-                <div style={{ background: 'white', margin: "10px 200px", padding: '20px', borderRadius: '8px' }}>
-                    <div>
-                        <img src="images/uwise-profile.png" style={{ marginLeft: "200px", width: "500px" }} />
-                    </div>
-                    <Button style={{ marginLeft: "370px" }} onClick={async () => {
-                        window.open(host + "auth/logout", "_self");
-                    }}>Google登出</Button>
-                </div>
+const { RangePicker } = DatePicker;
+const { TextArea } = Input;
 
+const normFile = (e) => {
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
+
+const Profile = () => {
+
+  return (
+    <Card style={{ 
+        width: "500px"
+    }}>
+      <Form
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 14 }}
+        layout="horizontal"
+        style={{ maxWidth: 600 }}
+      >
+        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+          <Checkbox>Checkbox</Checkbox>
+        </Form.Item>
+        <Form.Item label="Radio">
+          <Radio.Group>
+            <Radio value="apple"> Apple </Radio>
+            <Radio value="pear"> Pear </Radio>
+          </Radio.Group>
+        </Form.Item>
+        <Form.Item label="Input">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Select">
+          <Select>
+            <Select.Option value="demo">Demo</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item label="TreeSelect">
+          <TreeSelect
+            treeData={[
+              { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label="Cascader">
+          <Cascader
+            options={[
+              {
+                value: 'zhejiang',
+                label: 'Zhejiang',
+                children: [
+                  {
+                    value: 'hangzhou',
+                    label: 'Hangzhou',
+                  },
+                ],
+              },
+            ]}
+          />
+        </Form.Item>
+        <Form.Item label="DatePicker">
+          <DatePicker />
+        </Form.Item>
+        <Form.Item label="RangePicker">
+          <RangePicker />
+        </Form.Item>
+        <Form.Item label="InputNumber">
+          <InputNumber />
+        </Form.Item>
+        <Form.Item label="TextArea">
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Switch" valuePropName="checked">
+          <Switch />
+        </Form.Item>
+        <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+          <Upload action="/upload.do" listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div style={{ marginTop: 8 }}>Upload</div>
             </div>
+          </Upload>
+        </Form.Item>
+        <Form.Item label="Button">
+          <Button>Button</Button>
+        </Form.Item>
+        <Form.Item label="Slider">
+          <Slider />
+        </Form.Item>
+        <Form.Item label="ColorPicker">
+          <ColorPicker />
+        </Form.Item>
+      </Form>
+      <Button style={{ marginLeft: "370px" }} onClick={async () => {
+            window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
+      }}>Google登出</Button>
+    </Card>
+  );
+};
 
-        </>
-    );
-}
-
-export default Profile;
+export default () => <Profile />;

@@ -8,7 +8,7 @@ const generateCode = require('../../utils/generateCode.js');
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
   }
-
+  const valid_classes = ["CSE154", "CSE121", "Math124", "CSE373", "Math208"];
   router.post('/buyClass', async (req, res) => {
     let client;
     try {
@@ -22,6 +22,9 @@ function isLoggedIn(req, res, next) {
 
         const secret = generateCode();
         const className = req.body.className;
+        if (!valid_classes.includes(className)) {
+            throw new Error("classname does exists");
+        }
         await client.set(secret, className);
         res.status(200).send("Your activation code: " + secret);
     } catch(error) {
@@ -48,6 +51,11 @@ router.post('/addClass', async (req, res) => {
         const secret = req.body.secret;
         const email = req.body.email;
         const classname = await client.get(secret);
+        console.log("this is an element strings");
+        console.log(classname);
+        if (classname === null) {
+            throw new Error("激活码有误");
+        }
         await User.updateOne(
           {"email" : email},
           {

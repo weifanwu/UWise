@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { Tabs, Card, Button, Breadcrumb } from 'antd';
+import { Tabs, Card, Button, Breadcrumb, message } from 'antd';
 import { Typography, Box, Stack } from "@mui/material";
+import Lectures from "../LectureCard";
 
 export default function Payment(props) {
+    const navigate =  useNavigate();
+    const currentClass = props.classname;
+    const value  = useSelector((state) => state.classes.value);
+
     const items = [
         {
           key: '1',
           label: '课程大纲',
-          children: <img src="images/uwise-syllabus.jpg"/>,
+          children: <Lectures classname={currentClass}/>,
         },
         {
           key: '2',
@@ -22,11 +27,7 @@ export default function Payment(props) {
             children: <img src="images/uwise-teacher.jpg"/>,
           }
       ];
-    const navigate =  useNavigate();
-    const currentClass = props.classname;
-    const value  = useSelector((state) => state.classes.value);
-    console.log("this is the classes");
-    console.log(value);
+
     return <>
         <Breadcrumb
             style={{ margin: "20px 0px 15px 100px" }}
@@ -59,7 +60,7 @@ export default function Payment(props) {
                     if (!props.userInfo) {
                         props.setIsModalOpen(!props.isModalOpen)
                     } else if (!value.includes(currentClass)) {
-                        alert('Please buy this class first!');
+                        message.error('请联系小助手买课!');
                     } else {
                         navigate('/class/jOTfBlKSQYY');
                     }

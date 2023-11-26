@@ -1,12 +1,11 @@
+require('dotenv').config()
 var express = require('express');
 var router = express.Router();
 const User = require('../../models/userSchema.js');
 const passport = require('passport');
-require('dotenv').config()
 const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
-require('dotenv').config()
 
 console.log("this is the frontend callback url");
 console.log(frontend_url);
@@ -26,7 +25,7 @@ router.get('/google',
 
 router.get('/google/callback',
   passport.authenticate('google', {
-    successRedirect: frontend_url + 'services',
+    successRedirect: frontend_url + '/services',
     failureRedirect: '/auth/google/failure'
   })
 );

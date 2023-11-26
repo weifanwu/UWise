@@ -4,7 +4,7 @@ export const incrementAsync = createAsyncThunk(
     'classes/fetchClass',
     async () => {
       const host = process.env.REACT_APP_BACKEND_HOST;
-      const response = await fetch(host + "auth/getClasses", {
+      const response = await fetch(host + "/auth/getClasses", {
         method: "GET",
         credentials: "include",
         headers: {

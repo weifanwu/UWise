@@ -6,6 +6,7 @@ var logger = require('morgan');
 var connect = require('./models/models.js');
 var google = require('./routes/auth/google');
 var redis = require('./routes/database/redis');
+var lecture = require('./routes/class/lecture.js');
 require('dotenv').config()
 const cors = require('cors');
 
@@ -21,23 +22,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(async (req, res, next) => {
-  await connect();
-  next();
-});
-
-
 app.use(
   cors({
-    origin: process.env.FRONTEND_HOST,
+    origin: [process.env.FRONTEND_HOST, process.env.INTERAL_HOST],
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     maxAge: 3600,
   })
 );
 
+app.use(async (req, res, next) => {
+  await connect();
+  next();
+});
+
 app.use('/auth', google);
 app.use('/buy', redis);
+app.use('/lecture', lecture);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

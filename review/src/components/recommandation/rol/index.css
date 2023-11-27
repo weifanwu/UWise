@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.cardsContainer {
+    width: 64.8vw;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px;
+    margin-bottom: 3px;
+
+}
+
+@keyframes outBlur {
+    from {box-shadow: 1px 1.1px 2px 2px rgb(155, 155, 155);}
+    to {box-shadow: 4px 4px 5px 5px rgb(155, 155, 155);}
+}
+
+.singleCard{
+    background-color: white;
+    position: relative;
+    width: 14.5vw;
+    height: 15vh;
+    box-shadow: 1px 6px 10px -1px #E5E5E5;
+    border-radius: 14px; 
+    margin: 4px 9px;
+    padding: 2vh 0;
+    padding-bottom: 1vh;
+}
+
+.singleCard:hover {
+    cursor: pointer;
+    animation-name: outBlur;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.textContent {
+    width: 8vw;
+    margin: 11px 15px 2px;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: medium;
+}
+
+.fillContent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Roboto';
+    font-weight: 500;
+    color: #939396;
+    font-size: 1.4em;
+}
+
+.breifInfo {
+    width: 9vw;
+    margin: 3px 15px 21px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: #babac2;
+    font-size: smaller;
+}
+
+.rolsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.subTitle {
+    font-size: x-large;
+    text-transform: capitalize;
+}
+
+.rolInRols{
+    margin: 1vh 0.5vw 6vh;
+}

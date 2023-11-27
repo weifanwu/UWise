@@ -1,0 +1,8 @@
+.user, .clock {
+  display: flex;
+}
+
+.comment {
+  padding-left: 50px;
+  margin-bottom: 10px;
+}

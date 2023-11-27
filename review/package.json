@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && umi dev",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && umi build",
+    "start": "umi dev",
+    "build": "umi build",
     "webpack": "umi webpack",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",

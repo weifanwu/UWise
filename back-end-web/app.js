@@ -39,6 +39,12 @@ app.use(async (req, res, next) => {
 app.use('/auth', google);
 app.use('/buy', redis);
 app.use('/lecture', lecture);
+app.get('/test', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "successfull",
+    user: req.user,
+  })});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

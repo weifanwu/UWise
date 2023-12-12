@@ -712,7 +712,7 @@ const ClassHome = (props) => {
           <Videos videos={videos} direction="column" />
         </Box>
       </Stack>
-    </Box>
+   </Box>
   );
 };
 

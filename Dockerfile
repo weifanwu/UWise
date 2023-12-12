@@ -1,9 +1,9 @@
-FROM node:latest
+# FROM node:latest
 
-COPY front-end-web /app/
+# COPY front-end-web /app/
 
-WORKDIR /app
+# WORKDIR /app
 
-RUN npm install
+# RUN npm install
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]

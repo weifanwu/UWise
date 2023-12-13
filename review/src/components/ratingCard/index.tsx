@@ -77,7 +77,7 @@ const RatingCard = (props: any) => {
       (async function callFetchHandler() {
         try {
                 console.log(courseCode);
-                let response = await fetch("https://uwise-back-end.herokuapp.com/getReview?courseCode=" + courseCode);
+                let response = await fetch("http://localhost:4567/getReview?courseCode=" + courseCode);
                 console.log(response);
                 let reviews = await response.json();
                 console.log(reviews);
@@ -122,9 +122,9 @@ const RatingCard = (props: any) => {
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
-      setLoading(true);
+      setLoading(true); 
       const review = { "instructor" : values.instructor, "quarter" : values.quarter, "course" : courseCode, "comment" : values.comment, "reviewed" : false};
-      const response = await fetch("https://uwise-back-end.herokuapp.com/addComment", {
+      const response = await fetch("http://localhost:4567/addComment", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(review),

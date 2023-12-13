@@ -4,7 +4,7 @@ import { React, useEffect, useState, useRef } from "react";
 export default function Content(props) {
     const elementRef = useRef();
     const [data, setData] = useState([]);
-    const url = "https://uwise-back-end.herokuapp.com/resources?resource=" + props.title;
+    const url = "http://localhost:4567/resources?resource=" + props.title;
     useEffect(() => {
         getData();
       }, []);

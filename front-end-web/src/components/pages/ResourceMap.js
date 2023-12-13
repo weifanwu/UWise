@@ -37,7 +37,7 @@ export default function ResourceMap(props) {
     async function fetchData() {
         try {
             const types = type.join(",");
-            const response = await fetch("https://uwise-back-end.herokuapp.com/findLocation?types=" + types);
+            const response = await fetch("http://localhost:4567/findLocation?types=" + types);
             if (response.ok) {
                 const data = await response.json();
                 setLocations(data);

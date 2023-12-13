@@ -246,7 +246,7 @@ public class SparkServer {
 			port = "4567";
 		}
 		port(Integer.parseInt(port));
-		ConnectionString connString = new ConnectionString("mongodb+srv://uwise:WWxx971173117@uwise.vsv8lb2.mongodb.net/test?retryWrites=true&w=majority");
+		ConnectionString connString = new ConnectionString("mongodb+srv://uwise:universityofwashington@uwise.vsv8lb2.mongodb.net/test?retryWrites=true&w=majority");
 		MongoClientSettings settings = MongoClientSettings.builder()
 				.applyConnectionString(connString)
 				.build();

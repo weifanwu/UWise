@@ -32,7 +32,7 @@ function App() {
       (async function callFetchHandler() {
         try {
 
-          let response = await fetch("https://uwise-back-end.herokuapp.com/content-moderation");
+          let response = await fetch("http://localhost:4567/content-moderation");
           let reviews = await response.json();
           handleRenderContent(reviews);
         } catch (err) {

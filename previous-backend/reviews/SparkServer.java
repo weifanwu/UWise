@@ -180,6 +180,7 @@ public class SparkServer {
 			@Override
 			public Object handle(Request request, Response response) throws Exception {
 				try {
+					System.out.println("enter the add comment");
 					Gson gson = new Gson();
 					String requestBody = request.body();
 					JsonObject json = gson.fromJson(requestBody, JsonObject.class);
@@ -246,7 +247,7 @@ public class SparkServer {
 			port = "4567";
 		}
 		port(Integer.parseInt(port));
-		ConnectionString connString = new ConnectionString("mongodb+srv://uwise:WWxx971173117@uwise.vsv8lb2.mongodb.net/test?retryWrites=true&w=majority");
+		ConnectionString connString = new ConnectionString("mongodb+srv://uwise:universityofwashington@uwise.vsv8lb2.mongodb.net/test?retryWrites=true&w=majority");
 		MongoClientSettings settings = MongoClientSettings.builder()
 				.applyConnectionString(connString)
 				.build();

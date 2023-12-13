@@ -8,7 +8,7 @@ export default function Major(props) {
     const [majors, setMajors] = useState([]);
 
     const handle = (text) => {
-        fetch('https://uwise-back-end.herokuapp.com/newStudent/major?resource=' + text)
+        fetch('http://localhost:4567/newStudent/major?resource=' + text)
           .then(response => response.json())
           .then(data => {
             setMajors(data);

@@ -1,0 +1,8 @@
+.panel {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 300px;
+}

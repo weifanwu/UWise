@@ -1,5 +1,4 @@
 const projectId = 'pro-signal-407805';
-const cloudKey = 'cloudKey.json';
 
 const cloud = {
     "type": "service_account",
@@ -13,7 +12,7 @@ const cloud = {
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/uwise-714%40pro-signal-407805.iam.gserviceaccount.com",
     "universe_domain": "googleapis.com"
-  }
+}
   
 
 const {Storage} = require('@google-cloud/storage');

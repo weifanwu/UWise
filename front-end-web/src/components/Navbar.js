@@ -155,8 +155,8 @@ function Navbar(props) {
               >
                 新闻
               </Link>
-            </li> */}
-            {/* <li className='nav-item'>
+            </li>
+            <li className='nav-item'>
               <Link
                 to='/resources'
                 className='nav-links'

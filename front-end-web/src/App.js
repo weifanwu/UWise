@@ -7,7 +7,6 @@ import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import Student from './components/pages/newStudent';
 import ClassHome from './components/pages/Class';
-import News from './components/pages/news';
 import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
@@ -86,8 +85,6 @@ function App() {
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames}/>} />
           <Route path='/newStudent' element={<Student />} />
-          {/* <Route path='/resources' element={<Resources />} /> */}
-          <Route path='/news' element={<News />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/login' element={<Profile />} />
         </Routes>

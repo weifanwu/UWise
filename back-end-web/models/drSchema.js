@@ -8,6 +8,6 @@ const drSchema = new mongoose.Schema({
     Img: String,
 });
 
-const dr = mongoose.model('Post', drSchema);
+const dr = mongoose.model('DynamicResources', drSchema);
 
 module.exports = dr;

@@ -9,6 +9,8 @@ import {
   Card
 } from 'antd';
 import { useState } from 'react';
+import StaticResources  from './StaticResources.js';
+
 function App() {
   return (
     <div style={{
@@ -16,10 +18,12 @@ function App() {
       width: "100wh",
       background: "#E7ECEC"
     }}>
+      
       <Flex wrap="wrap" gap="small">
         <Class />
         <Buy />
       </Flex>
+      <StaticResources />
     </div>
   );
 }

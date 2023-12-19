@@ -147,6 +147,24 @@ function Navbar(props) {
                 华大资源
               </Link>
             </li>
+            {/* <li className='nav-item'>
+              <Link
+                to='/news'   
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                新闻
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/resources'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                静态资源
+              </Link>
+            </li> */}
             <li className='nav-item' data-bs-toggle="dropdown">
                 <Dropdown
                   dropdownRender={() => (

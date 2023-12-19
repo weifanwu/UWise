@@ -30,7 +30,7 @@ export default function Student(props) {
     const [major, setMajor] = useState('');
 
     const handle = (text) => {
-        fetch('https://uwise-back-end.herokuapp.com/newStudent?resource=' + myMap.get(text))
+        fetch('http://localhost:4567/newStudent?resource=' + myMap.get(text))
           .then(response => response.json())
           .then(data => {
             setCards(data);

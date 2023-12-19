@@ -26,7 +26,7 @@ function App() {
 
 const handleSubmit = async (values) => {
   try {
-    const response = await fetch('https://uwise-back-end.herokuapp.com/lecture/addLecture', {
+    const response = await fetch('http://localhost:8000/lecture/addLecture', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

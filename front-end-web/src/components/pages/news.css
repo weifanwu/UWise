@@ -1,0 +1,30 @@
+img {
+    width: 100%;
+}
+
+.resource {
+    padding: auto;
+}
+
+.largest {
+    float: left;
+    width: 60%;
+    padding: 10px 0;
+}
+
+.medium {
+    display: inline-block;
+    width: 500px;
+    margin: 20px;
+
+}
+
+.small {
+    display: flex;
+    margin: 40px;
+    width: 100%;
+}
+
+.small > img {
+    width: 50%;
+}

@@ -54,7 +54,7 @@ const StaticResources = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await fetch('http://localhost:8000/addStaticResource', {
+      const response = await fetch('http://localhost:8000/resources/addStaticResource', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

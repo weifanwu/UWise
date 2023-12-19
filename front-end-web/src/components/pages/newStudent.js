@@ -12,59 +12,45 @@ import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import { styled } from '@mui/system';
 import "./newStudent.css";
-import Major from "./Major";
-
 
 export default function Student(props) {
-    const myMap = new Map();
-    myMap.set('办理银行卡', 'bank');
-    myMap.set('宿舍攻略', 'dorm');
-    myMap.set('专业申请', 'department');
-    myMap.set('社团', 'club');
-    myMap.set('热门课程', 'class');
-    myMap.set('考驾照', 'drive');
-    myMap.set('美食', 'food');
-
     const [cards, setCards] = useState([]);
     const [page, setPage] = useState(true);
-    const [major, setMajor] = useState('');
+    const [types, setTypes] = useState([]); // State to store the types for tabs
 
-    const handle = (text) => {
-        fetch('http://localhost:4567/newStudent?resource=' + myMap.get(text))
+    // Fetch the types for the tabs and initial data
+    useEffect(() => {
+        fetch('http://localhost:8000/resources/getTypes') // Adjust URL to your endpoint
+          .then(response => response.json())
+          .then(data => setTypes(data))
+          .catch(error => console.error(error));
+        handle("社团"); // Default type or initial type
+    }, []);
+
+    const handle = (type) => {
+        fetch('http://localhost:8000/resources/getStaticResource?type=' + type)
           .then(response => response.json())
           .then(data => {
             setCards(data);
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-              });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           })
-          .catch(error => {
-            console.error(error);
-          });
+          .catch(error => console.error(error));
     };
-
-    useEffect(() => {
-        handle("办理银行卡");
-      }, []);
 
     const DrawerNav = styled(Drawer)({
         position: "fixed",
-      })
-
+    });
 
     const drawer = (
-        <div className="drawer">          
+        <div className="drawer">
           <List>
-              {['办理银行卡', '宿舍攻略', '专业申请', '社团', '考驾照', '美食', '热门课程'].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton onClick={()=> {
-                      handle(text);
-                  }} >
+              {types.map((type, index) => (
+                <ListItem key={type} disablePadding>
+                  <ListItemButton onClick={() => handle(type)}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText primary={type} />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -72,35 +58,29 @@ export default function Student(props) {
         </div>
     );
 
-    return <>
-            <div>
-              { page ? <>
-              <DrawerNav variant="permanent">
-              {drawer}
-              </DrawerNav>
-              <div className="allContent">
-                {(cards.map((card) => {
-                  return <>
-                    <ViewCard
-                      class={(card["group"] === "department") ? "circle" : "card"}
-                      image={card["image"]}
-                      title={card["title"]}
-                      content={card["content"]}
-                      link={card["link"]}
-                      hover={() => {
-                        console.log("Nothing");
-                      } }
-                      click={() => {
-                        setMajor(card["major"]);
-                        setPage(false);
-                      } } />
-                  </>;
-                }))}
-              </div>
-            </> :
-            <Major major={major} click={() => {
-              setPage(true);
-            }}/>}
+    return (
+        <div>
+            {(
+                <>
+                    <DrawerNav variant="permanent">
+                        {drawer}
+                    </DrawerNav>
+                    <div className="staticRecourseCards">
+                        {cards.map((card) => (
+                            <ViewCard
+                                key={card._id}
+                                title={card.title}
+                                intro={card.intro}
+                                img={card.img}
+                                url={card.url}
+                                click={() => {
+                                    setPage(false);
+                                }}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
-        </>
+    );
 }

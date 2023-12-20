@@ -11,17 +11,16 @@ const StaticResources = () => {
       const formData = new FormData();
       formData.append('smfile', file);
 
-      const apiKey = 'szAql87YxCVzxIhkkr8H0BAjBmPeAzpT';
-
       try {
           const response = await fetch('/api/v2/upload', {
               method: 'POST',
               headers: {
-                'Authorization': apiKey,
+                Authorization: process.env.REACT_APP_SMMS_API_KEY,
               },
               body: formData,
           });
           const data = await response.json();
+          console.log(data)
           if (data.success) {
               setImageUrl(data.images);
               message.error('图片添加成功！');
@@ -84,14 +83,11 @@ const StaticResources = () => {
             <Input />
           </Form.Item>
           <Form.Item label="图片" name="img">
-            <Input />
-          </Form.Item>
-          <Form.Item label="图片">
               <Upload beforeUpload={handleFileUpload} showUploadList={false}>
                   <Button icon={<UploadOutlined />}>点击上传图片</Button>
               </Upload>
-              {imageUrl && <img src={imageUrl} alt="Uploaded" style={{ width: "100px", marginTop: "10px" }} />}
           </Form.Item>
+          {imageUrl && <img src={imageUrl} alt="Uploaded" style={{ width: "100px", marginTop: "10px" }} />}
           <Form.Item label="链接" name="url">
             <Input />
           </Form.Item>

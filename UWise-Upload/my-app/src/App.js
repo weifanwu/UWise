@@ -29,7 +29,7 @@ function App() {
   };
 
   const addResource = async (link) => {
-    const response = await fetch("http://localhost:4567/addResource", {
+    const response = await fetch("https://uwise-back-end.herokuapp.com/addResource", {
       method: "POST",
       body: JSON.stringify({"title": title, "group": group, "text": text, "link": link, "web" : web}),
     });

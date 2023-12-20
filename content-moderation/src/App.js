@@ -21,7 +21,7 @@ function App() {
     if (reviews) {
       let renderContent = reviews.map((x) => {
         return (
-          <Moderation id={x["_id"].$oid} instructor={x.instructor} quarter={x.quarter} course={x.course} comment={x.comment} setChange={() => {setChange(!change)}}/>
+          <Moderation id={x["_id"].$oid} instructor={x.instructor} quarter={x.quarter} course={x.course} name={x.name} comment={x.comment} setChange={() => {setChange(!change)}}/>
         );
       });
       setContent(renderContent);
@@ -32,7 +32,7 @@ function App() {
       (async function callFetchHandler() {
         try {
 
-          let response = await fetch("http://localhost:4567/content-moderation");
+          let response = await fetch("https://uwise-back-end.herokuapp.com/content-moderation");
           let reviews = await response.json();
           handleRenderContent(reviews);
         } catch (err) {

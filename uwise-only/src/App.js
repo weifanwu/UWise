@@ -8,19 +8,21 @@ import {
   Input,
   Card
 } from 'antd';
+import StaticResources  from './StaticResources.js';
+import { DynamicResources } from './DynamicResources.js';
 import { useState } from 'react';
-import { DynamicResources } from './DynamicResources';
 
 function App() {
   return (
     <div style={{
       height: "100vh",
       width: "100wh",
-      background: "#E7ECEC"
     }}>
+      
       <Flex wrap="wrap" gap="small">
         <Class />
         <Buy />
+        <StaticResources />
         <DynamicResources />
       </Flex>
     </div>

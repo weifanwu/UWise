@@ -55,9 +55,12 @@ export function DynamicResources() {
                     body: formData,
                 });
 
+
+
                 if (!response.ok) {
                     message.error("Image Upload has been failed!")
                     console.error('Image upload failed');
+                    message.error('图片添加失败！');
                     return;
                 }
 
@@ -80,7 +83,7 @@ export function DynamicResources() {
             }
             message.success("录入成功！");
         } catch(error) {
-            message.error("录入成功！");
+            message.error("录入失败！");
             console.log("an error has happened: ", error);
         }
     }

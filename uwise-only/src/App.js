@@ -9,17 +9,22 @@ import {
   Card
 } from 'antd';
 import { useState } from 'react';
+import StaticResources  from './StaticResources.js';
+import { DynamicResources } from './DynamicResources.js';
+
 function App() {
   return (
     <div style={{
       height: "100vh",
       width: "100wh",
-      background: "#E7ECEC"
     }}>
+      
       <Flex wrap="wrap" gap="small">
         <Class />
         <Buy />
       </Flex>
+      <StaticResources />
+      <DynamicResources />
     </div>
   );
 }

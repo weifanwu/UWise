@@ -4,7 +4,8 @@ import {
     Flex,
     Form,
     Input,
-    Card
+    Card,
+    message
 } from 'antd';
 
 export function DynamicResources() {
@@ -46,14 +47,17 @@ export function DynamicResources() {
                     body: formData,
                 });
 
+
+
                 if (!response.ok) {
                     console.error('Image upload failed');
+                    message.error('图片添加失败！');
                     return;
                 }
-
                 const result = await response.json();
                 const url = result.images;
                 setimg(url)
+                message.error('图片添加成功！');
                 console.log(url)
             } catch (error) {
                 console.error('Error occurred during image upload', error);

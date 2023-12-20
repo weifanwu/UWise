@@ -10,13 +10,13 @@ import {
 } from 'antd';
 import { useState } from 'react';
 import StaticResources  from './StaticResources.js';
+import { DynamicResources } from './DynamicResources.js';
 
 function App() {
   return (
     <div style={{
       height: "100vh",
       width: "100wh",
-      background: "#E7ECEC"
     }}>
       
       <Flex wrap="wrap" gap="small">
@@ -24,13 +24,14 @@ function App() {
         <Buy />
       </Flex>
       <StaticResources />
+      <DynamicResources />
     </div>
   );
 }
 
 const handleSubmit = async (values) => {
   try {
-    const response = await fetch('http://localhost:8000/lecture/addLecture', {
+    const response = await fetch('https://uwise-back-end.herokuapp.com/lecture/addLecture', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

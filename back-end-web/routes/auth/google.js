@@ -7,8 +7,6 @@ const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
 
-console.log("this is the frontend callback url");
-console.log(frontend_url);
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);

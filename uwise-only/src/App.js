@@ -9,6 +9,8 @@ import {
   Card
 } from 'antd';
 import { useState } from 'react';
+import { DynamicResources } from './DynamicResources';
+
 function App() {
   return (
     <div style={{
@@ -19,6 +21,7 @@ function App() {
       <Flex wrap="wrap" gap="small">
         <Class />
         <Buy />
+        <DynamicResources />
       </Flex>
     </div>
   );

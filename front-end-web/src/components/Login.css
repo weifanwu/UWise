@@ -24,3 +24,17 @@
     height: 470px;
     opacity: 1;
 }
+
+.custom-btn {
+  background-color: #2AAE67;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  background-color: #279c5e;
+  /* Slightly darker shade for hover effect */
+}

@@ -4,7 +4,8 @@ import {
     Flex,
     Form,
     Input,
-    Card
+    Card,
+    message
 } from 'antd';
 
 export function DynamicResources() {
@@ -12,7 +13,7 @@ export function DynamicResources() {
     const [intro, setintro] = useState("")
     const [priority, setpriority] = useState("")
     const [url, seturl] = useState("")
-    const [img, setimg] = useState("")
+    const [img, setimg] = useState(null)
 
     const handleInputChange = async (e) => {
         let { id, value } = e.target
@@ -29,56 +30,58 @@ export function DynamicResources() {
             seturl(value)
         }
         if (id === "img") {
-            let img = e.target.files[0]
+            setimg(e.target.files[0]);
+        }
+    }
 
-            const apiKey = 'szAql87YxCVzxIhkkr8H0BAjBmPeAzpT';
-            const apiUrl = "/api/v2/upload";
+    const submit = async () => {
+        try {
+            if (title.trim().length <= 0 || intro.trim().length <= 0 ||
+            priority.trim().length <= 0 || url.trim().length <= 0 ||
+            !img) {
+                message.error("请填入信息")
+            } else {
+                const apiKey = 'YuoYZdpx0YQcYv8GpTwaHDwLO7DOF8gw';
+                const apiUrl = "/api/v2/upload";
+                // 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+                const formData = new FormData();
+                formData.append('smfile', img);
 
-            const formData = new FormData();
-            formData.append('smfile', img);
-
-            try {
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        Authorization: apiKey,
+                        "Authorization": apiKey
                     },
                     body: formData,
                 });
 
                 if (!response.ok) {
+                    message.error("Image Upload has been failed!")
                     console.error('Image upload failed');
                     return;
                 }
 
                 const result = await response.json();
-                const url = result.images;
-                setimg(url)
-                console.log(url)
-            } catch (error) {
-                console.error('Error occurred during image upload', error);
-                // Handle the error
+                let image;
+                if (!result.success) {
+                    image = result["images"];
+                } else {
+                    image = result.data["url"];
+                }
+                await fetch("http://localhost:8000/dr/addDR", {
+                    method: "POST",
+                    body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": image }),
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Credentials": true,
+                    },
+                });
             }
-        }
-    }
-
-    const submit = async () => {
-        if (title.trim().length <= 0 || intro.trim().length <= 0 ||
-            priority.trim().length <= 0 || url.trim().length <= 0 ||
-            img.trim().length <= 0) {
-            console.log("请填入信息")
-        } else {
-            const response = await fetch("http://localhost:8000/dr/addDR", {
-                method: "POST",
-                body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": img }),
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-            });
-            const book = await response.text();
-            console.log(book)
+            message.success("录入成功！");
+        } catch(error) {
+            message.error("录入成功！");
+            console.log("an error has happened: ", error);
         }
     }
 

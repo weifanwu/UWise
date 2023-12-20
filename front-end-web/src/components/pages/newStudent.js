@@ -15,7 +15,6 @@ import "./newStudent.css";
 
 export default function Student(props) {
     const [cards, setCards] = useState([]);
-    const [page, setPage] = useState(true);
     const [types, setTypes] = useState([]); // State to store the types for tabs
 
     // Fetch the types for the tabs and initial data
@@ -73,9 +72,6 @@ export default function Student(props) {
                                 intro={card.intro}
                                 img={card.img}
                                 url={card.url}
-                                click={() => {
-                                    setPage(false);
-                                }}
                             />
                         ))}
                     </div>

@@ -38,7 +38,7 @@ function App() {
   };
 
   async function upload() {
-    const apiKey = 'szAql87YxCVzxIhkkr8H0BAjBmPeAzpT'; // Replace with your SM.MS API key
+    const apiKey = '14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf'; // Replace with your SM.MS API key
     const apiUrl = "/api/v2/upload";
   
     const formData = new FormData();

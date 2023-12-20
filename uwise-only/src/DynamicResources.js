@@ -67,6 +67,10 @@ export function DynamicResources() {
                 const result = await response.json();
                 let image;
                 if (!result.success) {
+                    if (result.code === "unauthorized") {
+                        message.error("身份认证失败，请联系管理员！");
+                        return;
+                      }
                     image = result["images"];
                 } else {
                     image = result.data["url"];

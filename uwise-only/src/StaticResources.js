@@ -36,12 +36,15 @@ const StaticResources = () => {
           console.log(result);
           let url;
           if (!result.success) {
+            if (result.code === "unauthorized") {
+              message.error("身份认证失败，请联系管理员！");
+              return;
+            }
             url = result["images"];
           } else {
             url = result.data["url"];
           }
-          console.log("this is the url: ");
-          console.log(url);
+
           const payload = { ...values, img: url };
           await fetch('http://localhost:8000/resources/addStaticResource', {
             method: 'POST',

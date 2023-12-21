@@ -95,7 +95,7 @@ const Class = () => {
 };
 
 function Buy() {
-  const host = process.env.REACT_APP_BACKEND_HOST;
+  const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
   const [code, setCode] = useState("xxxxxx");
   const [coursename, setCoursename] = useState("");
 

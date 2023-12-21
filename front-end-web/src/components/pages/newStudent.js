@@ -16,10 +16,10 @@ import "./newStudent.css";
 export default function Student(props) {
     const [cards, setCards] = useState([]);
     const [types, setTypes] = useState([]); // State to store the types for tabs
-
+    const host = process.env.REACT_APP_BACKEND_HOST;
     // Fetch the types for the tabs and initial data
     useEffect(() => {
-        fetch('http://localhost:8000/resources/getTypes')
+        fetch(host + '/resources/getTypes')
           .then(response => response.json())
           .then(data => setTypes(data))
           .catch(error => console.error(error));
@@ -27,7 +27,7 @@ export default function Student(props) {
     }, []);
 
     const handle = (type) => {
-        fetch('http://localhost:8000/resources/getStaticResource?type=' + type)
+        fetch(host + '/resources/getStaticResource?type=' + type)
           .then(response => response.json())
           .then(data => {
             setCards(data);

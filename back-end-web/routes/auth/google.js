@@ -49,7 +49,7 @@ router.get("/login/success", async (req, res) => {
         //   cookies: req.cookies
       });
     } else {
-      res.status(200).send("Please sign in first");
+      res.status(500).send("Please sign in first");
     }
   } catch(error) {
     res.status(500).send("there is an internal error");

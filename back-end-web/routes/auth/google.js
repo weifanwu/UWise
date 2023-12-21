@@ -32,6 +32,8 @@ router.get('/google/callback',
 router.get("/login/success", async (req, res) => {
   try {
     if (req.user) {
+      console.log("this is the user");
+      console.log(req.user);
       const email = req.user.email;
       const findUser = await User.findOne({"email" : email});
       if (!findUser) {

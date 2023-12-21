@@ -18,8 +18,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [classNames, setClasses] = useState();
   const ProtectedRoute = ({ children, classname }) => {
-  const navigate = useNavigate();
-    // Add your authentication logic here
     if (profile) {
       return children;
     } else {
@@ -61,7 +59,7 @@ function App() {
         },
       })
         .then((response) => {
-          if (response.status === 200) return response.json();
+          if (response.status === 200) return response.text();
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {

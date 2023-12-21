@@ -114,7 +114,7 @@ function Buy() {
       <Divider style={{ margin: 0 }} />
       <Space style={{ padding: 8 }}>
         <Button onClick={() => {
-          fetch(host + '/buy/buyClass', {
+          fetch(host + 'buy/buyClass', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -7,8 +7,8 @@ var connect = require('./models/models.js');
 var google = require('./routes/auth/google');
 var redis = require('./routes/database/redis');
 var lecture = require('./routes/class/lecture.js');
-var staticResources= require('./routes/resources/StaticResources.js');
-var dynamicResources = require('./routes/resources/DynamicResources.js');
+var staticResources= require('./routes/resources/staticResources.js');
+var dynamicResources = require('./routes/resources/dynamicResources.js');
 require('dotenv').config()
 const cors = require('cors');
 

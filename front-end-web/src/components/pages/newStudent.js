@@ -19,7 +19,7 @@ export default function Student(props) {
 
     // Fetch the types for the tabs and initial data
     useEffect(() => {
-        fetch('http://localhost:8000/resources/getTypes') // Adjust URL to your endpoint
+        fetch('http://localhost:8000/resources/getTypes')
           .then(response => response.json())
           .then(data => setTypes(data))
           .catch(error => console.error(error));

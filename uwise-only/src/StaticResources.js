@@ -3,6 +3,7 @@ import { Button, Card, Form, Input, message} from 'antd';
 
 
 const StaticResources = () => {
+    const host = process.env.REACT_APP_BACKEND_HOST;
     const [form] = Form.useForm();
     const [image, setImage] = useState(null);
 
@@ -13,6 +14,7 @@ const StaticResources = () => {
 
       const handleSubmit = async (values) => {
         try {
+
           const apiKey = process.env.REACT_APP_SMMS_API_KEY;
           console.log("this is the api key");
           console.log(apiKey);
@@ -46,7 +48,7 @@ const StaticResources = () => {
           }
 
           const payload = { ...values, img: url };
-          await fetch('http://localhost:8000/resources/addStaticResource', {
+          await fetch(host + 'resources/addStaticResource', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

@@ -36,6 +36,7 @@ export function DynamicResources() {
 
     const submit = async () => {
         try {
+            const host = process.env.REACT_APP_BACKEND_HOST;
             if (title.trim().length <= 0 || intro.trim().length <= 0 ||
             priority.trim().length <= 0 || url.trim().length <= 0 ||
             !img) {
@@ -75,7 +76,7 @@ export function DynamicResources() {
                 } else {
                     image = result.data["url"];
                 }
-                await fetch("http://localhost:8000/dr/addDR", {
+                await fetch(host + "dr/addDR", {
                     method: "POST",
                     body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": image }),
                     headers: {

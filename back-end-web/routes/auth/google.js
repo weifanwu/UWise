@@ -52,6 +52,8 @@ router.get("/login/success", async (req, res) => {
       res.status(500).send("Please sign in first");
     }
   } catch(error) {
+    console.log("there is an error");
+    console.log(error);
     res.status(500).send("there is an internal error");
   }
 });

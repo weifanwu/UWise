@@ -59,7 +59,7 @@ function App() {
         },
       })
         .then((response) => {
-          if (response.status === 200) return response.text();
+          if (response.status === 200) return response.json();
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {

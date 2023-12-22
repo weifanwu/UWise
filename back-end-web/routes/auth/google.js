@@ -7,10 +7,10 @@ const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
 
-
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
+
 router.set('trust proxy', 1)
 router.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 router.use(passport.initialize());

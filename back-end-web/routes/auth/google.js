@@ -12,7 +12,6 @@ function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
 
-
 router.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 router.use(passport.initialize());
 router.use(passport.session());

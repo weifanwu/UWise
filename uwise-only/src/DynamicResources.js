@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; //import React Component
+import React, { useState, useEffect } from 'react'; //import React Component
 import {
     Button,
     Flex,
@@ -34,6 +34,22 @@ export function DynamicResources() {
         }
     }
 
+    const [data, setdata] = useState([])
+    useEffect(() => {
+        const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
+        fetch(host + 'dr/getDR')
+            .then(response => response.json())
+            .then(data => setdata(data))
+            .catch(error => console.error(error));
+    }, []);
+
+    const [priority1, setpriority1] = useState([])
+    const [priority2, setpriority2] = useState([])
+    useEffect(() => {
+        setpriority1(data.filter(item => item.Priority == "1").length)
+        setpriority2(data.filter(item => item.Priority == "2").length)
+    }, [data])
+
     const submit = async () => {
         try {
             const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
@@ -41,6 +57,8 @@ export function DynamicResources() {
                 priority.trim().length <= 0 || url.trim().length <= 0 ||
                 !img) {
                 message.error("请填入信息")
+            } else if (priority1 >= 5) {
+                console.log("无法录入")
             } else {
                 const apiKey = 'YuoYZdpx0YQcYv8GpTwaHDwLO7DOF8gw';
                 const apiUrl = "/api/v2/upload";
@@ -76,7 +94,7 @@ export function DynamicResources() {
                 } else {
                     image = result.data["url"];
                 }
-                
+
                 await fetch(host + "dr/addDR", {
                     method: "POST",
                     body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": image }),
@@ -84,8 +102,9 @@ export function DynamicResources() {
                         'Content-Type': 'application/json',
                     }
                 })
+
+                message.success("录入成功！");
             }
-            message.success("录入成功！");
         } catch (error) {
             message.error("录入失败！");
             console.log("an error has happened: ", error);
@@ -133,6 +152,9 @@ export function DynamicResources() {
                                 value={priority}
                             />
                         </Form.Item>
+                        <div style={{ textAlign: "center" }}>
+                            <p>目前有{priority1}/5 个“1”, {priority2}/无限 个“2”</p>
+                        </div>
                         <Form.Item label="图片" name="img">
                             <Input
                                 type="file"

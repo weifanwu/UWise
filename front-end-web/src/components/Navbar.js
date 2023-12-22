@@ -60,7 +60,6 @@ function Navbar(props) {
     const host = process.env.REACT_APP_BACKEND_HOST;
     fetch(host + '/buy/removeCode', {
       method: 'POST',
-      credentials: "include",
       body: JSON.stringify({ secret: inputValue }),
       headers: {
         Accept: "application/json",
@@ -89,7 +88,6 @@ function Navbar(props) {
     try {
       const response = await fetch(host + '/buy/addClass', {
         method: 'POST',
-        credentials: "include",
         body: JSON.stringify({ secret: inputValue, email: props.email }),
         headers: {
           Accept: "application/json",

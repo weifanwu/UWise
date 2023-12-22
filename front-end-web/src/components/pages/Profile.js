@@ -1,24 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
+import "./Profile.css";
 import {
   Button,
-  Cascader,
-  Checkbox,
   DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
   Select,
-  Slider,
-  Switch,
-  TreeSelect,
   Upload,
-  Card
+  Card,
+  message
 } from 'antd';
-
-const { RangePicker } = DatePicker;
-const { TextArea } = Input;
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -27,11 +19,46 @@ const normFile = (e) => {
   return e?.fileList;
 };
 
-const Profile = () => {
+export default function Profile() {
+
+  const [profileInfo, setProfileInfo] = useState({
+    given_name: "",
+    family_name: "",
+    picture: "",
+    email: "",
+    grade: "",
+    major: "",
+    classes: [],
+  });
+
+  useEffect(() => {
+    fetch('http://localhost:8000/login/getProfile')
+      .then(response => response.json())
+      .then(data => {setProfileInfo(data);
+                     console.log(profileInfo);})
+      .catch(error => console.error(error));
+  }, [profileInfo]);
+
+  const handleProfileChange = () => {
+    fetch('http://localhost:8000/login/updateProfile', {method: "POST"})
+      .then(response => {
+        if (response.ok) {
+          message.success("Change saved!");
+        } else {
+          message.error("Change failed!");
+        }
+        return response.json();})
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   return (
     <Card style={{ 
-        width: "500px"
+        width: "500px",
+        margin: "auto",
+        marginTop: "50px",
+        marginBottom: "50px"
     }}>
       <Form
         labelCol={{ span: 4 }}
@@ -39,61 +66,40 @@ const Profile = () => {
         layout="horizontal"
         style={{ maxWidth: 600 }}
       >
-        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
-          <Checkbox>Checkbox</Checkbox>
+        <Form.Item class="name">
+          <div class="firstname">
+          <label class="required" for="firstname">First Name</label>
+          <div class="custom-input">
+          <Input type="text" id="firstname" name="firstname" placeholder={profileInfo.given_name}/>
+          </div>
+          </div>
+  
+          <div class="lastname">
+          <label class="required" for="lastname">Last Name</label>
+          <div class="custom-input">
+          <Input type="text" id="lastname" name="lastname" placeholder={profileInfo.family_name}/>
+          </div>
+          </div>
         </Form.Item>
-        <Form.Item label="Radio">
-          <Radio.Group>
-            <Radio value="apple"> Apple </Radio>
-            <Radio value="pear"> Pear </Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Input">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Select">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
+          <Form.Item class="year">
+          <label class="required" for="year">Year</label>
+          <div class="custom-input">
+          <Select id="year" name="year" placeholder={profileInfo.grade}>
+          <Select.Option value="year1">Freshman</Select.Option>
+          <Select.Option value="year2">Sophomore</Select.Option>
+          <Select.Option value="year3">Junior</Select.Option>
+          <Select.Option value="year4">Senior</Select.Option>
           </Select>
+          </div>
         </Form.Item>
-        <Form.Item label="TreeSelect">
-          <TreeSelect
-            treeData={[
-              { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
-            ]}
-          />
+        
+        <Form.Item class="major">
+          <label class="required" for="major">Major</label>
+          <div class="custom-input">
+          <Input type="text" id="major" name="major" placeholder={profileInfo.major}/>
+          </div>
         </Form.Item>
-        <Form.Item label="Cascader">
-          <Cascader
-            options={[
-              {
-                value: 'zhejiang',
-                label: 'Zhejiang',
-                children: [
-                  {
-                    value: 'hangzhou',
-                    label: 'Hangzhou',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Form.Item>
-        <Form.Item label="DatePicker">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item label="RangePicker">
-          <RangePicker />
-        </Form.Item>
-        <Form.Item label="InputNumber">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item label="TextArea">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item label="Switch" valuePropName="checked">
-          <Switch />
-        </Form.Item>
+
         <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
           <Upload action="/upload.do" listType="picture-card">
             <div>
@@ -102,18 +108,13 @@ const Profile = () => {
             </div>
           </Upload>
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
-        </Form.Item>
-        <Form.Item label="Slider">
-          <Slider />
+        <Form.Item>
+          <Button style={{marginLeft: "350px"}} onClick={handleProfileChange}>Save</Button>
         </Form.Item>
       </Form>
-      <Button style={{ marginLeft: "370px" }} onClick={async () => {
+        <Button style={{ marginLeft: "350px" }} onClick={async () => {
             window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
-      }}>Google登出</Button>
+        }}>Google登出</Button>
     </Card>
   );
 };
-
-export default () => <Profile />;

@@ -40,8 +40,10 @@ router.get("/login/success", async (req, res) => {
         const picture = req.user.picture;
         const family_name = req.user.family_name;
         const given_name = req.user.given_name;
+        const grade = "";
+        const major = "";
         const classes = []
-        const user = new User({ family_name, given_name, email, picture, classes });
+        const user = new User({ family_name, given_name, email, picture, grade, major, classes });
         await user.save();
       }
       res.status(200).json({

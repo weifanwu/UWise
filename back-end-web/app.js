@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_HOST, process.env.INTERAL_HOST],
+    origin: '*',
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     maxAge: 3600,

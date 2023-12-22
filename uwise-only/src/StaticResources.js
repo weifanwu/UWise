@@ -3,7 +3,7 @@ import { Button, Card, Form, Input, message} from 'antd';
 
 
 const StaticResources = () => {
-    const host = process.env.REACT_APP_BACKEND_HOST;
+    const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
     const [form] = Form.useForm();
     const [image, setImage] = useState(null);
 

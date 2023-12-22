@@ -8,7 +8,7 @@ var google = require('./routes/auth/google');
 var redis = require('./routes/database/redis');
 var lecture = require('./routes/class/lecture.js');
 var staticResources = require('./routes/resources/staticResources.js');
-// var dynamicResources = require('./routes/resources/dynamicResources.js');
+var dynamicResources = require('./routes/resources/DynamicResources.js');
 
 require('dotenv').config()
 const cors = require('cors');
@@ -41,7 +41,7 @@ app.use(async (req, res, next) => {
 app.use('/auth', google);
 app.use('/buy', redis);
 app.use('/lecture', lecture);
-// app.use('/dr', dynamicResources);
+app.use('/dr', dynamicResources);
 app.use('/resources', staticResources);
 app.get('/test', (req, res) => {
   res.status(200).json({

@@ -36,10 +36,10 @@ export function DynamicResources() {
 
     const submit = async () => {
         try {
-            const host = process.env.REACT_APP_BACKEND_HOST;
+            const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
             if (title.trim().length <= 0 || intro.trim().length <= 0 ||
-            priority.trim().length <= 0 || url.trim().length <= 0 ||
-            !img) {
+                priority.trim().length <= 0 || url.trim().length <= 0 ||
+                !img) {
                 message.error("请填入信息")
             } else {
                 const apiKey = 'YuoYZdpx0YQcYv8GpTwaHDwLO7DOF8gw';
@@ -71,23 +71,22 @@ export function DynamicResources() {
                     if (result.code === "unauthorized") {
                         message.error("身份认证失败，请联系管理员！");
                         return;
-                      }
+                    }
                     image = result["images"];
                 } else {
                     image = result.data["url"];
                 }
+                
                 await fetch(host + "dr/addDR", {
                     method: "POST",
                     body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": image }),
                     headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Credentials": true,
-                    },
-                });
+                        'Content-Type': 'application/json',
+                    }
+                })
             }
             message.success("录入成功！");
-        } catch(error) {
+        } catch (error) {
             message.error("录入失败！");
             console.log("an error has happened: ", error);
         }

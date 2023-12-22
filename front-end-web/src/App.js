@@ -10,6 +10,7 @@ import ClassHome from './components/pages/Class';
 import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
+import {Dr} from './components/pages/Dr';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
           if (response.status === 200) return response.json();
           return response.json().then((errorData) => {
             throw new Error(errorData.message);
-          });        
+          });
         })
         .then((resObject) => {
           console.log(resObject)
@@ -79,13 +80,14 @@ function App() {
         <Navbar email={profile ? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
-          <Route path='/services' element={<Services update={setName}/>} />
-          <Route path='/products' element={<Products />}/>
+          <Route path='/services' element={<Services update={setName} />} />
+          <Route path='/products' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
-          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames}/>} />
+          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames} />} />
           <Route path='/newStudent' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/login' element={<Profile />} />
+          <Route path='/dr' element={<Dr />} />
         </Routes>
       </Router>
     </>

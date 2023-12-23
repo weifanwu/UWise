@@ -7,11 +7,9 @@ const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
 
-
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
-
 
 router.use(session({
   secret: 'cats', 
@@ -24,7 +22,6 @@ router.use(passport.session());
 router.get('/google',
   passport.authenticate('google', { scope: [ 'email', 'profile' ] }
 ));
-
 
 router.get('/google/callback',
   passport.authenticate('google', {
@@ -44,8 +41,10 @@ router.get("/login/success", async (req, res) => {
         const picture = req.user.picture;
         const family_name = req.user.family_name;
         const given_name = req.user.given_name;
+        const grade = "";
+        const major = "";
         const classes = []
-        const user = new User({ family_name, given_name, email, picture, classes });
+        const user = new User({ family_name, given_name, email, picture, grade, major, classes });
         await user.save();
       }
       res.status(200).json({

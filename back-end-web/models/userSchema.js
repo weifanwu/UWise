@@ -5,6 +5,8 @@ const userSchema = new mongoose.Schema({
     family_name: String,
     picture: String,
     email: String,
+    grade: String,
+    major: String,
     classes: [String]
 });
 

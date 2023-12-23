@@ -30,7 +30,6 @@ function App() {
   const getClasses = () => {
     fetch(host + "/auth/getClasses", {
       method: "GET",
-      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -51,7 +50,6 @@ function App() {
     const getUser = () => {
       fetch(host + "/auth/login/success", {
         method: "GET",
-        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

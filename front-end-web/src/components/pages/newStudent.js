@@ -23,7 +23,7 @@ export default function Student(props) {
           .then(response => response.json())
           .then(data => setTypes(data))
           .catch(error => console.error(error));
-        handle("社团"); // Default type or initial type
+        handle("专业申请"); // Default type or initial type
     }, []);
 
     const handle = (type) => {

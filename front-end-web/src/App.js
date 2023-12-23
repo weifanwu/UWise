@@ -34,11 +34,11 @@ function App() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      credentials: 'include'
     }).then((response) => {
       if (response.status === 200) return response.json();
       throw new Error("authentication has been failed!");
     }).then((allClass) => {
-      console.log(allClass);
       setClasses(allClass);
     });
   }
@@ -54,6 +54,7 @@ function App() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
+        credentials: 'include'
       })
         .then((response) => {
           if (response.status === 200) return response.json();
@@ -62,7 +63,6 @@ function App() {
           });
         })
         .then((resObject) => {
-          console.log(resObject)
           setProfile(resObject.user);
         })
         .catch((err) => {

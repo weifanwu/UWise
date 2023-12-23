@@ -47,12 +47,10 @@ router.post('/addClass', async (req, res) => {
                 port: 16359
             }
         }).connect();
-        console.log(req.body);
         const secret = req.body.secret;
         const email = req.body.email;
         const classname = await client.get(secret);
-        console.log("this is an element strings");
-        console.log(classname);
+
         if (classname === null) {
             throw new Error("激活码有误");
         }
@@ -89,8 +87,6 @@ router.post('/removeCode', async (req, res) => {
             }
         }).connect();
         const secret = req.body.secret;
-        console.log("good: ");
-        console.log(secret);
         await client.del(secret);
         res.status(200).send("good");
     } catch(error) {

@@ -4,8 +4,6 @@ var drModel = require('../../models/drSchema.js');
 
 router.post('/addDR', async (req, res) => {
     try {
-        console.log("this is the body");
-        console.log(req.body);
         const Title = req.body.title;
         const Intro = req.body.intro;
         const Priority = req.body.priority;

@@ -11,7 +11,8 @@ function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
 
-router.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+
+router.use(session({ secret: 'cats', resave: false, saveUninitialized: true}));
 router.use(passport.initialize());
 router.use(passport.session());
 
@@ -29,8 +30,6 @@ router.get('/google/callback',
 router.get("/login/success", async (req, res) => {
   try {
     if (req.user) {
-      console.log("this is the user");
-      console.log(req.user);
       const email = req.user.email;
       const findUser = await User.findOne({"email" : email});
       if (!findUser) {
@@ -72,8 +71,6 @@ router.get('/getClasses', isLoggedIn, async (req, res) => {
 router.post('/addClass', isLoggedIn, async (req, res) => {
   try {
     const className = req.body.classname;
-    console.log("this is the classname");
-    console.log(className);
     await User.updateOne(
       {"email" : req.user.email},
       {

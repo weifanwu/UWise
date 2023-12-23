@@ -4,8 +4,6 @@ var StaticResource = require('../../models/staticResourcesSchema.js');
 
 router.post('/addStaticResource', async (req, res) => {
     try {
-      console.log("adding the resource");
-      console.log(req.body);
       const {title, intro, type, img, url } = req.body;
       const create_date = new Date();
       const instance = new StaticResource({ title, intro, type, img, url, create_date});

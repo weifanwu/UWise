@@ -6,8 +6,6 @@ router.get('/getProfile', async (req, res) => {
   try {
     if (req.user) {
       const user = req.user; // guaranteed that a user exists in google.js
-      console.log("this is user");//del
-      console.log(req.user);//del
       res.status(200).json(user);
     } else {
       res.status(200).send("Please log in first!");
@@ -19,7 +17,6 @@ router.get('/getProfile', async (req, res) => {
 
 router.post('/updateProfile', async (req, res) => {
   try {
-    console.log(req.body);
     const {given_name, family_name, picture, email, grade, major } = req.body;
     await User.FindOneAndUpdate(
       {"email": email},

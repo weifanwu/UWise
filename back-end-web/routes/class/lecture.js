@@ -4,8 +4,6 @@ var LectureModel = require('../../models/classSchema.js');
 
 router.post('/addLecture', async (req, res) => {
     try {
-      console.log("this is the body");
-      console.log(req.body);
       const Title = req.body.title;
       const Class = req.body.class;
       const Duration = req.body.duration;

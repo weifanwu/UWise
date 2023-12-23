@@ -16,8 +16,6 @@ const StaticResources = () => {
     try {
 
       const apiKey = process.env.REACT_APP_SMMS_API_KEY;
-      console.log("this is the api key");
-      console.log(apiKey);
       const formData = new FormData();
       formData.append('smfile', image);
       const response = await fetch("/api/v2/upload", {
@@ -34,8 +32,6 @@ const StaticResources = () => {
         return;
       }
       const result = await response.json();
-      console.log("this is the result: ");
-      console.log(result);
       let url;
       if (!result.success) {
         if (result.code === "unauthorized") {
@@ -46,7 +42,6 @@ const StaticResources = () => {
       } else {
         url = result.data["url"];
       }
-      console.log(host + 'resources/addStaticResource')
       const payload = { ...values, img: url };
       await fetch(host + 'resources/addStaticResource', {
         method: 'POST',

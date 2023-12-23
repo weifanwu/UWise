@@ -10,15 +10,12 @@ export function Dr() {
             .then(data => setdata(data))
             .catch(error => console.error(error));
     }, []);
-    // console.log(data)
     const [priority1, setpriority1] = useState([])
     const [priority2, setpriority2] = useState([])
     useEffect(() => {
         setpriority1(data.filter(item => item.Priority == "1"))
         setpriority2(data.filter(item => item.Priority == "2"))
     }, [data])
-    console.log(priority1)
-    console.log(priority2)
     return (
         <div id="Dr">
             <div style={{ paddingBottom: "50px" }}></div>

@@ -9,7 +9,6 @@ function App() {
   const [change, setChange] = useState(false);
 
   const contentFinal = () => {
-    console.log(content.length);
     if (content.length === 0) {
         return <h2>No New Reviews!</h2>;
     } else {

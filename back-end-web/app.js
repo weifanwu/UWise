@@ -9,8 +9,11 @@ var redis = require('./routes/database/redis');
 var lecture = require('./routes/class/lecture.js');
 var staticResources = require('./routes/resources/staticResources.js');
 var dynamicResources = require('./routes/resources/DynamicResources.js');
-
 require('dotenv').config()
+
+const frontend = process.env.FRONTEND_HOST;
+const internal = process.env.INTERAL_HOST;
+
 const cors = require('cors');
 
 var app = express();
@@ -27,7 +30,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: '*',
+    origin: [frontend, internal],
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
     maxAge: 3600,

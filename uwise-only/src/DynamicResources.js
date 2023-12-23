@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; //import React Component
+import React, { useState, useEffect } from 'react';
 import {
     Button,
     Flex,
@@ -57,7 +57,7 @@ export function DynamicResources() {
                 priority.trim().length <= 0 || url.trim().length <= 0 ||
                 !img) {
                 message.error("请填入信息")
-            } else if (priority1 >= 5) {
+            } else if (priority === 1 && priority1 >= 5) {
                 console.log("无法录入")
             } else {
                 const apiKey = 'YuoYZdpx0YQcYv8GpTwaHDwLO7DOF8gw';
@@ -102,7 +102,6 @@ export function DynamicResources() {
                         'Content-Type': 'application/json',
                     }
                 })
-
                 message.success("录入成功！");
             }
         } catch (error) {

@@ -13,7 +13,11 @@ function isLoggedIn(req, res, next) {
 }
 
 
-router.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+router.use(session({
+  secret: 'cats', 
+  resave: false, 
+  saveUninitialized: true 
+}));
 router.use(passport.initialize());
 router.use(passport.session());
 

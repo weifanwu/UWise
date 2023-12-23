@@ -74,13 +74,34 @@ export function WelcomeBoard(props) {
         })
     }
 
+    let div2 = null
+    if (props.priority2.length > 0) {
+        div2 = props.priority2.map((item) => {
+            return (
+                <div className='eachNews' key={item.id}>
+                    <img src={item.Img} alt="boardimg" />
+                    <h2>{item.Title}</h2>
+                    <a href={item.URL}>
+                        <div className='hover'>
+                            <p>{item.Intro}</p>
+                        </div>
+                    </a>
+                </div>
+            )
+        })
+    }
+
     return (
-        <div className='welcomeBoard'>
-            <div className='slides'>
-                {div}
-            </div>
-            <div className="prev" onClick={switchleft}>❮</div>
-            <div className="next" onClick={switchright}>❯</div>
-        </div >
+        <div className='dr_container'>
+            <div className='welcomeBoard'>
+                <div className='slides'>
+                    {div}
+                </div>
+                <div className="prev" onClick={switchleft}>❮</div>
+                <div className="next" onClick={switchright}>❯</div>
+            </div >
+            {div2}
+        </div>
+
     );
 }

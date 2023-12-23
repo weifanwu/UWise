@@ -167,10 +167,10 @@ function Navbar(props) {
             </li>
             <li className ='nav-item'>
               <Link
-                to='/map'
+                to='/dr'
                 className='nav-links'
               >
-                HuskyMap
+                新闻
               </Link>
             </li>
           </ul>

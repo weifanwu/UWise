@@ -1,0 +1,152 @@
+#Dr {
+    /* background-image: linear-gradient(to top, rgb(217, 240, 255), white 40%); */
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+.dr_container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    width: 100vw;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.welcomeBoard {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+    position: relative;
+    padding: 0;
+    height: 50vh;
+    width: 100%;
+    max-width: 715px;
+    margin: 50px;
+    overflow: hidden;
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px rgb(143, 143, 143);
+}
+
+.slides {
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 715px);
+    pointer-events: none;
+}
+
+.slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide a,
+.eachNews h2 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.slide a:hover,
+.prev:hover,
+.next:hover {
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+.slide img {
+    height: 50vh;
+    width: 715px;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    background-color: rgb(240, 248, 255, 0.2);
+    color: inherit;
+    font-weight: bold;
+    font-size: 40px;
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: 3px;
+}
+
+.prev {
+    left: 30px;
+}
+
+.next {
+    right: 15px;
+}
+
+.eachNews {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    max-width: 315px;
+    margin: 40px 50px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 6px rgb(143, 143, 143);
+}
+
+.eachNews img {
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.eachNews h2 {
+    height: 40px;
+    cursor: auto;
+    border-radius: 0 0 7px 7px;
+    transition: 0.3s;
+}
+
+.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: all;
+    border-radius: 7px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.eachNews:hover .hover {
+    visibility: visible;
+    opacity: 1;
+}

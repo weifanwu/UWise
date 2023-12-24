@@ -7,7 +7,6 @@ const ViewCard = ({ title, intro, img, url }) => {
     const renderedPTags = p.map((line, index) => (
         <p key={index}>{line}</p>
       ));
-    
 
     return (
         <div className="viewCard">

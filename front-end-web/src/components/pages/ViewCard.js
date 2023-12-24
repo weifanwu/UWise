@@ -2,6 +2,13 @@ import React from 'react';
 import './ViewCard.css'; // Make sure to define appropriate CSS styles
 import {Space} from 'antd';
 const ViewCard = ({ title, intro, img, url }) => {
+    console.log("this is the card: ");
+    const p = intro.split("\n");
+    const renderedPTags = p.map((line, index) => (
+        <p key={index}>{line}</p>
+      ));
+    
+
     return (
         <div className="viewCard">
 
@@ -11,7 +18,7 @@ const ViewCard = ({ title, intro, img, url }) => {
                 </div>
                 <div className="viewCardContent">
                     <h3 className="viewCardTitle">{title}</h3>
-                    <p className="viewCardIntro">{intro}</p>
+                    <div className="viewCardIntro">{renderedPTags}</div>
                     <a href={url} target="_blank" rel="noopener noreferrer" className="viewCardLink">Learn More</a>
                 </div>            
             </Space>

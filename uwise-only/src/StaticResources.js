@@ -43,7 +43,11 @@ const StaticResources = () => {
       } else {
         url = result.data["url"];
       }
+      console.log("this is the ");
+      console.log(values);
+      console.log(values["简介"]);
       const payload = { ...values, img: url };
+
       await fetch(host + 'resources/addStaticResource', {
         method: 'POST',
         headers: {

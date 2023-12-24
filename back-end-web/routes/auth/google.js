@@ -11,7 +11,6 @@ function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
 
-
 router.use(session({ secret: 'cats', resave: false, saveUninitialized: true}));
 router.use(passport.initialize());
 router.use(passport.session());
@@ -86,9 +85,6 @@ router.post('/addClass', isLoggedIn, async (req, res) => {
     console.log("this is error");
   }
 });
-
-module.exports = router;
-
 
 router.get('/logout', (req, res, next) => {
   req.logout((error) => {

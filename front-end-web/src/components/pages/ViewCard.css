@@ -59,3 +59,52 @@ a {
 .introduce {
     color: black;
 }
+
+.viewCard {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px; 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.viewCardImageContainer {
+    width: 300px; 
+    height: 200px;
+    margin: 20px 30px 20px 20px;
+}
+
+.viewCardImage {
+    width: 300px;
+    height: auto;
+
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.viewCardContent {
+    flex-grow: 1;
+}
+
+.viewCardTitle {
+    margin-top: 20px;
+    font-size: clamp(1em, 1vw + 1em, 2em);
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+.viewCardIntro {
+    font-size: 1.2em;
+    margin: 10px 0; 
+}
+
+.viewCardLink {
+    display: inline-block;
+    color: #007bff; 
+    text-decoration: none; 
+}
+
+.viewCardLink:hover {
+    text-decoration: underline;
+}

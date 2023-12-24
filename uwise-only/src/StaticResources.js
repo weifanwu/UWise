@@ -6,6 +6,7 @@ const StaticResources = () => {
   const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
   const [form] = Form.useForm();
   const [image, setImage] = useState(null);
+  const { TextArea } = Input;
 
   const handleFileUpload = async (e) => {
     let img = e.target.files[0];
@@ -76,7 +77,7 @@ const StaticResources = () => {
           <Input />
         </Form.Item>
         <Form.Item label="简介" name="intro">
-          <Input />
+          <TextArea />
         </Form.Item>
         <Form.Item label="类别" name="type">
           <Input />

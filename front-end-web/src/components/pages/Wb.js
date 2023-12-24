@@ -81,7 +81,7 @@ export function WelcomeBoard(props) {
                 <div className='eachNews' key={item.id}>
                     <img src={item.Img} alt="boardimg" />
                     <h2>{item.Title}</h2>
-                    <a href={item.URL}>
+                    <a href={item.URL} target="_blank">
                         <div className='hover'>
                             <p>{item.Intro}</p>
                         </div>

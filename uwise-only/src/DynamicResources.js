@@ -53,7 +53,7 @@ export function DynamicResources() {
     const submit = async () => {
         try {
             const host = process.env.REACT_APP_BACKEND_INTERNAL_HOST;
-            if (title.trim().length <= 0 || intro.trim().length <= 0 ||
+            if (title.trim().length <= 0 ||
                 priority.trim().length <= 0 || url.trim().length <= 0 ||
                 !img) {
                 message.error("请填入信息")

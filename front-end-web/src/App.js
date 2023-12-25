@@ -33,6 +33,7 @@ function App() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
       },
       credentials: 'include'
     }).then((response) => {
@@ -53,6 +54,7 @@ function App() {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
         },
         credentials: 'include'
       })

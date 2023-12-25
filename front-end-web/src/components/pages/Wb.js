@@ -66,7 +66,7 @@ export function WelcomeBoard(props) {
                 <div className='slide' key={item.id}>
                     <img src={item.Img} alt="boardimg" />
                     <a href={item.URL}>
-                        <h1>{item.Title}</h1>
+                        <h2>{item.Title}</h2>
                         <p>{item.Intro}</p>
                     </a>
                 </div>

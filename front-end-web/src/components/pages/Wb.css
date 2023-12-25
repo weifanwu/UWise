@@ -108,7 +108,7 @@ p {
     height: 180px;
     width: 100%;
     max-width: 315px;
-    margin: 40px 50px;
+    margin: 40px;
     border-radius: 7px;
     box-shadow: 3px 3px 6px rgb(143, 143, 143);
 }

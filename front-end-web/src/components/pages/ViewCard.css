@@ -84,18 +84,19 @@ a {
 }
 
 .viewCardContent {
+    margin-top: 20px;
+    padding-right: 20px;
     flex-grow: 1;
 }
 
 .viewCardTitle {
-    margin-top: 20px;
-    font-size: clamp(1em, 1vw + 1em, 2em);
+    font-size: clamp(1em, 0.4vw + 1em, 2em);
     font-weight: bold;
     font-family: 'Arial', sans-serif;
 }
 
 .viewCardIntro {
-    font-size: 1.2em;
+    font-size: 1.0em;
     margin: 10px 0; 
 }
 

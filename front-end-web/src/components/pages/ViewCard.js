@@ -10,7 +10,7 @@ const ViewCard = ({ title, intro, img, url }) => {
     return (
         <div className="viewCard">
 
-            <Space align="center">
+            <Space align=''>
                 <div className='viewCardImageContainer'>
                     <img src={img} alt={title} className="viewCardImage" />
                 </div>

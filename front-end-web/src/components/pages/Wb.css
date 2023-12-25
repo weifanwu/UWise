@@ -22,9 +22,9 @@ p {
     grid-column: 1 / span 2;
     position: relative;
     padding: 0;
-    height: 360px;
+    height: 414px;
     width: 100%;
-    max-width: 640px;
+    max-width: 736px;
     margin: 50px;
     overflow: hidden;
     border-radius: 7px;
@@ -38,7 +38,7 @@ p {
     left: 0;
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(5, 640);
+    grid-template-columns: repeat(5, 736);
     pointer-events: none;
 }
 
@@ -74,8 +74,8 @@ p {
 }
 
 .slide img {
-    height: 50vh;
-    width: 715px;
+    height: 414px;
+    width: 736px;
 }
 
 .prev,

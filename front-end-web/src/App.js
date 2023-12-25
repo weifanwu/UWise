@@ -80,14 +80,14 @@ function App() {
         <Navbar email={profile ? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
-          <Route path='/services' element={<Services update={setName} />} />
-          <Route path='/products' element={<Products />} />
+          <Route path='/classes' element={<Services update={setName} />} />
+          <Route path='/reviews' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames} />} />
-          <Route path='/newStudent' element={<Student />} />
+          <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
-          <Route path='/login' element={<Profile />} />
-          <Route path='/dr' element={<Dr />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/news' element={<Dr />} />
         </Routes>
       </Router>
     </>

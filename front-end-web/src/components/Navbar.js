@@ -129,7 +129,7 @@ function Navbar(props) {
             </li>
             <li className='nav-item'>
               <Link
-                to='/products'
+                to='/reviews'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -138,7 +138,7 @@ function Navbar(props) {
             </li>
             <li className='nav-item'>
               <Link
-                to='/newStudent'
+                to='/resources'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -160,14 +160,14 @@ function Navbar(props) {
                   )}
                 >
                 <Link
-                to='/services'
+                to='/classes'
                 className='nav-links'
                 >课程</Link>
                 </Dropdown>
             </li>
             <li className ='nav-item'>
               <Link
-                to='/dr'
+                to='/news'
                 className='nav-links'
               >
                 新闻

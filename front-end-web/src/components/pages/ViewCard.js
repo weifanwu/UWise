@@ -2,7 +2,6 @@ import React from 'react';
 import './ViewCard.css'; // Make sure to define appropriate CSS styles
 import {Space} from 'antd';
 const ViewCard = ({ title, intro, img, url }) => {
-    console.log("this is the card: ");
     const p = intro.split("\n");
     const renderedPTags = p.map((line, index) => (
         <p key={index}>{line}</p>

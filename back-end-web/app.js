@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connect = require('./models/models.js');
 var google = require('./routes/auth/google');
+var profile = require('./routes/profile/profile.js');
 var redis = require('./routes/database/redis');
 var lecture = require('./routes/class/lecture.js');
 var staticResources = require('./routes/resources/staticResources.js');
@@ -44,6 +45,7 @@ app.use(async (req, res, next) => {
 
 app.use('/auth', google);
 app.use('/buy', redis);
+app.use('/profile', profile);
 app.use('/lecture', lecture);
 app.use('/dr', dynamicResources);
 app.use('/resources', staticResources);

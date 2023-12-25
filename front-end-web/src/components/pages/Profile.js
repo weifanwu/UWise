@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Avatar, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import "./Profile.css";
 import {
@@ -40,7 +41,7 @@ export default function Profile() {
   }, [profileInfo]);
 
   const handleProfileChange = () => {
-    fetch('http://localhost:8000/login/updateProfile', {method: "POST"})
+    fetch('http://localhost:8000/profile/updateProfile', {method: "POST"})
       .then(response => {
         if (response.ok) {
           message.success("Change saved!");
@@ -55,7 +56,7 @@ export default function Profile() {
 
   return (
     <Card style={{ 
-        width: "500px",
+        width: "350px",
         margin: "auto",
         marginTop: "50px",
         marginBottom: "50px"
@@ -66,6 +67,9 @@ export default function Profile() {
         layout="horizontal"
         style={{ maxWidth: 600 }}
       >
+        <Avatar src="/images/uwise5.png" size="large" gap="2px">
+          weifan
+        </Avatar>
         <Form.Item class="name">
           <div class="firstname">
           <label class="required" for="firstname">First Name</label>
@@ -100,21 +104,18 @@ export default function Profile() {
           </div>
         </Form.Item>
 
-        <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+        {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
           </Upload>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item>
-          <Button style={{marginLeft: "350px"}} onClick={handleProfileChange}>Save</Button>
+          <Button onClick={handleProfileChange}>Save</Button>
         </Form.Item>
       </Form>
-        <Button style={{ marginLeft: "350px" }} onClick={async () => {
-            window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
-        }}>Google登出</Button>
     </Card>
   );
 };

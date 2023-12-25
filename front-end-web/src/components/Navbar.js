@@ -176,9 +176,17 @@ function Navbar(props) {
           </ul>
           <div>
             {button && (props.picture !== "" ? 
-              <Link to="/login" state={{ "info" : info }} >
-                <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
-              </Link>
+                <Dropdown
+                dropdownRender={() => (
+                  <Button style={{ marginLeft: "140px", marginTop: "10px" }} onClick={async () => {
+                    window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
+                  }}>登出</Button>
+                )}
+              >
+                <Link to="/login" state={{ "info" : info }} >
+                  <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
+                </Link>
+              </Dropdown>
             : <button class="btn btn-light" onClick={() => {
               change();
             }}>登陆/注册</button>)}

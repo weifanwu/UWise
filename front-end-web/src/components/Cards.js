@@ -3,7 +3,6 @@ import './Cards.css';
 import CardItem from './CardItem';
 
 function Cards(props) {
-  
 
   return (
     <div className='cards'>

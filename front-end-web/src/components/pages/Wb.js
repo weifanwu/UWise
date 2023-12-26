@@ -102,6 +102,5 @@ export function WelcomeBoard(props) {
             </div >
             {div2}
         </div>
-
     );
 }

@@ -38,7 +38,7 @@ p {
     left: 0;
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(5, 736);
+    grid-template-columns: repeat(5, 736px);
     pointer-events: none;
 }
 
@@ -108,7 +108,7 @@ p {
     height: 180px;
     width: 100%;
     max-width: 315px;
-    margin: 40px;
+    margin: 40px 50px;
     border-radius: 7px;
     box-shadow: 3px 3px 6px rgb(143, 143, 143);
 }

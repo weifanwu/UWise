@@ -65,7 +65,7 @@ export function WelcomeBoard(props) {
             return (
                 <div className='slide' key={item.id}>
                     <img src={item.Img} alt="boardimg" />
-                    <a href={item.URL}>
+                    <a href={item.URL} target="_blank">
                         <h2>{item.Title}</h2>
                         <p>{item.Intro}</p>
                     </a>
@@ -77,18 +77,23 @@ export function WelcomeBoard(props) {
     let div2 = null
     if (props.priority2.length > 0) {
         div2 = props.priority2.map((item) => {
+            const introContent = item.Intro.split("\n");
+            console.log("this is the intro content: ");
+            console.log(introContent);
             return (
-                <div className='eachNews' key={item.id}>
-                    <img src={item.Img} alt="boardimg" />
-                    <h2>{item.Title}</h2>
-                    <a href={item.URL} target="_blank">
-                        <div className='hover'>
-                            <p>{item.Intro}</p>
-                        </div>
-                    </a>
-                </div>
-            )
-        })
+              <div className='eachNews' key={item.id}>
+                <img src={item.Img} alt="boardimg" />
+                <h2 className='newTitle' >{item.Title}</h2>
+                <a href={item.URL} target="_blank" rel="noopener noreferrer">
+                  <div className='hover'>
+                    {introContent.map((intro, index) => (
+                      <p key={index} className='intro'>{intro}</p>
+                    ))}
+                  </div>
+                </a>
+              </div>
+            );
+          });          
     }
 
     return (

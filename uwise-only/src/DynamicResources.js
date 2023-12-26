@@ -14,6 +14,7 @@ export function DynamicResources() {
     const [priority, setpriority] = useState("")
     const [url, seturl] = useState("")
     const [img, setimg] = useState(null)
+    const { TextArea } = Input;
 
     const handleInputChange = async (e) => {
         let { id, value } = e.target
@@ -134,7 +135,7 @@ export function DynamicResources() {
                             />
                         </Form.Item>
                         <Form.Item label="简介" name="intro">
-                            <Input
+                            <TextArea
                                 type="text"
                                 id="intro"
                                 name="intro"

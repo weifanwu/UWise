@@ -183,7 +183,7 @@ function Navbar(props) {
                   }}>登出</Button>
                 )}
               >
-                <Link to="/login" state={{ "info" : info }} >
+                <Link to="/profile" state={{ "info" : info }} >
                   <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
                 </Link>
               </Dropdown>

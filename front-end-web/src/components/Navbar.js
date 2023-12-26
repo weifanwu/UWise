@@ -176,7 +176,7 @@ function Navbar(props) {
           </ul>
           <div>
             {button && (props.picture !== "" ? 
-                <Dropdown
+              <Dropdown
                 dropdownRender={() => (
                   <Button style={{ marginLeft: "140px", marginTop: "10px" }} onClick={async () => {
                     window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");

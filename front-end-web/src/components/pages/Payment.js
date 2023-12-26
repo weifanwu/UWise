@@ -60,7 +60,13 @@ export default function Payment(props) {
                     if (!props.userInfo) {
                         props.setIsModalOpen(!props.isModalOpen)
                     } else if (!value.includes(currentClass)) {
-                        message.error('请联系小助手买课!');
+                        message.error({
+                            content: <div>
+                                <p>请联系小助手买课</p>
+                                <img style={{ width: "200px" }} src="/images/小助手.jpeg"></img>
+                            </div>,
+                            duration: 4,
+                          });
                     } else {
                         navigate('/class/jOTfBlKSQYY');
                     }

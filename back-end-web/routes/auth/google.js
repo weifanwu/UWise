@@ -15,10 +15,10 @@ router.use(session({
   secret: 'cats',
   resave: false,
   saveUninitialized: true,
-  // cookie: {
-  //   sameSite: 'none',
-  //   secure: false
-  // }
+  cookie: {
+    sameSite: 'none',
+    secure: false
+  }
 }));
 router.use(passport.initialize());
 router.use(passport.session());

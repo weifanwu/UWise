@@ -17,7 +17,7 @@ router.use(session({
   saveUninitialized: true,
   cookie: {
     sameSite: 'none',
-    secure: false
+    secure: true
   }
 }));
 router.use(passport.initialize());

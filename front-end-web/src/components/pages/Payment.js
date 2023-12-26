@@ -20,12 +20,12 @@ export default function Payment(props) {
           key: '2',
           label: '笔记',
           children: <img src="images/uwise-notes.jpg"/>,
-        },
-        {
-            key: '3',
-            label: '导师信息',
-            children: <img src="images/uwise-teacher.jpg"/>,
-          }
+        }
+        // {
+        //     key: '3',
+        //     label: '导师信息',
+        //     children: <img src="images/uwise-teacher.jpg"/>,
+        //   }
       ];
 
     return <>
@@ -52,7 +52,7 @@ export default function Payment(props) {
                     <Typography fontSize={30} color="white">{currentClass}</Typography>
                 </ Card>
                 <Box style={{ margin: '20px 100px 0px 20px' }}>
-                    <Typography fontSize={18} >主讲导师：吴蔚钒</Typography>
+                    <Typography fontSize={18} >主讲导师：XXX</Typography>
                     <Typography fontSize={15} >失效时间：2024/06/12</Typography>
                 </Box>
                 <Box>

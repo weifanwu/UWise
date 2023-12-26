@@ -170,7 +170,7 @@ function Navbar(props) {
                 to='/news'
                 className='nav-links'
               >
-                新闻
+                新闻/活动
               </Link>
             </li>
           </ul>

@@ -9,7 +9,7 @@ function CardItem(props) {
   };
   return (
     <>
-      <li className='cards__item' onClick={() => {
+      <div className='cards__item' onClick={() => {
         props.update(props.courseName);
         handleRedirect();
         }}>
@@ -25,7 +25,7 @@ function CardItem(props) {
             <h5 className='cards__item__text'>{props.text}</h5>
           </div>
         </div>
-      </li>
+      </div>
     </>
   );
 }

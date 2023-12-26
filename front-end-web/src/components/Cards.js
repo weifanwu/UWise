@@ -1,64 +1,62 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
-
+import {Space} from 'antd';
 function Cards(props) {
 
   return (
-    <div className='cards'>
-      <h1>公开课：</h1>
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
+    <>
+      <Space direction='vertical'>
+        <div style={{ marginTop: "50px", marginBottom: "20px", fontSize: "25px" }}><strong>2024 Winter</strong></div>
+        <Space style={{ margin: "0 auto", justifyContent: "space-evenly" }} align='center' size="large" wrap>
             <CardItem
-              className="classes"
-              src='images/uwise5.png'
-              text='CSE154: Web Development'
-              label='200 USD'
-              courseName="CSE154"
+              className="class"
+              src='images/amath301.png'
+              text='AMATH301'
+              label='300 USD'
+              courseName="AMATH301"
               path='/payment'
               update={props.update}
             />
             <CardItem
-              className="classes"
-              src='images/uwise5.png'
-              text='CSE121: Introduction to computer science'
-              label='100 USD'
-              path='/payment'
-              courseName="CSE121"
-              update={props.update}
-            />
-            <CardItem
-              className="classes"
-              src='images/uwise5.png'
-              text='Math208: Matrix'
+              className="class"
+              src='images/econ200.jpg'
+              text='ECON200'
               label='300 USD'
               path='/payment'
-              courseName="Math208"
+              courseName="ECON200"
               update={props.update}
             />
             <CardItem
-              className="classes"
-              src='images/uwise5.png'
-              text='CSE373: Algorithm And Data Structure'
-              label='1000 USD'
+              className="class"
+              src='images/econ201.jpg'
+              text='ECON201'
+              label='300 USD'
               path='/payment'
-              courseName="CSE373"
+              courseName="ECON201"
               update={props.update}
             />
             <CardItem
-              className="classes"
-              src='images/uwise5.png'
-              text='Math124: Calculus'
-              label='434 USD'
+              className="class"
+              src='images/cse122.jpg'
+              text='CSE122'
+              label='300 USD'
               path='/payment'
-              courseName="Math124"
+              courseName="CSE122"
               update={props.update}
             />
-          </ul>
-        </div>
-      </div>
-    </div>
+            <CardItem
+              className="class"
+              src='images/math125.png'
+              text='MATH125'
+              label='300 USD'
+              path='/payment'
+              courseName="MATH125"
+              update={props.update}
+            />
+        </Space>
+      </Space>
+    </>
   );
 }
 

@@ -39,7 +39,7 @@ export default function Payment(props) {
             },
             {
                 title: '公开课',
-                href: '/services',
+                href: '/classes',
             },
             {
                 title: currentClass,

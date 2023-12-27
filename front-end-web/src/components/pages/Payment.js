@@ -7,25 +7,20 @@ import Lectures from "../LectureCard";
 
 export default function Payment(props) {
     const navigate =  useNavigate();
-    const currentClass = localStorage.getItem("currentClass");
+    const currentClass = props.courseName;
     const value  = useSelector((state) => state.classes.value);
 
     const items = [
         {
           key: '1',
           label: '课程大纲',
-          children: <Lectures classname={currentClass}/>,
+          children: <Lectures courseName={currentClass}/>,
         },
-        {
-          key: '2',
-          label: '笔记',
-          children: <img src="images/uwise-notes.jpg"/>,
-        }
         // {
-        //     key: '3',
-        //     label: '导师信息',
-        //     children: <img src="images/uwise-teacher.jpg"/>,
-        //   }
+        //   key: '2',
+        //   label: '笔记',
+        //   children: <img src="images/uwise-notes.jpg"/>,
+        // }
       ];
 
     return <>

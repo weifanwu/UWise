@@ -44,7 +44,7 @@ export default function Student(props) {
         <div className="drawer">
           <List>
               {types.map((type, index) => (
-                <ListItem key={type} disablePadding>
+                <ListItem className={"selected-drawer"} key={type} disablePadding>
                   <ListItemButton onClick={() => handle(type)}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

@@ -142,7 +142,7 @@ function Navbar(props) {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                华大资源
+                校园指南
               </Link>
             </li>
             <li className='nav-item' data-bs-toggle="dropdown">

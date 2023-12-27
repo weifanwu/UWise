@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
 const classSchema = new mongoose.Schema({
-    Title: String,
-    Class: String,
-    Duration: String,
-    Intro: String,
-    Zoom: String,
-    Notes: String
+    title: String,
+    courseName: String,
+    duration: String,
+    intro: String,
+    videoUrl: String,
+    videoCover: String,
+    notesUrl: String,
+    createTime: Date
 });
 
 const Class = mongoose.model('Class', classSchema);

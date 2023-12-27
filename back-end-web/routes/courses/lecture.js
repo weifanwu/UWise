@@ -2,15 +2,11 @@ var express = require('express');
 var router = express.Router();
 var LectureModel = require('../../models/classSchema.js');
 
-router.post('/addLecture', async (req, res) => {
+router.post('/addCourseLecture', async (req, res) => {
     try {
-      const Title = req.body.title;
-      const Class = req.body.class;
-      const Duration = req.body.duration;
-      const Intro = req.body.intro;
-      const Zoom = req.body.zoom;
-      const Notes = req.body.notes;
-      const lectureInstance = new LectureModel({ Title, Class, Duration, Intro, Zoom, Notes });
+      const {title, courseName, duration, intro, videoUrl, videoCover, notesUrl} = req.body;
+      const createTime = new Date();
+      const lectureInstance = new LectureModel({ title, courseName, duration, intro, videoUrl, videoCover, notesUrl, createTime});
       await lectureInstance.save();
       res.send("added successfully!");
     } catch(error) {

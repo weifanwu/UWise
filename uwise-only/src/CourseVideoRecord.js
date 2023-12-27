@@ -55,7 +55,7 @@ export default function CourseVideoRecord(){
 
         const payload = { ...values, img: url };
     
-        const responseLec = await fetch('http://localhost:8000/' + 'courses/addCourseLecture', {
+        const responseLec = await fetch(host + 'courses/addCourseLecture', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function CourseVideoRecord(){
               name="img"
               onChange={(e) => handleFileUpload(e)} />
           </Form.Item>
-          <Form.Item label="笔记url" name="notes-url">
+          <Form.Item label="笔记url" name="notesUrl">
             <Input />
           </Form.Item>
           <Form.Item>

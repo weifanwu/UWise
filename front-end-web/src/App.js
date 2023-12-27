@@ -83,7 +83,7 @@ function App() {
           <Route path='/classes' element={<Services update={setName} />} />
           <Route path='/reviews' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
-          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames} />} />
+          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} courseName={name} userInfo={profile} classNames={classNames} />} />
           <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/profile' element={<Profile />} />

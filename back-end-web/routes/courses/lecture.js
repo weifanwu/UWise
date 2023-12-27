@@ -15,11 +15,12 @@ router.post('/addCourseLecture', async (req, res) => {
     }
 });
 
-router.get('/getLecture', async (req, res) => {
+router.get('/getCourseLecture', async (req, res) => {
     try {
-      const classname = req.query.classname;
-      const classes = await LectureModel.find({ Class: classname });
-      res.json(classes);
+      const courseName = req.query.courseName;
+      console.log(courseName)
+      const lectures = await LectureModel.find({ courseName: courseName });
+      res.json(lectures);
     } catch(error) {
       console.error(error);
       res.status(500).send("There is some internal issue.");

@@ -11,6 +11,7 @@ export const incrementAsync = createAsyncThunk(
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
+        credentials: 'include'
       });
       if (response.ok) {
         return response.json();

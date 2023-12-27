@@ -76,7 +76,6 @@ function Navbar(props) {
     });
   }
 
-
   useEffect(() => {
       showButton();
   }, []);

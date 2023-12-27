@@ -11,9 +11,9 @@ function HeroSection() {
     <>
         <div className='hero-container'>
           <video 
-          src='https://d3qpxblrgmhuz7.cloudfront.net/videos/example.m4v' 
-          autoPlay 
-          loop 
+          src='https://d3qpxblrgmhuz7.cloudfront.net/videos/example.m4v'
+          autoPlay
+          loop
           muted
           style={{ width: '1920px', height: '1080px' }}
           />

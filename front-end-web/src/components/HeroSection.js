@@ -10,7 +10,13 @@ function HeroSection() {
     return (
     <>
         <div className='hero-container'>
-          <video src='https://d3qpxblrgmhuz7.cloudfront.net/videos/example.m4v' autoPlay loop muted />
+          <video 
+          src='https://d3qpxblrgmhuz7.cloudfront.net/videos/example.m4v' 
+          autoPlay 
+          loop 
+          muted
+          style={{ width: '1920px', height: '1080px' }}
+          />
           <h1>Be Wise With UWise</h1>
           <p>"在智慧中发现成功"</p>
         </div>
@@ -42,6 +48,9 @@ function HeroSection() {
           >
             <img src="../images/小助手.jpeg"/>
         </Modal>
+        {/* <Modal title="test">
+          <img src="../images/logo192.png"/>
+        </Modal> */}
     </>);
 }
 

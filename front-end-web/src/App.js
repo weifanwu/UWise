@@ -14,11 +14,10 @@ import {Dr} from './components/pages/Dr';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
-  const [name, setName] = useState("");
   const [profile, setProfile] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [classNames, setClasses] = useState();
-  const ProtectedRoute = ({ children, classname }) => {
+  const ProtectedRoute = ({ children }) => {
     if (profile) {
       return children;
     } else {
@@ -80,10 +79,10 @@ function App() {
         <Navbar email={profile ? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
-          <Route path='/classes' element={<Services update={setName} />} />
+          <Route path='/classes' element={<Services />} />
           <Route path='/reviews' element={<Products />} />
-          <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
-          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} classname={name} userInfo={profile} classNames={classNames} />} />
+          <Route path='/class/:id' element={<ProtectedRoute><ClassHome /></ProtectedRoute>} />
+          <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} userInfo={profile} classNames={classNames} />} />
           <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/profile' element={<Profile />} />

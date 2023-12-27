@@ -10,7 +10,7 @@ function CardItem(props) {
   return (
     <>
       <div className='cards__item' onClick={() => {
-        props.update(props.courseName);
+        localStorage.setItem('currentClass', props.courseName);
         handleRedirect();
         }}>
         <div className='cards__item__link' to={props.path}>

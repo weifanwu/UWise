@@ -45,12 +45,10 @@ function HeroSection() {
           onCancel={() => {
             setValue(false);
           }}
+          footer={null}
           >
             <img src="../images/小助手.jpeg"/>
         </Modal>
-        {/* <Modal title="test">
-          <img src="../images/logo192.png"/>
-        </Modal> */}
     </>);
 }
 

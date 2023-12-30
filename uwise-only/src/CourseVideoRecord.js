@@ -52,7 +52,6 @@ export default function CourseVideoRecord(){
         }
         console.log("this is the ");
         console.log(values);
-
         const payload = { ...values, img: url };
     
         const responseLec = await fetch(host + 'courses/addCourseLecture', {

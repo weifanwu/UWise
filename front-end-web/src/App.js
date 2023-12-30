@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {message} from 'antd';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
@@ -11,7 +12,6 @@ import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
 import {Dr} from './components/pages/Dr';
-import {Mobile} from './components/pages/Mobile';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
 
   useEffect(() => {
     if (!window.location.pathname.includes("mobile") && /(Mobile)/i.test(navigator.userAgent)) {
-      window.open("/mobile", "_self");
+      message.warning("最佳效果请在电脑端查看哦～");
     }
     if (profile) {
       getClasses();
@@ -93,7 +93,6 @@ function App() {
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/news' element={<Dr />} />
-          <Route path='/mobile' element={<Mobile />} />
         </Routes>
       </Router>
     </>

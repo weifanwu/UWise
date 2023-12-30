@@ -47,6 +47,7 @@ app.use('/auth', google);
 app.use('/buy', redis);
 app.use('/profile', profile);
 app.use('/courses', lecture);
+
 app.use('/dr', dynamicResources);
 app.use('/resources', staticResources);
 app.get('/test', (req, res) => {

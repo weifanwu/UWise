@@ -1,0 +1,57 @@
+.video-layout {
+    display: flex;
+    margin: 20px;
+}
+
+.video-detail {
+    flex: 8;
+    margin-right: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.video-detail h3 {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.video-detail-image-wrapper {
+    width: 100%;
+    padding-top: 56.25%; /* 9/16 = 0.5625 */
+    position: relative;
+    overflow: hidden;
+}
+
+.video-detail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adjust as needed */
+}
+
+.lectures-list {
+    flex: 3;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.lecture-item {
+    margin-bottom: 20px;
+}
+
+.lecture-item img {
+    width: 100%;
+    height: auto;
+}
+
+.lecture-title {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    height: 70px;
+    padding: 20px;
+    margin-top: -5px; 
+}

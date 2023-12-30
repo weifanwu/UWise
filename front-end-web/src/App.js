@@ -11,6 +11,7 @@ import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
 import {Dr} from './components/pages/Dr';
+import VideoDisplay from './components/pages/VideoDisplay.js';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
@@ -84,6 +85,7 @@ function App() {
           <Route path='/reviews' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} courseName={name} userInfo={profile} classNames={classNames} />} />
+          <Route path="/video/:videoId" element={<VideoDisplay courseName={name}/>} />
           <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/profile' element={<Profile />} />

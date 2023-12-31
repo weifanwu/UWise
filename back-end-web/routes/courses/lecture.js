@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var LectureModel = require('../../models/classSchema.js');
+const { Storage } = require("@google-cloud/storage");
+
+let projectId = "pro-signal-407805"; // Get this from Google Cloud
+let keyFilename = "cloudKey.json"; // Get this from Google Cloud -> Credentials -> Service Accounts
+const storage = new Storage({
+  projectId,
+  keyFilename,
+});
 
 router.post('/addCourseLecture', async (req, res) => {
     try {
@@ -27,14 +35,26 @@ router.get('/getCourseLectures', async (req, res) => {
     }
 });
 
-router.get('/getLecture', async (req, res) => {
+router.get('/getVideo', async (req, res) => {
   try {
-    const videoId = req.query.videoId;
-    const lecture = await LectureModel.findOne({ _id: videoId });
-    res.json(lecture);
-  } catch(error) {
+    const courseName = req.query.courseName;
+    const lecture = req.query.lecture;
+    
+    console.log(courseName.toLowerCase())
+    console.log(lecture.replace(/\s/g, '').toLowerCase())
+
+    const bucket = storage.bucket(courseName.toLowerCase());
+    const options = {
+      version: 'v2', // defaults to 'v2' if missing.
+      action: 'read',
+      expires: Date.now() + 10000,
+    };
+      const urls = await bucket.file(lecture.replace(/\s/g, '').toLowerCase() + ".m4v").getSignedUrl(options);
+      console.log(urls);
+      res.send(urls);
+  } catch (error) {
+    res.send("Error:" + error);
     console.error(error);
-    res.status(500).send("There is some internal issue.");
   }
 });
 

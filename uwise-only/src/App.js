@@ -9,7 +9,6 @@ import {
 } from 'antd';
 import StaticResources  from './StaticResources.js';
 import { DynamicResources } from './DynamicResources.js';
-import CourseVideoRecord from './CourseVideoRecord.js';
 import { useState } from 'react';
 
 function App() {

@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "pro-signal-407805",
+    "private_key_id": "c320ad6eaacc865fd6ae566fdf043623ad5a4eef",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCmvcRUGISgP8TW\ne271ndTUa9P3ciBOZVbGBm/JCmtSWYG1U+F0X+NMQpey8FkOX//67E/HwJgE85Gt\nY3xo7WkD4hsUl+9LZcuiE5kwjZ/cC8KioKjvxG6Lc4OhRjd1D1lJuvSjTaGxwtYJ\n5dlvJwEtbazleDmg00UfNUR4zoudnW8v6jWsr7evkOgW6sg17Q4hezlyRQObyGvJ\nfSbS46S3A5cPCV0O5Kd0/jMq/TiECL5I4mrIsHbXD7eybMMfjuYdSUNpVfwFmYow\nBfzdLvpiaZRsfEWkPgkD3bVdAk1BLMiMuO4vF3565jb4d/muv98Cxpjua0rc05os\nHcpIOsOtAgMBAAECggEABYEjP5F1o2KniVsWzSXyNjb/Dt6mIWBoDm589zqQU24g\nAY/s0+4sb0KNhns3vWk+5pYxhgseGZ++0eYEX+RigJ3QvgvL+wW3xLh36KnsOpPq\nz3qVSSEHczQThtnuD7+7d1skI1X3PgqMDVSYqnozqD/EIukmoeAHmqGkCobrBf90\nTK0u9bk3R35wOC+MrGQgechNPtsig+GhYEHX+ilwvB0pZlVIWUUc9Qc1RQKFOzcs\n9Kd7byq8uaSO/mwTGuHuTtt4NwsRdmxplmLmnMO/WCogcjFbXwtdiZdV4B0lyEp6\nceMSW7p0PfQ4AE12KG/f5Am1ShhgGB4d2V+0XfG2AQKBgQDj94k2xU1QAp+TNI0G\neNO27VVDTtb+OQFKyqaLX/uDIcrPLumfubFaKT9rNKXS9w8Dw9ZZGXy1gRVW0V14\n8neZsnfgekQr1QKYSCLz5mVFF80pYeDN1pwuMr1ny7/DFzNucBeoI1webbxImcHi\njmOuXBQIVTu8aqQtUEwb1S5IrQKBgQC7PtRoSOyNGeVa9qCgyqvJKcMJd1ZuGmdf\nP6fH/4xDPY3MBHzmgRqpwGVZmMUOnJsMAgHxEVV9ue472FrHbht5/4WW791GhH+D\n05he989vIlL7t5/Wp2J7J6NaluCyG0VKNnt/k4i8Htu48WG6XsYNwU8w1gufMKqb\newV65obHAQKBgQCp2j+0PWGTYcD/70G8Nr6YJ1FF6zIpDNQ3o7JfWk6Nr9nqcKvF\nRJgt81m7SOjcvRPE3F+S13ihy+HYY/pfKVmPfPfwm2i7t+RNDkJss5d02X0VfkX/\nWA3aJhgVhCwG8fxyJraZom76hQyqk1VwtmLzAMw0QT1W76YP1So/+qCXqQKBgQC5\nO+mjFOk2mTSk7TBwgK66vZ6dQbp2B5bVykIv/yWB62XYO2RYH8YBwjxBC3l9//z+\nPwousigxzXrZJyp++fUill5QuA/dz/vZrLyizmIeHgWb0MbF8ibhkI/wcSvt5j6A\nsS8xQQFWoOxapCg618D0IJU3ybgLjnhogaYlM+KHAQKBgQC5spopwGXSZ55ef+KM\n+6ovIhahQmutegrDxTMqD3z6RMpdLrs67YJQlRj6TpWDfH8AGydiOFFdTh4aKD1v\nGANDGQGRwhDxFU6gfsOrbKnWwQ+INCp3olbi8RINSi3A48paNZeoS+T1S6+2r/oy\nwaTE/D/azaPjlt6qhi6FwvevbA==\n-----END PRIVATE KEY-----\n",
+    "client_email": "uwise-video@pro-signal-407805.iam.gserviceaccount.com",
+    "client_id": "115313349262187042646",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/uwise-video%40pro-signal-407805.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }

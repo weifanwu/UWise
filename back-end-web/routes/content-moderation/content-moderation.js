@@ -14,7 +14,7 @@ router.get('/getReview', async(req, res) => {
   }
 });
 
-router.post('/removeReview', async(req, res) => {
+router.post('/deleteReview', async(req, res) => {
   try {
     id = req.body;
     await Reviews.findByIdAndDelete(id, (error, deleted) => {

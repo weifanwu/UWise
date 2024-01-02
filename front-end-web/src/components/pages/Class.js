@@ -10,7 +10,7 @@ const ClassHome = (props) => {
   const width = '100%';
   const aspectRatio = 3 / 2;
   const height = `calc(${width} / ${aspectRatio})`;
-  const title = props.classname;
+  const title = localStorage.getItem("currentClass");
   const channelId = "UWise";
   const channelTitle = "UWise Class";
   const viewCount = 1345;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {message} from 'antd';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import Student from './components/pages/newStudent';
@@ -15,11 +16,10 @@ import VideoDisplay from './components/pages/VideoDisplay.js';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
-  const [name, setName] = useState("");
   const [profile, setProfile] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [classNames, setClasses] = useState();
-  const ProtectedRoute = ({ children, classname }) => {
+  const ProtectedRoute = ({ children }) => {
     if (profile) {
       return children;
     } else {
@@ -45,7 +45,12 @@ function App() {
     });
   }
 
+
+
   useEffect(() => {
+    if (!window.location.pathname.includes("mobile") && /(Mobile)/i.test(navigator.userAgent)) {
+      message.warning("最佳效果请在电脑端查看哦～");
+    }
     if (profile) {
       getClasses();
     }
@@ -81,7 +86,7 @@ function App() {
         <Navbar email={profile ? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
-          <Route path='/classes' element={<Services update={setName} />} />
+          <Route path='/classes' element={<Services />} />
           <Route path='/reviews' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute classname={name}><ClassHome classname={name} /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} courseName={name} userInfo={profile} classNames={classNames} />} />

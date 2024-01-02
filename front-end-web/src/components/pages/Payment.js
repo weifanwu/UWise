@@ -7,7 +7,7 @@ import Lectures from "../LectureCard";
 
 export default function Payment(props) {
     const navigate =  useNavigate();
-    const currentClass = props.courseName;
+    const currentClass = localStorage.getItem("currentClass");
     const value  = useSelector((state) => state.classes.value);
 
     const items = [

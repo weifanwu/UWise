@@ -40,6 +40,8 @@ export default function CourseVideoRecord(){
           return;
         }
         const result = await response.json();
+        console.log("this is the result: ");
+        console.log(result);
         let url;
         if (!result.success) {
           if (result.code === "unauthorized") {
@@ -50,10 +52,11 @@ export default function CourseVideoRecord(){
         } else {
           url = result.data["url"];
         }
+
+        const payload = { ...values, videoCover: url };
         console.log("this is the ");
-        console.log(values);
-        const payload = { ...values, img: url };
-    
+        console.log(payload);
+        
         const responseLec = await fetch(host + 'courses/addCourseLecture', {
           method: 'POST',
           headers: {

@@ -17,8 +17,7 @@
 
 .video-detail-image-wrapper {
     width: 100%;
-    padding-top: 56.25%; /* 9/16 = 0.5625 */
-    position: relative;
+    height: 90%;
     overflow: hidden;
 }
 
@@ -55,7 +54,7 @@
 
 .lectures-list {
     flex: 3;
-    max-height: 600px;
+    height: 600px;
     overflow-y: auto;
 }
 

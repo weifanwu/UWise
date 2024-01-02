@@ -1,0 +1,78 @@
+.video-layout {
+    display: flex;
+    margin: 20px;
+}
+
+.video-detail {
+    flex: 8;
+    margin-right: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.video-detail h3 {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.video-detail-image-wrapper {
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+}
+
+.video-detail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adjust as needed */
+}
+
+#videoIframe {
+    display: none;
+    transform-origin: 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-detail .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Style your play button */
+    font-size: 64px; /* Adjust size as needed */
+    color: white;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.lectures-list {
+    flex: 3;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.lecture-item {
+    margin-bottom: 20px;
+}
+
+.lecture-item img {
+    width: 100%;
+    height: auto;
+}
+
+.lecture-title {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    height: 70px;
+    padding: 20px;
+    margin-top: -5px; 
+}

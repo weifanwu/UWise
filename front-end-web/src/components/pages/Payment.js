@@ -14,18 +14,13 @@ export default function Payment(props) {
         {
           key: '1',
           label: '课程大纲',
-          children: <Lectures classname={currentClass}/>,
+          children: <Lectures courseName={currentClass}/>,
         },
-        {
-          key: '2',
-          label: '笔记',
-          children: <img src="images/uwise-notes.jpg"/>,
-        }
         // {
-        //     key: '3',
-        //     label: '导师信息',
-        //     children: <img src="images/uwise-teacher.jpg"/>,
-        //   }
+        //   key: '2',
+        //   label: '笔记',
+        //   children: <img src="images/uwise-notes.jpg"/>,
+        // }
       ];
 
     return <>
@@ -68,9 +63,9 @@ export default function Payment(props) {
                             duration: 4,
                           });
                     } else {
-                        navigate('/class/jOTfBlKSQYY');
+                        window.open('https://washington.zoom.us/j/3813523196', "_blank");
                     }
-                    }}>进入</Button>
+                    }}>Zoom直播</Button>
                 </Box>
             </Stack>
             <Tabs 

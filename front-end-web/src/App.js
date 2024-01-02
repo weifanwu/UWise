@@ -12,6 +12,7 @@ import ResourceMap from './components/pages/ResourceMap';
 import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
 import {Dr} from './components/pages/Dr';
+import VideoDisplay from './components/pages/VideoDisplay.js';
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
@@ -87,8 +88,9 @@ function App() {
           <Route path='/' exact element={<Home />} />
           <Route path='/classes' element={<Services />} />
           <Route path='/reviews' element={<Products />} />
-          <Route path='/class/:id' element={<ProtectedRoute><ClassHome /></ProtectedRoute>} />
+          <Route path='/class/:id' element={<ProtectedRoute ><ClassHome /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} userInfo={profile} classNames={classNames} />} />
+          <Route path="/video/:videoId" element={<VideoDisplay/>} />
           <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
           <Route path='/profile' element={<Profile />} />

@@ -47,8 +47,8 @@ export function DynamicResources() {
     const [priority1, setpriority1] = useState([])
     const [priority2, setpriority2] = useState([])
     useEffect(() => {
-        setpriority1(data.filter(item => item.Priority == "1").length)
-        setpriority2(data.filter(item => item.Priority == "2").length)
+        setpriority1(data.filter(item => item.Priority === "1").length)
+        setpriority2(data.filter(item => item.Priority === "2").length)
     }, [data])
 
     const submit = async () => {

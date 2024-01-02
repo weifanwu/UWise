@@ -8,7 +8,7 @@ const generateCode = require('../../utils/generateCode.js');
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
   }
-  const valid_classes = ["CSE154", "CSE121", "Math124", "CSE373", "Math208"];
+  const valid_classes = ["AMATH301", "ECON200", "ECON201", "MATH124", "MATH125", "CSE122" ,"CHEM142", "Math208"];
   router.post('/buyClass', async (req, res) => {
     let client;
     try {

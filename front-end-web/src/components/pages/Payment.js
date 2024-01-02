@@ -63,9 +63,9 @@ export default function Payment(props) {
                             duration: 4,
                           });
                     } else {
-                        navigate('/class/jOTfBlKSQYY');
+                        window.open('https://washington.zoom.us/j/3813523196', "_blank");
                     }
-                    }}>进入</Button>
+                    }}>Zoom直播</Button>
                 </Box>
             </Stack>
             <Tabs 

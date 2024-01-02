@@ -40,14 +40,14 @@ router.get('/getVideo', async (req, res) => {
     const courseName = req.query.courseName;
     const lecture = req.query.lecture;
     
-    console.log(courseName.toLowerCase())
-    console.log(lecture.replace(/\s/g, '').toLowerCase())
-
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 2); // Expiration set to 2 hours from now
+    
     const bucket = storage.bucket(courseName.toLowerCase());
     const options = {
       version: 'v2', // defaults to 'v2' if missing.
       action: 'read',
-      expires: Date.now() + 10000,
+      expires: expiration,
     };
       const urls = await bucket.file(lecture.replace(/\s/g, '').toLowerCase() + ".m4v").getSignedUrl(options);
       console.log(urls);

@@ -112,41 +112,40 @@ function Navbar(props) {
   
   return (
     <>
-      <div>
-        <nav className='nav'>
-          <div className='navbar-container'>
-            <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-              <img src="../images/uwise5.png" className="logo" />
-              UWise EDU
-            </Link>
-            <div className='menu-icon' onClick={handleClick}>
-              <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-            </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                  Home
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/reviews'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Course Review
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/resources'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  校园指南
-                </Link>
-              </li>
-              <li className='nav-item' data-bs-toggle="dropdown">
+      <nav className='nav'>
+        <div className='navbar-container'>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            <img src="../images/uwise5.png" className="logo" />
+            UWise EDU
+          </Link>
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/reviews'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Course Review
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/resources'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                校园指南
+              </Link>
+            </li>
+            <li className='nav-item' data-bs-toggle="dropdown">
                 <Dropdown
                   dropdownRender={() => (
                     <div style={contentStyle}>
@@ -161,43 +160,42 @@ function Navbar(props) {
                   )}
                 >
                 <Link
-                  to='/classes'
-                  className='nav-links'
+                to='/classes'
+                className='nav-links'
                 >课程</Link>
                 </Dropdown>
-              </li>
-              <li className ='nav-item'>
-                <Link
-                  to='/news'
-                  className='nav-links'
-                >
-                  新闻/活动
+            </li>
+            <li className ='nav-item'>
+              <Link
+                to='/news'
+                className='nav-links'
+              >
+                新闻/活动
+              </Link>
+            </li>
+          </ul>
+          <div>
+            {button && (props.picture !== "" ? 
+              <Dropdown
+                dropdownRender={() => (
+                  <Button style={{ marginLeft: "140px", marginTop: "10px" }} onClick={async () => {
+                    window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
+                  }}>登出</Button>
+                )}
+              >
+                <Link to="/profile" state={{ "info" : info }} >
+                  <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
                 </Link>
-              </li>
-            </ul>
-            <div>
-              {button && (props.picture !== "" ? 
-                <Dropdown
-                  dropdownRender={() => (
-                    <Button style={{ marginLeft: "140px", marginTop: "10px" }} onClick={async () => {
-                      window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
-                    }}>登出</Button>
-                  )}
-                >
-                  <Link to="/profile" state={{ "info" : info }} >
-                    <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
-                  </Link>
-                </Dropdown>
-              : <button class="btn btn-light" onClick={() => {
-                change();
-              }}>登陆/注册</button>)}
-            </div>
+              </Dropdown>
+            : <button class="btn btn-light" onClick={() => {
+              change();
+            }}>登陆/注册</button>)}
           </div>
-        </nav>
-        <Login isModalOpen={props.isModalOpen} setIsModalOpen={() => {
-          change();
-        }} />
-      </div>
+        </div>
+      </nav>
+      <Login isModalOpen={props.isModalOpen} setIsModalOpen={() => {
+        change();
+      }} />
     </>
   );
 }

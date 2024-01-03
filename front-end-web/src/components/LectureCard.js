@@ -3,7 +3,8 @@ import { Card } from 'antd';
 import { Link } from 'react-router-dom';
 
 export default function Lectures(props) {
-    const courseName = props.courseName;
+    const courseName = props.courseName;    
+
     const [lectures, setLectures] = useState([]);
     const url = process.env.REACT_APP_BACKEND_HOST + "/courses/getCourseLectures?courseName=" + courseName;
 

@@ -11,15 +11,6 @@ function Cards(props) {
         <Space style={{ margin: "0 auto", justifyContent: "space-evenly" }} align='center' size="large" wrap>
             <CardItem
               className="class"
-              src='images/amath301.png'
-              text='AMATH301'
-              label='300 USD'
-              courseName="AMATH301"
-              path='/payment'
-              update={props.update}
-            />
-            <CardItem
-              className="class"
               src='images/econ200.jpg'
               text='ECON200'
               label='300 USD'
@@ -34,15 +25,6 @@ function Cards(props) {
               label='300 USD'
               path='/payment'
               courseName="ECON201"
-              update={props.update}
-            />
-            <CardItem
-              className="class"
-              src='images/cse122.jpg'
-              text='CSE122'
-              label='300 USD'
-              path='/payment'
-              courseName="CSE122"
               update={props.update}
             />
             <CardItem

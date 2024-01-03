@@ -53,7 +53,7 @@ app.use('/resources', staticResources);
 app.get('/test', (req, res) => {
   res.status(200).json({
     success: true,
-    message: "this is 2024",
+    message: "01/02/2024",
     user: req.user,
   })});
 

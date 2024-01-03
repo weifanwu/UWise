@@ -20,6 +20,15 @@ function OldCards(props) {
             />
             <CardItem
               className="class"
+              src='images/amath301.png'
+              text='AMATH301'
+              label='300 USD'
+              courseName="AMATH301"
+              path='/payment'
+              update={props.update}
+            />
+            <CardItem
+              className="class"
               src='images/math124.jpg'
               text='MATH124'
               label='300 USD'
@@ -34,6 +43,15 @@ function OldCards(props) {
               label='300 USD'
               path='/payment'
               courseName="CHEM142"
+              update={props.update}
+            />
+            <CardItem
+              className="class"
+              src='images/cse122.jpg'
+              text='CSE122'
+              label='300 USD'
+              path='/payment'
+              courseName="CSE122"
               update={props.update}
             />
         </Space>

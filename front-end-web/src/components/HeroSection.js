@@ -11,6 +11,7 @@ function HeroSection() {
     <>
         <div className='hero-container'>
           <video 
+          id='home-video'
           src='https://d3qpxblrgmhuz7.cloudfront.net/videos/example.m4v'
           autoPlay
           loop

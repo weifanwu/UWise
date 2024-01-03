@@ -103,9 +103,6 @@ export default function CourseVideoRecord(){
           <Form.Item label="简介" name="intro">
             <TextArea />
           </Form.Item>
-          <Form.Item label="视频url" name="videoUrl">
-            <Input />
-          </Form.Item>
           <Form.Item label="视频图片" name="videoCover">
             <Input
               type="file"

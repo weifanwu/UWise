@@ -4,11 +4,15 @@ import { useSelector } from 'react-redux';
 import { message } from 'antd';
 
 function CardItem(props) {
+
   const currentClasses  = useSelector((state) => state.classes.value);
+
   const history = useNavigate();
+
   const handleRedirect = () => {
     history(props.path);
   };
+
   return (
     <>
       <div className='cards__item' onClick={() => {

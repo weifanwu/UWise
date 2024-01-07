@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Tabs, Card, Button, Breadcrumb, message } from 'antd';
+import { Tabs, Card, Button, Breadcrumb } from 'antd';
 import { Typography, Box, Stack } from "@mui/material";
 import Lectures from "../LectureCard";
 
 export default function Payment(props) {
     const currentClass = localStorage.getItem("currentClass");
-
+    const classToName = {"ECON200": "Francis", "ECON201": "黄诗培"};
     const items = [
         {
           key: '1',
@@ -44,7 +44,7 @@ export default function Payment(props) {
                     <Typography fontSize={30} color="white">{currentClass}</Typography>
                 </ Card>
                 <Box style={{ margin: '20px 100px 0px 20px' }}>
-                    <Typography fontSize={18} >主讲导师：XXX</Typography>
+                    <Typography fontSize={18} >主讲导师：{classToName[currentClass]}</Typography>
                     <Typography fontSize={15} >失效时间：2024/06/12</Typography>
                 </Box>
                 <Box>
@@ -54,7 +54,7 @@ export default function Payment(props) {
                     } else {
                         window.open('https://washington.zoom.us/j/3813523196', "_blank");
                     }
-                    }}>Zoom直播</Button>
+                    }}>Zoom直播链接</Button>
                 </Box>
             </Stack>
             <Tabs 

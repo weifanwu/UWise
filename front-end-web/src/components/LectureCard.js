@@ -35,7 +35,7 @@
                             时长：{lecture.duration}分钟
                             {lecture.notesUrl ? <a href={lecture.notesUrl}> 笔记</a> : null}
                             <Link to={`/video/${lecture._id}`} 
-                            state={{ currentLecture: lecture, lectures: lectures}}> 视频录播</Link>
+                            state={{ currentLecture: lecture, lectures: lectures}}> 查看回放</Link>
                         </div>}>
                         介绍：{lecture.intro}
                     </Card>

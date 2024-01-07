@@ -6,7 +6,7 @@ import Lectures from "../LectureCard";
 
 export default function Payment(props) {
     const currentClass = localStorage.getItem("currentClass");
-    const classToName = {"ECON200": "Francis", "ECON201": "黄诗培"};
+    const classToName = {"ECON200": "Francis", "ECON201": "shipei"};
     const items = [
         {
           key: '1',

@@ -7,6 +7,7 @@ const classSchema = new mongoose.Schema({
     intro: String,
     videoUrl: String,
     videoCover: String,
+    recordTime: String,
     notesUrl: String,
     createTime: Date
 });

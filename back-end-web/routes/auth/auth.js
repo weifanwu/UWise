@@ -6,6 +6,11 @@ const GOOGLE_CLIENT_ID = "73295202240-g4r4fqevidd18jjvoinih26ng5f5cd59.apps.goog
 const GOOGLE_CLIENT_SECRET = "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";
 const callback_url = process.env.BACKEND_HOST + "/auth/google/callback";
 
+
+
+
+
+
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,

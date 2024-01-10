@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 require('dotenv').config()
 
+
 const GOOGLE_CLIENT_ID = "73295202240-g4r4fqevidd18jjvoinih26ng5f5cd59.apps.googleusercontent.com";
 const GOOGLE_CLIENT_SECRET = "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";
 const callback_url = process.env.BACKEND_HOST + "/auth/google/callback";

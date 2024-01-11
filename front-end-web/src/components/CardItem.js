@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { message } from 'antd';
+import { Modal } from 'antd';
 
 function CardItem(props) {
 
   const currentClasses  = useSelector((state) => state.classes.value);
+  const [popOut, setPopOut] = useState(false);
 
   const history = useNavigate();
 
@@ -18,13 +19,7 @@ function CardItem(props) {
       <div className='cards__item' onClick={() => {
         localStorage.setItem('currentClass', props.courseName);
         if (!currentClasses.includes(props.courseName)) {
-          message.error({
-              content: <div>
-                  <p>请联系小助手买课</p>
-                  <img style={{ width: "200px" }} src="/images/小助手.jpeg"></img>
-              </div>,
-              duration: 4,
-            });
+          setPopOut(true);
         } else {
           handleRedirect();
         }
@@ -42,6 +37,22 @@ function CardItem(props) {
           </div>
         </div>
       </div>
+      <Modal
+        title="小助手Yoyo"
+        visible={popOut}
+        onOk={() => {
+          setPopOut(false);
+        }}
+        onCancel={() => {
+          setPopOut(false);
+        }}
+        footer={null}
+        >
+          <div>
+            <p>请联系小助手买课</p>
+            <img style={{ width: "200px" }} src="/images/小助手.jpeg"></img>
+          </div>
+      </Modal>
     </>
   );
 }

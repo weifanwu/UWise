@@ -2,13 +2,3 @@
   content: ' *';
   color: red;
 }
-
-.name {
-  display: flex;
-  flex-direction: row;
-}
-
-.firstname, .lastname {
-  flex: 1;
-  box-sizing: border-box;
-}

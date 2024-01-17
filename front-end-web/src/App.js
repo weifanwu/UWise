@@ -93,7 +93,6 @@ function App() {
           <Route path="/video/:videoId" element={<VideoDisplay/>} />
           <Route path='/resources' element={<Student />} />
           <Route path='/map' element={<ResourceMap />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/news' element={<Dr />} />
         </Routes>
       </Router>

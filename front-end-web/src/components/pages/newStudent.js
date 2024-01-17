@@ -16,6 +16,7 @@ import "./newStudent.css";
 export default function Student(props) {
     const [cards, setCards] = useState([]);
     const [types, setTypes] = useState([]); // State to store the types for tabs
+    const [selectedType, setSelectedType] = useState(null);
     const host = process.env.REACT_APP_BACKEND_HOST;
     // Fetch the types for the tabs and initial data
     useEffect(() => {
@@ -31,6 +32,7 @@ export default function Student(props) {
           .then(response => response.json())
           .then(data => {
             setCards(data);
+            setSelectedType(type);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           })
           .catch(error => console.error(error));
@@ -45,7 +47,8 @@ export default function Student(props) {
           <List>
               {types.map((type, index) => (
                 <ListItem className={"selected-drawer"} key={type} disablePadding>
-                  <ListItemButton onClick={() => handle(type)}>
+                  <ListItemButton onClick={() => handle(type)} 
+                  style={{backgroundColor: selectedType === type ? '#f0f0f0' : 'transparent'}}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Login from "./Login";
@@ -6,6 +6,7 @@ import { Dropdown, Space, Divider, Button, theme, Input, message } from 'antd';
 import { useDispatch } from "react-redux";
 import { incrementAsync } from "../redux/slices";
 import 'bootstrap/dist/css/bootstrap.css';
+import Profile from './pages/Profile';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
@@ -13,6 +14,19 @@ function Navbar(props) {
   const [log, setLog] = useState(false);
   const [info, setInfo] = useState({});
   const [inputValue, setInputValue] = useState('');
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
+
+  const profilePopupRef = useRef();
+
+  const toggleProfilePopup = () => {
+    setShowProfilePopup(!showProfilePopup);
+  };
+
+  const handleClickOutside = (event) => {
+    if (profilePopupRef.current && !profilePopupRef.current.contains(event.target)) {
+      setShowProfilePopup(false);
+    }
+  };
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -45,7 +59,12 @@ function Navbar(props) {
 
   useEffect(() => {
     dispatch(incrementAsync());
-  }, [])
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const { token } = useToken();
   const host = process.env.REACT_APP_BACKEND_HOST;
@@ -174,22 +193,26 @@ function Navbar(props) {
               </Link>
             </li>
           </ul>
+
           <div>
-            {button && (props.picture !== "" ? 
-              <Dropdown
-                dropdownRender={() => (
-                  <Button style={{ marginLeft: "140px", marginTop: "10px" }} onClick={async () => {
-                    window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
-                  }}>登出</Button>
-                )}
-              >
-                <Link to="/profile" state={{ "info" : info }} >
-                  <img style={{ height: "5vh", width: "5vh"}} src={props.picture} /> 
-                </Link>
-              </Dropdown>
-            : <button class="btn btn-light" onClick={() => {
-              change();
-            }}>登陆/注册</button>)}
+            {button && (
+              props.picture !== "" ? 
+                <>
+                  <img
+                    style={{ height: "5vh", width: "5vh", cursor: "pointer" }}
+                    src={props.picture}
+                    alt="Profile"
+                    onClick={toggleProfilePopup}
+                  />
+                  {showProfilePopup && (
+                    <div className="profile-popup" ref={profilePopupRef}>
+                      <Profile email={props.email} picture={props.picture}/>
+                    </div>
+                  )}
+                </>
+              : <button class="btn btn-light" onClick={() => {
+                change();
+              }}>登陆/注册</button>)}
           </div>
         </div>
       </nav>

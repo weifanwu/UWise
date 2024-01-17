@@ -38,7 +38,6 @@ export default function Profile(props) {
     classes: [],
   });
 
-
   
   let oldProfileInfo = props.oldProfileInfo;
   // console.log(oldProfileInfo)
@@ -49,7 +48,7 @@ export default function Profile(props) {
       .then(response => response.json())
       .then(
         data => {
-          setProfileInfo(data)
+          setProfileInfo(data);
         }
         )
       .catch(error => console.error(error));
@@ -63,72 +62,72 @@ export default function Profile(props) {
       },
       body: JSON.stringify(profileInfo),
     })
-      .then(async response => {
-        if (response.ok) {
-          message.success("更新成功");
-        } else {
-          message.error("更新失败");
-        }
-        return response.json();})
-      .catch(error => {
-        console.error(error);
-      });
-  };
-
-  const onFormChange = (event) => {
-    const { name, value} = event.target;
-    setProfileInfo(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-
-
-  const handleAvatarChange = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      try {
-        const apiKey = process.env.REACT_APP_SMMS_API_KEY;
-        const formData = new FormData();
-        formData.append('smfile', file);
-        const response = await fetch(`${host}/api/v2/upload`, {
-          method: 'POST',
-          headers: {
-            Authorization: apiKey,
-          },
-          body: formData,
-        });
-  
-        if (!response.ok) {
-          console.error('Image upload failed');
-          if(response.status === "413") {
-            message.error('图片尺寸过大');
-          }
-          else {
-            message.error('添加失败');
-          }
-          return;
-        }
-
-
-  
-        const data = await response.json();
-
-        setProfileInfo(prevState => ({
-          ...prevState,
-          picture:  data.images
-        }));
-
-      } catch (error) {
-        console.error(error);
+    .then(async response => {
+      if (response.ok) {
+        message.success("更新成功");
+      } else {
+        message.error("更新失败");
       }
-    
-  };
-}
-  
+      return response.json();})
+    .catch(error => {
+      console.error(error);
+    });
+};
 
-  const fileInputRef = useRef();
+const onFormChange = (event) => {
+  const { name, value} = event.target;
+  setProfileInfo(prevState => ({
+    ...prevState,
+    [name]: value,
+  }));
+};
+
+
+
+const handleAvatarChange = async (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    try {
+      const apiKey = process.env.REACT_APP_SMMS_API_KEY;
+      const formData = new FormData();
+      formData.append('smfile', file);
+      const response = await fetch(`${host}/api/v2/upload`, {
+        method: 'POST',
+        headers: {
+          Authorization: apiKey,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        console.error('Image upload failed');
+        if(response.status === "413") {
+          message.error('图片尺寸过大');
+        }
+        else {
+          message.error('添加失败');
+        }
+        return;
+      }
+
+
+
+      const data = await response.json();
+
+      setProfileInfo(prevState => ({
+        ...prevState,
+        picture:  data.images
+      }));
+
+    } catch (error) {
+      console.error(error);
+    }
+  
+};
+}
+
+
+const fileInputRef = useRef();
 
   return (
     <Card style={{ 
@@ -171,55 +170,55 @@ export default function Profile(props) {
           </div>
         </Form.Item>
 
-        <Form.Item class="name">
-          <div class="family_name">
-            <label class="required" for="family_name">Last Name</label>
-            <div class="custom-input">
-            <Input type="text" id="family_name" name="family_name" value={profileInfo.family_name} placeholder={profileInfo.family_name} onChange={onFormChange}/>
-            </div>
-          </div>
-        </Form.Item>
-
-        <Form.Item class="year">
-          <label class="required" for="year">Year</label>
+      <Form.Item class="name">
+        <div class="family_name">
+          <label class="required" for="family_name">Last Name</label>
           <div class="custom-input">
-          <Select id="year" name="year" placeholder={profileInfo.grade}
-            value={profileInfo.grade}
-            onChange={(value) => setProfileInfo(prevState => ({
-              ...prevState,
-              grade: value
-            }))}
-          >
-          <Select.Option value="Freshman">Freshman</Select.Option>
-          <Select.Option value="Sophomore">Sophomore</Select.Option>
-          <Select.Option value="Junior">Junior</Select.Option>
-          <Select.Option value="Senior">Senior</Select.Option>
-          </Select>
+          <Input type="text" id="family_name" name="family_name" value={profileInfo.family_name} placeholder={profileInfo.family_name} onChange={onFormChange}/>
           </div>
-        </Form.Item>
-        
-        <Form.Item class="major">
-          <label class="required" for="major">Major</label>
-          <div class="custom-input">
-          <Input type="text" id="major" name="major" value={profileInfo.major} placeholder={profileInfo.major} onChange={onFormChange}/>
-          </div>
-        </Form.Item>
+        </div>
+      </Form.Item>
 
-        {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div style={{ marginTop: 8 }}>Upload</div>
-            </div>
-          </Upload>
-        </Form.Item> */}
-        <Form.Item>
-          <Button onClick={handleProfileChange}>Save</Button>
-          <Button style={{ marginLeft: "10px"}} onClick={async () => {
-                    window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
-                  }}>登出</Button>
-        </Form.Item>
-      </Form>
-    </Card>
-  );
+      <Form.Item class="year">
+        <label class="required" for="year">Year</label>
+        <div class="custom-input">
+        <Select id="year" name="year" placeholder={profileInfo.grade}
+          value={profileInfo.grade}
+          onChange={(value) => setProfileInfo(prevState => ({
+            ...prevState,
+            grade: value
+          }))}
+        >
+        <Select.Option value="Freshman">Freshman</Select.Option>
+        <Select.Option value="Sophomore">Sophomore</Select.Option>
+        <Select.Option value="Junior">Junior</Select.Option>
+        <Select.Option value="Senior">Senior</Select.Option>
+        </Select>
+        </div>
+      </Form.Item>
+      
+      <Form.Item class="major">
+        <label class="required" for="major">Major</label>
+        <div class="custom-input">
+        <Input type="text" id="major" name="major" value={profileInfo.major} placeholder={profileInfo.major} onChange={onFormChange}/>
+        </div>
+      </Form.Item>
+
+      {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+        <Upload action="/upload.do" listType="picture-card">
+          <div>
+            <PlusOutlined />
+            <div style={{ marginTop: 8 }}>Upload</div>
+          </div>
+        </Upload>
+      </Form.Item> */}
+      <Form.Item>
+        <Button onClick={handleProfileChange}>Save</Button>
+        <Button style={{ marginLeft: "10px"}} onClick={async () => {
+                  window.open(process.env.REACT_APP_BACKEND_HOST + "/auth/logout", "_self");
+                }}>登出</Button>
+      </Form.Item>
+    </Form>
+  </Card>
+);
 };

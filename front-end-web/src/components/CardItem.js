@@ -51,9 +51,11 @@ function CardItem(props) {
         }}
         footer={null}
         >
-          <div>
-            <p>请联系小助手买课</p>
+          <div style={{ textAlign: 'center' }}>
+            <p>1.请联系小助手买课</p>
             <img style={{ width: "200px" }} src="/images/小助手.jpeg"></img>
+            <p>2. 鼠标悬浮在“课程”上以输入兑换码</p>
+            <img style={{ width: "200px" }} src="/images/activate.png"></img>
           </div>
       </Modal>
     </>

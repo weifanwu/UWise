@@ -6,6 +6,7 @@ const passport = require('passport');
 const frontend_url = process.env.FRONTEND_HOST;
 const session = require('express-session');
 require('./auth.js')
+const MongoStore = require('connect-mongo');
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -15,11 +16,12 @@ router.use(session({
   secret: 'cats',
   resave: false,
   saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: 'mongodb+srv://uwise:universityofwashington@uwise.vsv8lb2.mongodb.net/UWise' }),
   // comment this in the local environment ->
-  // cookie: {
-  //   sameSite: 'none',
-  //   secure: true
-  // }
+  cookie: {
+    sameSite: 'none',
+    secure: true
+  }
   // <- comment this in the local environment
 }));
 router.use(passport.initialize());

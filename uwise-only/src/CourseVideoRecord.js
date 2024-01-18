@@ -40,8 +40,6 @@ export default function CourseVideoRecord(){
           return;
         }
         const result = await response.json();
-        console.log("this is the result: ");
-        console.log(result);
         let url;
         if (!result.success) {
           if (result.code === "unauthorized") {
@@ -54,8 +52,6 @@ export default function CourseVideoRecord(){
         }
 
         const payload = { ...values, videoCover: url };
-        console.log("this is the ");
-        console.log(payload);
         
         const responseLec = await fetch(host + 'courses/addCourseLecture', {
           method: 'POST',
@@ -103,15 +99,15 @@ export default function CourseVideoRecord(){
           <Form.Item label="简介" name="intro">
             <TextArea />
           </Form.Item>
-          <Form.Item label="视频url" name="videoUrl">
-            <Input />
-          </Form.Item>
           <Form.Item label="视频图片" name="videoCover">
             <Input
               type="file"
               id="img"
               name="img"
               onChange={(e) => handleFileUpload(e)} />
+          </Form.Item>
+          <Form.Item label="录制日期" name="recordTime">
+            <Input />
           </Form.Item>
           <Form.Item label="笔记url" name="notesUrl">
             <Input />
@@ -125,4 +121,3 @@ export default function CourseVideoRecord(){
       </Card>
     );
   };
-  

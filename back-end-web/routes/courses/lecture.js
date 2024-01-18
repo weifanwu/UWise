@@ -12,9 +12,9 @@ const storage = new Storage({
 
 router.post('/addCourseLecture', async (req, res) => {
     try {
-      const {title, courseName, duration, intro, videoUrl, videoCover, notesUrl} = req.body;
+      const {title, courseName, duration, intro, videoUrl, videoCover, recordTime, notesUrl} = req.body;
       const createTime = new Date();
-      const lectureInstance = new LectureModel({ title, courseName, duration, intro, videoUrl, videoCover, notesUrl, createTime});
+      const lectureInstance = new LectureModel({ title, courseName, duration, intro, videoUrl, videoCover, recordTime, notesUrl, createTime});
       await lectureInstance.save();
       res.send("added successfully!");
     } catch(error) {

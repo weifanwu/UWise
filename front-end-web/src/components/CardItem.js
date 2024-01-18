@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 
 function CardItem(props) {
 
@@ -18,10 +18,13 @@ function CardItem(props) {
     <>
       <div className='cards__item' onClick={() => {
         localStorage.setItem('currentClass', props.courseName);
-        if (!currentClasses.includes(props.courseName)) {
-          setPopOut(true);
-        } else {
-          handleRedirect();
+        if (!props.isLoggedIn) message.error("请先登录！");
+        else {
+          if (!currentClasses.includes(props.courseName)) {
+            setPopOut(true);
+          } else {
+            handleRedirect();
+          }
         }
         }}>
         <div className='cards__item__link' to={props.path}>

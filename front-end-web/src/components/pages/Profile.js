@@ -39,10 +39,11 @@ export default function Profile(props) {
   });
 
 
+  
   let oldProfileInfo = props.oldProfileInfo;
-  // console.log(oldProfileInfo)
+  console.log(oldProfileInfo)
 
-
+  
   useEffect(() => {
     fetch(`${host}/profile/getProfile?email=${encodeURIComponent(props.email)}`)
       .then(response => response.json())
@@ -146,19 +147,18 @@ export default function Profile(props) {
           src={profileInfo.picture}
           size="large"
           gap="2px"
-          // onClick={() => fileInputRef.current.click()}
-        >
+          onClick={() => fileInputRef.current.click()}>
         </Avatar>
-        {/* <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/> */}
+        <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/>
 
-        {/* <input
+        <input
             type="file"
             ref={fileInputRef}
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
             accept="image/*"
-          /> */}
-       
+          />
+
         <Form.Item class="name">
           <div class="given_name">
             <label class="required" for="given_name">First Name</label>

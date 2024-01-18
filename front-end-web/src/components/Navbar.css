@@ -10,6 +10,29 @@
   z-index: 999;
 }
 
+.profile-popup {
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  z-index: 10;
+}
+
+.profile-popup button {
+  background-color: #007bff; /* Adjust color as needed */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.profile-popup button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+
 .navbar-container {
   display: flex;
   justify-content: center;

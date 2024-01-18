@@ -3,12 +3,29 @@
   color: red;
 }
 
-.name {
-  display: flex;
-  flex-direction: row;
+.avatar-container {
+  position: relative;
+  cursor: pointer;
 }
 
-.firstname, .lastname {
-  flex: 1;
-  box-sizing: border-box;
+.avatar-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.241); /* Shaded overlay color */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-container:hover::before {
+  opacity: 1;
+}
+
+
+.edit-icon::before{
+  opacity: 1;
+  color: rgb(0, 0, 0);
 }

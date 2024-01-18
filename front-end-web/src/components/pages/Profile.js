@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Avatar, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import EditIcon from '@mui/icons-material/Edit'; // Replace 'Edit' with your chosen icon
+
 import "./Profile.css";
 import {
   Button,
@@ -20,6 +22,10 @@ const normFile = (e) => {
   return e?.fileList;
 };
 
+
+
+const host = process.env.REACT_APP_BACKEND_HOST;
+
 export default function Profile(props) {
 
   const [profileInfo, setProfileInfo] = useState({
@@ -33,15 +39,19 @@ export default function Profile(props) {
   });
 
 
+  let oldProfileInfo = props.oldProfileInfo;
+  console.log(oldProfileInfo)
+
+
   useEffect(() => {
-    fetch(`http://localhost:8000/profile/getProfile?email=${encodeURIComponent(props.email)}`)
+    fetch(`${host}/profile/getProfile?email=${encodeURIComponent(props.email)}`)
       .then(response => response.json())
-      .then(data => {setProfileInfo(data);})
+      .then(data => {setProfileInfo(data)})
       .catch(error => console.error(error));
   }, [props.email]);
 
   const handleProfileChange = async() => {
-    await fetch('http://localhost:8000/profile/updateProfile', {
+    await fetch(`${host}/profile/updateProfile`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -68,6 +78,53 @@ export default function Profile(props) {
     }));
   };
 
+
+
+  const handleAvatarChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        const apiKey = process.env.REACT_APP_SMMS_API_KEY;
+        const formData = new FormData();
+        formData.append('smfile', file);
+        const response = await fetch(`${host}/api/v2/upload`, {
+          method: 'POST',
+          headers: {
+            Authorization: apiKey,
+          },
+          body: formData,
+        });
+  
+        if (!response.ok) {
+          console.error('Image upload failed');
+          if(response.status === "413") {
+            message.error('图片尺寸过大');
+          }
+          else {
+            message.error('添加失败');
+          }
+          return;
+        }
+
+
+  
+        const data = await response.json();
+
+        setProfileInfo(prevState => ({
+          ...prevState,
+          picture:  data.images
+        }));
+
+      } catch (error) {
+        console.error(error);
+      }
+    
+  };
+}
+  
+
+  const fileInputRef = useRef();
+
   return (
     <Card style={{ 
         width: "350px",
@@ -82,10 +139,23 @@ export default function Profile(props) {
         layout="horizontal"
         style={{ maxWidth: 600 }}
       >
-        <Avatar style={{ marginBottom: "20px" }}src={props.picture} size="large" gap="2px">
-          weifan
+        <Avatar  className="avatar-container"
+          style={{ marginBottom: "20px", cursor: "pointer" }}
+          src={profileInfo.picture}
+          size="large"
+          gap="2px"
+          onClick={() => fileInputRef.current.click()}>
         </Avatar>
+        <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/>
 
+        <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleAvatarChange}
+            style={{ display: 'none' }}
+            accept="image/*"
+          />
+       
         <Form.Item class="name">
           <div class="given_name">
             <label class="required" for="given_name">First Name</label>

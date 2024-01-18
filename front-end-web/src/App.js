@@ -9,7 +9,6 @@ import Products from './components/pages/Products';
 import Student from './components/pages/newStudent';
 import ClassHome from './components/pages/Class';
 import ResourceMap from './components/pages/ResourceMap';
-import Profile from './components/pages/Profile';
 import Payment from './components/pages/Payment';
 import {Dr} from './components/pages/Dr';
 import VideoDisplay from './components/pages/VideoDisplay.js';
@@ -19,17 +18,32 @@ function App() {
   const [profile, setProfile] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [classNames, setClasses] = useState();
+  const [profileInfo, setProfileInfo] = useState();
+
   const ProtectedRoute = ({ children }) => {
     if (profile) {
       return children;
     } else {
       return <h1>请先登录！</h1>;
     }
-
   };
 
-  const getClasses = () => {
-    fetch(host + "/auth/getClasses", {
+  useEffect(() => {
+    if (!window.location.pathname.includes("mobile") && /(Mobile)/i.test(navigator.userAgent)) {
+      message.warning("最佳效果请在电脑端查看哦～");
+    }
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    if (profile) {
+      getClasses();
+      getProfileInfo();
+    }
+  }, [profile, profileInfo]);
+
+  const getClasses = async() => {
+    await fetch(host + "/auth/getClasses", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -45,45 +59,49 @@ function App() {
     });
   }
 
-
-
-  useEffect(() => {
-    if (!window.location.pathname.includes("mobile") && /(Mobile)/i.test(navigator.userAgent)) {
-      message.warning("最佳效果请在电脑端查看哦～");
-    }
-    if (profile) {
-      getClasses();
-    }
-    const getUser = () => {
-      fetch(host + "/auth/login/success", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-        credentials: 'include'
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          return response.json().then((errorData) => {
-            throw new Error(errorData.message);
-          });
-        })
-        .then((resObject) => {
-          setProfile(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
+  const getUser = async() => {
+    await fetch(host + "/auth/login/success", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+      credentials: 'include'
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        return response.json().then((errorData) => {
+          throw new Error(errorData.message);
         });
-    };
-    getUser();
-  }, []);
+      })
+      .then((resObject) => {
+        setProfile(resObject.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getProfileInfo = async() => {
+    await fetch(`${host}/profile/getProfile?email=${encodeURIComponent(profile.email)}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then(response => response.json())
+    .then(data => {setProfileInfo(data);})
+    .catch(error => console.error(error));
+  };
+
+
 
   return (
     <>
       <Router>
-        <Navbar email={profile ? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
+        <Navbar profileInfo={profileInfo ? profileInfo : ""} email={profile? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profileInfo) ? profileInfo.picture : (profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />

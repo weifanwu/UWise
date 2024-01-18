@@ -16,6 +16,8 @@ function Navbar(props) {
   const [inputValue, setInputValue] = useState('');
   const [showProfilePopup, setShowProfilePopup] = useState(false);
 
+  let profileInfo = props.profileInfo;
+
   const profilePopupRef = useRef();
 
   const toggleProfilePopup = () => {
@@ -206,7 +208,7 @@ function Navbar(props) {
                   />
                   {showProfilePopup && (
                     <div className="profile-popup" ref={profilePopupRef}>
-                      <Profile email={props.email} picture={props.picture}/>
+                      <Profile oldProfileInfo={profileInfo ? profileInfo: ""} email={ profileInfo ? profileInfo.email : props.email} picture={profileInfo ? profileInfo.picture : props.picture}/>
                     </div>
                   )}
                 </>

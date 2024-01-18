@@ -9,8 +9,8 @@ export default function Services(props) {
   return <>
             <div className='classes'>
               <Space direction='vertical' align='start'>
-                <Cards update={props.update}/>
-                <OldCards update={props.update}/>
+                <Cards isLoggedIn = {props.isLoggedIn} />
+                <OldCards isLoggedIn = {props.isLoggedIn} />
               </Space>
             </div>
          </>

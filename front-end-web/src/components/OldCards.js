@@ -16,7 +16,7 @@ function OldCards(props) {
               label='300 USD'
               courseName="CSE121"
               path='/payment'
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -25,7 +25,7 @@ function OldCards(props) {
               label='300 USD'
               courseName="AMATH301"
               path='/payment'
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -34,7 +34,7 @@ function OldCards(props) {
               label='300 USD'
               path='/payment'
               courseName="MATH124"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -43,7 +43,7 @@ function OldCards(props) {
               label='300 USD'
               path='/payment'
               courseName="CHEM142"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -52,7 +52,7 @@ function OldCards(props) {
               label='300 USD'
               path='/payment'
               courseName="CSE122"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
         </Space>
       </Space>

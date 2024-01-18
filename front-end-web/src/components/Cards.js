@@ -16,7 +16,7 @@ function Cards(props) {
               label='300 USD'
               path='/payment'
               courseName="ECON200"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -25,7 +25,7 @@ function Cards(props) {
               label='300 USD'
               path='/payment'
               courseName="ECON201"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
             <CardItem
               className="class"
@@ -34,7 +34,7 @@ function Cards(props) {
               label='300 USD'
               path='/payment'
               courseName="MATH125"
-              update={props.update}
+              isLoggedIn = {props.isLoggedIn}
             />
         </Space>
       </Space>

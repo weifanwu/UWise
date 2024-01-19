@@ -40,7 +40,7 @@ export default function Profile(props) {
 
 
   let oldProfileInfo = props.oldProfileInfo;
-  console.log(oldProfileInfo)
+  // console.log(oldProfileInfo)
 
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export default function Profile(props) {
           <div class="given_name">
             <label class="required" for="given_name">First Name</label>
             <div class="custom-input">
-            <Input type="text" id="given_name" name="given_name" value={profileInfo.given_name} placeholder={profileInfo.given_name}onChange={onFormChange}
+            <Input type="text" id="given_name" name="given_name" value={profileInfo.given_name} placeholder={profileInfo.given_name} onChange={onFormChange}
             />
             </div>
           </div>

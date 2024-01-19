@@ -61,12 +61,13 @@ function Navbar(props) {
 
   useEffect(() => {
     dispatch(incrementAsync());
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('dblclick', handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('dblclick', handleClickOutside);
     };
   }, []);
+
 
   const { token } = useToken();
   const host = process.env.REACT_APP_BACKEND_HOST;

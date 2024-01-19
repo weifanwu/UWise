@@ -64,6 +64,7 @@ function Navbar(props) {
   useEffect(() => {
     dispatch(incrementAsync());
     document.addEventListener('dblclick', handleClickOutside);
+    //dblclick
 
     return () => {
       document.removeEventListener('dblclick', handleClickOutside);
@@ -211,7 +212,7 @@ function Navbar(props) {
                   />
                   {showProfilePopup && (
                     <div className="profile-popup" ref={profilePopupRef}>
-                      <Profile oldProfileInfo={profileInfo ? profileInfo: ""} email={ profileInfo ? profileInfo.email : props.email} picture={profileInfo ? profileInfo.picture : props.picture}/>
+                      <Profile oldProfileInfo={profileInfo ? profileInfo: ""} email={props.email} picture={props.picture}/>
                     </div>
                   )}
                 </>

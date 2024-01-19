@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     if (profile) {
       getClasses();
-      getProfileInfo();
+      // getProfileInfo();
     }
   }, [profile, profileInfo]);
 
@@ -84,25 +84,25 @@ function App() {
       });
   };
 
-  const getProfileInfo = async() => {
-    await fetch(`${host}/profile/getProfile?email=${encodeURIComponent(profile.email)}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-    .then(response => response.json())
-    .then(data => {setProfileInfo(data);})
-    .catch(error => console.error(error));
-  };
+  // const getProfileInfo = async() => {
+  //   await fetch(`${host}/profile/getProfile?email=${encodeURIComponent(profile.email)}`, {
+  //     method: "GET",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {setProfileInfo(data);})
+  //   .catch(error => console.error(error));
+  // };
 
 
 
   return (
     <>
       <Router>
-        <Navbar profileInfo={profileInfo ? profileInfo : ""} email={profile? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profileInfo) ? profileInfo.picture : (profile) ? profile.picture : ""} />
+        <Navbar profileInfo={profileInfo ? profileInfo : ""} email={profile? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />

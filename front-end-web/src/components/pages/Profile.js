@@ -52,7 +52,11 @@ export default function Profile(props) {
         }
         )
       .catch(error => console.error(error));
-  }, []);
+  }, [props.email]);
+
+  console.log(profileInfo)
+
+  console.log(profileInfo)
 
   const handleProfileChange = async() => {
     await fetch(`${host}/profile/updateProfile`, {
@@ -152,7 +156,7 @@ const fileInputRef = useRef();
         </Avatar>
         <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/>
 
-        <input
+        {/* <input
             type="file"
             ref={fileInputRef}
             onChange={handleAvatarChange}

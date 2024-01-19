@@ -64,7 +64,6 @@ function Navbar(props) {
   useEffect(() => {
     dispatch(incrementAsync());
     document.addEventListener('dblclick', handleClickOutside);
-    //dblclick
 
     return () => {
       document.removeEventListener('dblclick', handleClickOutside);

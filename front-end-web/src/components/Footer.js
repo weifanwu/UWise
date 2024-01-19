@@ -19,7 +19,7 @@ function Footer() {
             <p>微信公众号: 华大优智</p>
         </div>
         <div class='website-rights'>
-            <small>UWise华大优智 © 2023</small>
+            <small>UWise华大优智 © 2024</small>
         </div>
     </div>
   );

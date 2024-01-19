@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { Tabs, Card, Button, Breadcrumb, message } from 'antd';
+
+import { Tabs, Card, Button, Breadcrumb } from 'antd';
 import { Typography, Box, Stack } from "@mui/material";
 import Lectures from "../LectureCard";
 
 export default function Payment(props) {
-    const navigate =  useNavigate();
     const currentClass = localStorage.getItem("currentClass");
-    const value  = useSelector((state) => state.classes.value);
-
+    const classToName = {"ECON200": "Francis", "ECON201": "Shipei"};
     const items = [
         {
           key: '1',
@@ -47,25 +44,17 @@ export default function Payment(props) {
                     <Typography fontSize={30} color="white">{currentClass}</Typography>
                 </ Card>
                 <Box style={{ margin: '20px 100px 0px 20px' }}>
-                    <Typography fontSize={18} >主讲导师：XXX</Typography>
+                    <Typography fontSize={18} >主讲导师：{classToName[currentClass]}</Typography>
                     <Typography fontSize={15} >失效时间：2024/06/12</Typography>
                 </Box>
                 <Box>
                     <Button style={{ marginTop: 30, marginLeft: 300 }} onClick={() => {
                     if (!props.userInfo) {
                         props.setIsModalOpen(!props.isModalOpen)
-                    } else if (!value.includes(currentClass)) {
-                        message.error({
-                            content: <div>
-                                <p>请联系小助手买课</p>
-                                <img style={{ width: "200px" }} src="/images/小助手.jpeg"></img>
-                            </div>,
-                            duration: 4,
-                          });
                     } else {
                         window.open('https://washington.zoom.us/j/3813523196', "_blank");
                     }
-                    }}>Zoom直播</Button>
+                    }}>Zoom直播链接</Button>
                 </Box>
             </Stack>
             <Tabs 

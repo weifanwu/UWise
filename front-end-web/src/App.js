@@ -104,7 +104,7 @@ function App() {
         <Navbar profileInfo={profileInfo ? profileInfo : ""} email={profile? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profileInfo) ? profileInfo.picture : (profile) ? profile.picture : ""} />
         <Routes>
           <Route path='/' exact element={<Home />} />
-          <Route path='/classes' element={<Services />} />
+          <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />
           <Route path='/reviews' element={<Products />} />
           <Route path='/class/:id' element={<ProtectedRoute ><ClassHome /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} userInfo={profile} classNames={classNames} />} />

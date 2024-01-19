@@ -61,12 +61,14 @@ function Navbar(props) {
 
   useEffect(() => {
     dispatch(incrementAsync());
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('dblclick', handleClickOutside);
+    //dblclick
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('dblclick', handleClickOutside);
     };
   }, []);
+
 
   const { token } = useToken();
   const host = process.env.REACT_APP_BACKEND_HOST;
@@ -208,7 +210,7 @@ function Navbar(props) {
                   />
                   {showProfilePopup && (
                     <div className="profile-popup" ref={profilePopupRef}>
-                      <Profile oldProfileInfo={profileInfo ? profileInfo: ""} email={ profileInfo ? profileInfo.email : props.email} picture={profileInfo ? profileInfo.picture : props.picture}/>
+                      <Profile oldProfileInfo={profileInfo ? profileInfo: ""} email={props.email} picture={props.picture}/>
                     </div>
                   )}
                 </>

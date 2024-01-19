@@ -40,7 +40,7 @@ export default function Profile(props) {
 
 
   let oldProfileInfo = props.oldProfileInfo;
-  console.log(oldProfileInfo)
+  // console.log(oldProfileInfo)
 
 
   useEffect(() => {
@@ -49,6 +49,8 @@ export default function Profile(props) {
       .then(data => {setProfileInfo(data)})
       .catch(error => console.error(error));
   }, [props.email]);
+
+  console.log(profileInfo)
 
   const handleProfileChange = async() => {
     await fetch(`${host}/profile/updateProfile`, {
@@ -144,23 +146,24 @@ export default function Profile(props) {
           src={profileInfo.picture}
           size="large"
           gap="2px"
-          onClick={() => fileInputRef.current.click()}>
+          // onClick={() => fileInputRef.current.click()}
+        >
         </Avatar>
-        <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/>
+        {/* <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/> */}
 
-        <input
+        {/* <input
             type="file"
             ref={fileInputRef}
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
             accept="image/*"
-          />
+          /> */}
        
         <Form.Item class="name">
           <div class="given_name">
             <label class="required" for="given_name">First Name</label>
             <div class="custom-input">
-            <Input type="text" id="given_name" name="given_name" value={profileInfo.given_name} placeholder={profileInfo.given_name}onChange={onFormChange}
+            <Input type="text" id="given_name" name="given_name" value={profileInfo.given_name} placeholder={profileInfo.given_name} onChange={onFormChange}
             />
             </div>
           </div>

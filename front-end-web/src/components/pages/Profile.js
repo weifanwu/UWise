@@ -41,7 +41,7 @@ export default function Profile(props) {
 
   
   let oldProfileInfo = props.oldProfileInfo;
-  console.log(oldProfileInfo)
+  // console.log(oldProfileInfo)
 
   
   useEffect(() => {

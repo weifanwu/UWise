@@ -50,6 +50,8 @@ export default function Profile(props) {
       .catch(error => console.error(error));
   }, [props.email]);
 
+  console.log(profileInfo)
+
   const handleProfileChange = async() => {
     await fetch(`${host}/profile/updateProfile`, {
       method: "POST",
@@ -144,17 +146,18 @@ export default function Profile(props) {
           src={profileInfo.picture}
           size="large"
           gap="2px"
-          onClick={() => fileInputRef.current.click()}>
+          // onClick={() => fileInputRef.current.click()}
+        >
         </Avatar>
-        <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/>
+        {/* <EditIcon className="edit-icon" style={{ width: "20px", cursor: "pointer", color: "rgb(75, 75, 75)"}} onClick={() => fileInputRef.current.click()}/> */}
 
-        <input
+        {/* <input
             type="file"
             ref={fileInputRef}
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
             accept="image/*"
-          />
+          /> */}
        
         <Form.Item class="name">
           <div class="given_name">

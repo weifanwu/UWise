@@ -5,6 +5,7 @@ import Introduction from "./Introduction";
 import { AiFillWechat } from "react-icons/ai";
 import { Modal } from 'antd';
 
+
 function HeroSection() {
     const [value, setValue] = useState(false);
     return (
@@ -18,6 +19,10 @@ function HeroSection() {
           muted
           style={{ width: '1920px', height: '1080px' }}
           />
+          <div className='home-image-container'>
+            <img src="images/uw.jpeg" alt="uw scene" />
+          </div>
+          
           <h1>Be Wise With UWise</h1>
           <p>"在智慧中发现成功"</p>
         </div>

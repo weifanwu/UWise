@@ -146,4 +146,25 @@ h1 {
   .hero-container > p {
     text-shadow: 2px 2px 4px #000000;
   }
+
+  .intro-section {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border-bottom-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    flex-wrap:wrap;
+    width: 98%;
+    margin-bottom: 15px;
+  }
+
+  .intro-section > h2{
+    font-size: 20px;
+  }
+
+  .intro-section > p{
+    font-size: 20px;
+  }
+  
+  
 }

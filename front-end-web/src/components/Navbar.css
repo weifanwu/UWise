@@ -99,9 +99,50 @@
   display: none;
 }
 
-
-
 @media screen and (max-width: 960px) {
+  .nav {
+    font-size: 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 0.8rem;
+  }
+} 
+
+
+
+@media screen and (max-width: 860px) {
+  #btn-login {
+    font-size: 12px;
+  }
+
+  .nav {
+    font-size: 0.8rem;
+  }
+
+  .profile-image {
+    margin-right: 10px;
+  }
+
+} 
+
+
+
+
+@media screen and (max-width: 750px) {
+  .profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 60px;
+  }
+
+  .nav {
+    font-size: 1.5rem;
+  }
+
   .NavbarItems {
     position: relative;
   }

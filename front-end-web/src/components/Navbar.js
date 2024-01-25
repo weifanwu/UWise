@@ -202,7 +202,7 @@ function Navbar(props) {
             {(
               props.picture !== "" ? 
                 <>
-                  <img
+                  <img className="profile-image"
                     style={{ height: "5vh", width: "5vh", cursor: "pointer" }}
                     src={props.picture}
                     alt="Profile"

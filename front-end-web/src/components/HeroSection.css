@@ -114,9 +114,6 @@ h1 {
   .btn {
     width: 100%;
   }
-
-
-
 }
 
 @media screen and (max-width: 500px) {
@@ -151,8 +148,8 @@ h1 {
     margin: auto;
     display: flex;
     justify-content: center;
-    border-bottom-left-radius: 17px;
-    border-bottom-right-radius: 17px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     flex-wrap:wrap;
     width: 98%;
     margin-bottom: 15px;
@@ -165,6 +162,12 @@ h1 {
   .intro-section > p{
     font-size: 20px;
   }
+
+  #title {
+    padding-bottom: 30px;
+    padding-top: 100px;
+  }
+
   
   
 }

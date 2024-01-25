@@ -5,13 +5,14 @@ import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Services from './components/pages/Services';
-import Products from './components/pages/Products';
-import Student from './components/pages/newStudent';
+import CourseReview from './components/pages/CourseReview';
+import Student from './components/pages/StaticResources.js';
 import ClassHome from './components/pages/Class';
 import ResourceMap from './components/pages/ResourceMap';
 import Payment from './components/pages/Payment';
 import {Dr} from './components/pages/Dr';
 import VideoDisplay from './components/pages/VideoDisplay.js';
+
 const host = process.env.REACT_APP_BACKEND_HOST;
 
 function App() {
@@ -105,7 +106,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />
-          <Route path='/reviews' element={<Products />} />
+          <Route path='/reviews' element={<CourseReview />} />
           <Route path='/class/:id' element={<ProtectedRoute ><ClassHome /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} userInfo={profile} classNames={classNames} />} />
           <Route path="/video/:videoId" element={<VideoDisplay/>} />

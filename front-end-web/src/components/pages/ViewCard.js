@@ -10,7 +10,7 @@ const ViewCard = ({ title, intro, img, url }) => {
     return (
         <div className="viewCard">
 
-            <Space align=''>
+            
                 <div className='viewCardImageContainer'>
                     <img src={img} alt={title} className="viewCardImage" />
                 </div>
@@ -19,7 +19,7 @@ const ViewCard = ({ title, intro, img, url }) => {
                     <div className="viewCardIntro">{renderedPTags}</div>
                     <a href={url} target="_blank" rel="noopener noreferrer" className="viewCardLink">Learn More</a>
                 </div>            
-            </Space>
+            
 
         </div>
     );

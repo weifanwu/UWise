@@ -25,3 +25,24 @@ img {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+@media screen and (max-width: 500px) {
+  .picture {
+    width:80%;
+    margin-bottom: 30px;
+  }
+
+  .text {
+    width:80%;
+    margin-bottom: 50px;
+  }
+
+  .content {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .btns {
+    margin-bottom: 30px;
+  }
+}

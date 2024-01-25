@@ -76,7 +76,7 @@ a {
 }
 
 .viewCardImage {
-    width: 300px;
+    width: 100%;
     height: auto;
 
     object-fit: cover;
@@ -108,4 +108,41 @@ a {
 
 .viewCardLink:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+    .staticRecourseCards {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+
+    .viewCardImageContainer {
+        padding-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        
+    }
+
+    .viewCardContent {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .viewCard {
+        width: 100%;
+        color: black;
+        padding: 10px 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+
+    
 }

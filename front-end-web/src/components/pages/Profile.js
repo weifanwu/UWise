@@ -47,7 +47,14 @@ export default function Profile(props) {
   useEffect(() => {
     fetch(`${host}/profile/getProfile?email=${encodeURIComponent(props.email)}`)
       .then(response => response.json())
-      .then(data => {setProfileInfo(data)})
+      .then(
+        data => {
+          console.log("this is the email profile");
+          console.log(host);
+          console.log(data);
+          setProfileInfo(data)
+        }
+        )
       .catch(error => console.error(error));
   }, [props.email]);
 

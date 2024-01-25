@@ -7,16 +7,19 @@ import { Modal } from 'antd';
 function Footer() {
   return (
     <div className='footer-container'>
-        <div class='footer-logo'>
-            <Link to='/' className='social-logo'>
-            UWise华大优智
-                <img src="../images/uwise5.png" className="logo" />
-            </Link>
-        </div>
-        <div id="contact">
-            <h3>联系我们:</h3>
-            <p>邮件: admin@uwise.org</p>
-            <p>微信公众号: 华大优智</p>
+        <div class="content">
+            <div class='footer-logo'>
+                <Link to='/' className='social-logo'>
+                    <div>UWise</div>
+                    <div>华大优智</div>
+                    <img src="../images/uwise5.png" className="logo" />
+                </Link>
+            </div>
+            <div id="contact">
+                <h3>联系我们:</h3>
+                <p>邮件: admin@uwise.org</p>
+                <p>微信公众号: 华大优智</p>
+            </div>
         </div>
         <div class='website-rights'>
             <small>UWise华大优智 © 2024</small>

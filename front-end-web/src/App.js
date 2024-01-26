@@ -95,10 +95,8 @@ function App() {
   //   .then(response => response.json())
   //   .then(data => {setProfileInfo(data);})
   //   .catch(error => console.error(error));
-  // };
-
-
-
+  // }
+  
   return (
     <>
       <Router>

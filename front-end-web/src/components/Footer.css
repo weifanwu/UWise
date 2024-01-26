@@ -3,6 +3,14 @@
   padding: 4rem 0 2rem 0;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  
 }
 
 .footer-subscription {
@@ -105,7 +113,9 @@
 
 .footer-logo {
   width: 30%;
+  margin-right: 80px;
   }
+
 .social-icons {
   display: flex;
   justify-content: space-between;
@@ -122,10 +132,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  flex-direction: column;
 }
 
 .website-rights {
   color: #fff;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center;
 }
 
 @media screen and (max-width: 820px) {
@@ -149,8 +163,11 @@
 
 #contact {
     color: #fff;
-    margin: auto 40px;
+    margin: auto 80px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 430px) {
+  .footer-logo {
+    margin-right: -50px;
+  }
 }

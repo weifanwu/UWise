@@ -24,7 +24,16 @@ export default function Student(props) {
     useEffect(() => {
         fetch(host + '/resources/getTypes')
           .then(response => response.json())
-          .then(data => setTypes(data))
+          .then(data => {
+            const rent = data.indexOf("租房攻略");
+            const dorm = data.indexOf("宿舍攻略");
+            data.splice(rent, 1);
+            data.splice(dorm, 1);
+            data.push("租房攻略");
+            data.push("宿舍攻略");
+            setTypes(data);
+
+          })
           .catch(error => console.error(error));
         handle("专业申请"); // Default type or initial type
     }, []);

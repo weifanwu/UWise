@@ -48,16 +48,11 @@ export default function Profile(props) {
       .then(response => response.json())
       .then(
         data => {
-          console.log("this is the email profile");
-          console.log(host);
-          console.log(data);
           setProfileInfo(data)
         }
         )
       .catch(error => console.error(error));
-  }, [props.email]);
-
-  console.log(profileInfo)
+  }, []);
 
   const handleProfileChange = async() => {
     await fetch(`${host}/profile/updateProfile`, {

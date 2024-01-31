@@ -50,9 +50,7 @@ body {
         font-size: 10px;
     }
 
-    #static-resources-nav {
-        width: 120px;
-    }
+
 
     .menu-button {
         display: block; 
@@ -74,14 +72,18 @@ body {
         font-size: 20px;
     }
 
-
     .drawer {
-        padding-top: 20px;
-        width: 100%;
+        padding-top: 30px;
+        width: 120px;
     }
+    
 
     .drawer .nav-icon {
         display: none;
+    }
+
+    .drawer .nav-text {
+        text-align: center;
     }
 
     .page-heading {

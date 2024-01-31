@@ -37,17 +37,17 @@
   display: flex;
   align-items: center;
   height: 80px;
-  max-width: 1500px;
+  /* max-width: 1500px; */
 }
 
 
 .navbar-logo {
   color: #fff;
   justify-self: start;
-  margin-left: 20px;
+  margin: 2rem 0;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
 }
@@ -64,12 +64,15 @@
   list-style: none;
   text-align: center;
   width: 60vw;
+  align-items: center;
 }
 
 .nav-item {
-  height: 80px;
   position: relative;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 .nav-links {
@@ -77,7 +80,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   height: 100%;
 }
 
@@ -105,7 +108,7 @@
   }
 
   .navbar-logo {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 } 
 
@@ -155,8 +158,10 @@
   }
 
   #btn-login {
-    width: 120px;
-    font-size: 16px;
+    /* width: 110px; */
+    width: 7rem;
+    height: 2rem;
+    font-size: 14px;
     display: block; 
     position: fixed;
     top: 25px; 
@@ -255,11 +260,12 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 440px) {
   #btn-login {
-    width: 80px;
+    width: 5rem;
+    height: 1.5rem;
     font-size: 10px;
-    padding: 3px 5px;
+    padding: 3px 3px;
     display: block; 
     position: fixed;
     top: 35px; 
@@ -269,6 +275,19 @@
   .navbar-container {
     height: 60px;
   }
+
+  .nav-menu {
+    
+  }
+
+  .nav-links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+  }
+  
 }
 
 nav ul ul {

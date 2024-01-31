@@ -17,8 +17,8 @@ export default function Log(props) {
                 <button onClick={() => {
                     window.open(host + "/auth/wechat", "_self");
                     // message.success("微信登陆正在开发敬请期待, 请先使用GOOGLE");
-                }} style={{ marginTop: "32px", borderRadius: "6px", width: "280px", height: "54px"}} className="custom-btn"><img style={{ width: "36px", height: "36px", marginRight: "20px" }} src='../images/wechat-white.svg'></img>微信登陆</button>
-                <div style={{ marginTop: '160px', textAlign: 'center' }}>
+                }} style={{ marginTop: "32px", borderRadius: "6px", width: "260px", height: "54px"}} className="custom-btn"><img style={{ width: "36px", height: "36px", marginRight: "20px" }} src='../images/wechat-white.svg'></img>微信登陆</button>
+                <div className="agreement" style={{ textAlign: 'center' }}>
                     <Text type="secondary">登录或注册即同意 </Text>
                     <Link href="https://ant.design/components/typography">
                     <Text mark>《UWise 平台用户协议》</Text>

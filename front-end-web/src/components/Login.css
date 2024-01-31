@@ -25,7 +25,12 @@
     opacity: 1;
 }
 
+.agreement {
+  margin-top: 160px;
+}
+
 .custom-btn {
+  width: 360px;
   background-color: #2AAE67;
   color: #fff;
   border: none;
@@ -46,9 +51,13 @@
     border: 0.1px solid black;
     background-color: white;
     z-index: 20;
-    width: 300px;
+    width: 320px;
     height: 400px;
     opacity: 1;
+
+    .agreement {
+      margin-top: 60px;
+    }
 }
 
 }

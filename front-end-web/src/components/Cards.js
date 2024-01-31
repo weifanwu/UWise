@@ -6,9 +6,10 @@ function Cards(props) {
 
   return (
     <>
-      <Space direction='vertical'>
-        <div style={{ marginTop: "50px", marginBottom: "20px", fontSize: "25px" }}><strong>2024 Winter</strong></div>
-        <Space style={{ margin: "0 auto", justifyContent: "space-evenly" }} align='center' size="large" wrap>
+      <Space direction='vertical' style={{ marginBottom: "45px", marginLeft: "20px"}}>
+        <div style={{ marginLeft: "20px", marginTop: "50px", marginBottom: "20px", fontSize: "25px" }}><strong>2024 Winter</strong></div>
+        <Space style={{ marginLeft: "20px", marginRight: "20px", justifyContent: "start" }} align='start' size="large" wrap>
+
             <CardItem
               className="class"
               src='images/econ200.jpg'

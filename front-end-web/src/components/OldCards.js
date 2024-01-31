@@ -6,9 +6,11 @@ function OldCards(props) {
 
   return (
     <>
-      <Space direction='vertical' style={{ marginBottom: "45px" }}>
-        <div style={{ marginTop: "50px", marginBottom: "20px", fontSize: "25px" }}><strong>Past Courses</strong></div>
-        <Space style={{ margin: "0 auto", justifyContent: "space-evenly" }} align='center' size="large" wrap>
+      <Space direction='vertical' style={{ marginBottom: "45px", marginLeft: "20px"}}>
+        <div style={{ marginLeft: "20px", marginTop: "50px",  marginBottom: "20px", fontSize: "25px" }}><strong>Past Courses</strong></div>
+        {/* <Space style={{ margin: "0 auto",  justifyContent: "space-evenly" }} align='center' size="large" wrap> */}
+        <Space style={{ marginLeft: "20px", marginRight: "20px", justifyContent: "start" }} align='start' size="large" wrap>
+
             <CardItem
               className="class"
               src='images/cse121.jpg'

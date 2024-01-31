@@ -1,0 +1,94 @@
+.section {
+    border-radius: 5px;
+    width: 95%;
+}
+
+body {
+    background-color: #F9F9F9;
+}
+
+
+
+.staticRecourseCards {
+    margin-left: 280px;
+    margin-right: 60px;
+    margin-top: 20px;
+}
+
+.list {
+    list-style: none;
+  }
+
+.bar {
+    padding: 20px;
+}
+
+#nav {
+    width: 10%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 2px;
+    overflow-y:scroll;
+}
+
+.drawer {
+    padding-top: 80px;
+    width: 220px;
+    background-color: #ffffff;
+}
+
+.menu-button {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .staticRecourseCards {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 20px;
+        font-size: 10px;
+    }
+
+    #static-resources-nav {
+        width: 120px;
+    }
+
+    .menu-button {
+        display: block; 
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .menu-button .fa-bars {
+        color: black;
+        font-size: 30px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+
+    #static-resources-nav .fa-times {
+        margin-left: 15px;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+
+    .drawer {
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    .drawer .nav-icon {
+        display: none;
+    }
+
+    .page-heading {
+        margin-bottom: 30px;
+        margin-top: -30px;
+        font-size: 2em;
+        
+    }
+
+}

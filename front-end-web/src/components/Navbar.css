@@ -35,11 +35,11 @@
 
 .navbar-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 80px;
   max-width: 1500px;
 }
+
 
 .navbar-logo {
   color: #fff;
@@ -52,6 +52,7 @@
   align-items: center;
 }
 
+
 .fa-typo3 {
   margin-left: 0.5rem;
   font-size: 1.8rem;
@@ -60,12 +61,9 @@
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-gap: 10px;
   list-style: none;
   text-align: center;
   width: 60vw;
-  justify-content: end;
-  margin-right: 2rem;
 }
 
 .nav-item {
@@ -89,7 +87,7 @@
   transition: all 0.2s ease-out;
 }
 
-.fa-bars {
+.menu-icon .fa-bars {
   color: #fff;
 }
 
@@ -102,17 +100,97 @@
 }
 
 @media screen and (max-width: 960px) {
+  .nav {
+    font-size: 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 0.8rem;
+  }
+} 
+
+
+
+@media screen and (max-width: 860px) {
+  #btn-login {
+    font-size: 12px;
+  }
+
+  .nav {
+    font-size: 0.8rem;
+  }
+
+  .profile-image {
+    margin-right: 10px;
+  }
+
+} 
+
+
+
+
+@media screen and (max-width: 750px) {
+  .profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 60px;
+  }
+
+  .nav {
+    font-size: 1.5rem;
+  }
+
   .NavbarItems {
     position: relative;
+  }
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+  }
+
+  #btn-login {
+    width: 120px;
+    font-size: 16px;
+    display: block; 
+    position: fixed;
+    top: 25px; 
+    right: 70px;
+  }
+
+  .nav {
+    display: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-logo {
+    color: #fff;
+    margin-left: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    position: fixed;
+    left: 10px;
   }
 
   .nav-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 600px;
     position: absolute;
     top: 80px;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 0px;
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
@@ -120,10 +198,10 @@
 
   .nav-menu.active {
     background: #242222;
+    margin-top: 0px;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
   }
 
   .nav-links {
@@ -139,12 +217,6 @@
     border-radius: 0;
   }
 
-  .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-  }
 
   .menu-icon {
     display: block;
@@ -156,7 +228,7 @@
     cursor: pointer;
   }
 
-  .fa-times {
+  .menu-icon  .fa-times {
     color: #fff;
     font-size: 2rem;
   }
@@ -183,16 +255,33 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  #btn-login {
+    width: 80px;
+    font-size: 10px;
+    padding: 3px 5px;
+    display: block; 
+    position: fixed;
+    top: 35px; 
+    right: 70px;
+  }
+
+  .navbar-container {
+    height: 60px;
+  }
+}
+
 nav ul ul {
   color: black;
-  display: none; /* Hide the sub-navigation bar by default */
+  display: none; 
   background-color: #fff;
   border: 1px solid black;
   padding: 0;
 }
 
 nav ul li:hover > ul {
-  display: block; /* Show the sub-navigation bar when the parent list item is hovered over */
+  display: block;
+  padding: 0; 
 }
 
 .新生 {

@@ -10,7 +10,7 @@ import Profile from './pages/Profile';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+  // const [button, setButton] = useState(true);
   const [log, setLog] = useState(false);
   const [info, setInfo] = useState({});
   const [inputValue, setInputValue] = useState('');
@@ -51,13 +51,13 @@ function Navbar(props) {
     props.setIsModalOpen(false);
   };
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
+  // const showButton = () => {
+  //   if (window.innerWidth <= 960) {
+  //     setButton(false);
+  //   } else {
+  //     setButton(true);
+  //   }
+  // };
 
   useEffect(() => {
     dispatch(incrementAsync());
@@ -100,11 +100,11 @@ function Navbar(props) {
   }
 
 
-  useEffect(() => {
-      showButton();
-  }, []);
+  // useEffect(() => {
+  //     showButton();
+  // }, []);
 
-  window.addEventListener('resize', showButton);
+  // window.addEventListener('resize', showButton);
 
   async function handleActivation() {
     props.getClasses();
@@ -199,10 +199,10 @@ function Navbar(props) {
           </ul>
 
           <div>
-            {button && (
+            {(
               props.picture !== "" ? 
                 <>
-                  <img
+                  <img className="profile-image"
                     style={{ height: "5vh", width: "5vh", cursor: "pointer" }}
                     src={props.picture}
                     alt="Profile"
@@ -214,8 +214,8 @@ function Navbar(props) {
                     </div>
                   )}
                 </>
-              : <button class="btn btn-light" onClick={() => {
-                change();
+              : <button id="btn-login" class="btn btn-light" onClick={() => {
+                change(); 
               }}>登陆/注册</button>)}
           </div>
         </div>

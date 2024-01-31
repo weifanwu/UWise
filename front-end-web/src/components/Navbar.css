@@ -175,6 +175,25 @@
     padding: 0;
   }
   
+
+  .nav-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+
+
+  .nav-links {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+
   .navbar-logo {
     color: #fff;
     margin-left: 0px;
@@ -260,35 +279,6 @@
   }
 }
 
-@media screen and (max-width: 440px) {
-  #btn-login {
-    width: 5rem;
-    height: 1.5rem;
-    font-size: 10px;
-    padding: 3px 3px;
-    display: block; 
-    position: fixed;
-    top: 35px; 
-    right: 70px;
-  }
-
-  .navbar-container {
-    height: 60px;
-  }
-
-  .nav-menu {
-    
-  }
-
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-  }
-  
-}
 
 nav ul ul {
   color: black;
@@ -312,4 +302,26 @@ nav ul li:hover > ul {
   position: absolute;
   right: 0px;
   bottom: 0px;
+}
+
+@media screen and (max-width: 440px) {
+  #btn-login {
+    width: 5rem;
+    height: 1.5rem;
+    font-size: 10px;
+    padding: 3px 3px;
+    display: block; 
+    position: fixed;
+    top: 35px; 
+    right: 70px;
+  }
+
+  .navbar-container {
+    height: 60px;
+  }
+
+  .nav-links {
+    font-size: 1.3rem;
+  }
+  
 }

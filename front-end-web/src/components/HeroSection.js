@@ -17,7 +17,6 @@ function HeroSection() {
           autoPlay
           loop
           muted
-          style={{ width: '1920px', height: '1080px' }}
           />
           <div className='home-image-container'>
             <img src="images/uw.jpeg" alt="uw scene" />

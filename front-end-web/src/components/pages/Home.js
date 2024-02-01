@@ -3,11 +3,11 @@ import '../../App.css';
 import HeroSection from '../HeroSection';
 import Footer from '../Footer';
 
-function Home() {
+function Home(props) {
   return (
     <>
       <HeroSection />
-      <Footer />
+      <Footer email={props.email}/>
     </>
   );
 }

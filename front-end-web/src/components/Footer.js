@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import { Modal } from 'antd';
 
-function Footer() {
+function Footer(props) {
+  const viewers = ["weifan@uw.edu", "shipeh@uw.edu"]
   return (
     <div className='footer-container'>
         <div class="content">
@@ -24,6 +23,13 @@ function Footer() {
         <div class='website-rights'>
             <small>UWise华大优智 © 2024</small>
         </div>
+        {viewers.includes(props.email) &&
+        <div style={{ color: 'white' }}>
+            <p>总访问量: <span id="qiushaocloud_sitecounter_value_site_pv">n</span></p>
+            <p>总访客量: <span id="qiushaocloud_sitecounter_value_site_uv">n</span></p>
+            <p>今日访问量: <span id="qiushaocloud_sitecounter_value_today_site_pv">n</span></p>
+            <p>今日访客量: <span id="qiushaocloud_sitecounter_value_today_site_uv">n</span></p>
+        </div>}
     </div>
   );
 }

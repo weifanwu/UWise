@@ -70,7 +70,7 @@ export default function Student(props) {
                     <ListItemIcon className="nav-icon">
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
-                    <ListItemText primary={type} />
+                    <ListItemText className="nav-text" primary={type} />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -97,7 +97,7 @@ export default function Student(props) {
                            
                         </DrawerNav>
                     ) : (
-                        <DrawerNav variant="permanent">
+                        <DrawerNav static-resources-nav variant="permanent">
                             {drawer}
                         </DrawerNav>
                     )}

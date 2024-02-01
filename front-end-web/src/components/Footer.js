@@ -16,8 +16,11 @@ function Footer(props) {
             </div>
             <div id="contact">
                 <h3>联系我们:</h3>
-                <p>邮件: admin@uwise.org</p>
-                <p>微信公众号: 华大优智</p>
+                <p>@ 邮件: admin@uwise.org</p>
+                <div class="contact-info">
+                    <img src="../images/微信公众号平台logo.png" className="contact-logo" />
+                    <p>微信公众号: 华大优智</p>
+                </div>
             </div>
         </div>
         <div class='website-rights'>

@@ -135,6 +135,17 @@
   flex-direction: column;
 }
 
+.contact-logo {
+  height: 15px;
+  width: 15px;
+  margin-top: 5px;
+  margin-right: 5px
+}
+
+.contact-info {
+  display: flex;
+}
+
 .website-rights {
   color: #fff;
   display: flex; /* Enable Flexbox */

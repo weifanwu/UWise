@@ -21,6 +21,22 @@ function Footer(props) {
                     <img src="../images/微信公众号平台logo.png" className="contact-logo" />
                     <p>微信公众号: 华大优智</p>
                 </div>
+                <div class="contact-info">
+                    <img src="../images/wechatlogo.png" className="contact-logo" />
+                    <p>微信小助手：UWiseedu</p>
+                </div>
+                <div class="contact-info">
+                    <img src="../images/instaLogo.png" className="contact-logo" />
+                    <p>Instagram: uwiseedu</p>
+                </div>
+                <div class="contact-info">
+                    <img src="../images/RedLogo.png" className="contact-logo" />
+                    <p>小红书: UWise华大优智(ID：8334742874)</p>
+                </div>
+                <div class="contact-info">
+                    <img src="../images/tiktokLogo.png" className="contact-logo" />
+                    <p>抖音：UWise2023</p>
+                </div>
             </div>
         </div>
         <div class='website-rights'>

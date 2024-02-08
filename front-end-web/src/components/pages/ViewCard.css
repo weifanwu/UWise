@@ -77,9 +77,9 @@ a {
 
 .viewCardImage {
     width: 300px;
-    height: auto;
+    height: 200px;
 
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 4px;
 }
 

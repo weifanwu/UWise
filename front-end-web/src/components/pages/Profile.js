@@ -135,7 +135,8 @@ export default function Profile(props) {
         margin: "auto",
         marginTop: "5px",
         marginRight: "5px",
-        paddingBottom: "20px"
+        paddingBottom: "20px",
+        boxShadow: "1px 1px 5px 1px gray"
     }}>
       <Form
         labelCol={{ span: 4 }}

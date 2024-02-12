@@ -1,8 +1,8 @@
 #home-video {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: auto;
   top: -60px;
-  object-fit: fill;
+  object-fit: cover;
   position: fixed;
   z-index: -1;
   filter: brightness(60%);

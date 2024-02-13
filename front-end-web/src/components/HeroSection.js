@@ -19,7 +19,7 @@ function HeroSection() {
           muted
           />
           <div className='home-image-container'>
-            <img src="images/uw.jpeg" alt="uw scene" />
+            <img src="images/uw.webp" alt="uw scene" />
           </div>
           
           <h1>Be Wise With UWise</h1>
@@ -33,7 +33,7 @@ function HeroSection() {
             添加小助手
             <AiFillWechat size={20}/>
         </div>
-        <h1 id="title">你的首席大学生活管家</h1>
+        <h1 id="title">您的首席大学生活管家</h1>
         <div className="intro-section">
             <Introduction image="../images/data.png" alt="communication" header="选课攻略" description="选得好才能考得好" text="我们有历年的华大官方的课程统计数据和历届学生的真实课评，以及每科成绩分布图。通过课程统计数据，学生可以更好的了解每一门课的内容以及难度，我们还有收录了每个quarter学生对不同professor的评论 更好的帮助学生避雷傻逼教授 以帮助华大学生选课。" button="课程评价" src="/reviews"/>
             <Introduction image="../images/static-news.png" alt="resources" header="校园指南" description="留学生活全攻略" text="作为最全面的资源整合平台，我们汇集了各种方面的攻略和教程，涵盖了 i20 身份问题、护照更新、专业申请、驾照考试、保险购买、车辆过户、社团活动等丰富信息。无论您是留学生、移民者还是新生活者，我们都致力于为您提供最全面、最实用的指南，帮助您顺利解决在新环境中遇到的各种问题。" button="校园指南" src="/resources"/>

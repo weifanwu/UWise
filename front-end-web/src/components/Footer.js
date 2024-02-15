@@ -42,12 +42,12 @@ function Footer(props) {
         <div class='website-rights'>
             <small>UWise华大优智 © 2024</small>
         </div>
-        <div style={{ display: viewers.includes(props.email) ? "block" : "none", color: 'white' }}>
+        {/* <div style={{ display: viewers.includes(props.email) ? "block" : "none", color: 'white' }}>
             <p>总访问量: <span id="qiushaocloud_sitecounter_value_site_pv">n</span></p>
             <p>总访客量: <span id="qiushaocloud_sitecounter_value_site_uv">n</span></p>
             <p>今日访问量: <span id="qiushaocloud_sitecounter_value_today_site_pv">n</span></p>
             <p>今日访客量: <span id="qiushaocloud_sitecounter_value_today_site_uv">n</span></p>
-        </div>
+        </div> */}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { WelcomeBoard } from "./Wb";
+import { WelcomeBoard } from "./WelcomeBoard";
 
 export function Dr() {
     const [data, setdata] = useState([])

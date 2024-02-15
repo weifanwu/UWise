@@ -5,35 +5,46 @@ import {
     Form,
     Input,
     Card,
-    message
+    message,
+    Select,
 } from 'antd';
 
 export function DynamicResources() {
-    const [title, settitle] = useState("")
-    const [intro, setintro] = useState("")
-    const [priority, setpriority] = useState("")
-    const [url, seturl] = useState("")
-    const [img, setimg] = useState(null)
+    const [title, setTitle] = useState("")
+    const [intro, setIntro] = useState("")
+    const [priority, setPriority] = useState("")
+    const [url, setUrl] = useState("")
+    const [img, setImg] = useState(null)
+    const [type, setType] = useState(''); // Added state for type
     const { TextArea } = Input;
+    const { Option } = Select;
 
     const handleInputChange = async (e) => {
-        let { id, value } = e.target
-        if (id === "title") {
-            settitle(value)
-        }
-        if (id === "intro") {
-            setintro(value)
-        }
-        if (id === "priority") {
-            setpriority(value)
-        }
-        if (id === "url") {
-            seturl(value)
-        }
-        if (id === "img") {
-            setimg(e.target.files[0]);
+        const { id, value, files } = e.target;
+        switch (id) {
+            case 'title':
+                setTitle(value);
+                break;
+            case 'intro':
+                setIntro(value);
+                break;
+            case 'priority':
+                setPriority(value);
+                break;
+            case 'url':
+                setUrl(value);
+                break;
+            case 'img':
+                setImg(files[0]);
+                break;
+            default:
+                break;
         }
     }
+
+    const handleTypeChange = (value) => {
+        setType(value);
+    };
 
     const [data, setdata] = useState([])
     useEffect(() => {
@@ -98,7 +109,7 @@ export function DynamicResources() {
 
                 await fetch(host + "dr/addDR", {
                     method: "POST",
-                    body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "url": url, "img": image }),
+                    body: JSON.stringify({ "title": title, "intro": intro, "priority": priority, "type": type, "url": url, "img": image }),
                     headers: {
                         'Content-Type': 'application/json',
                     }
@@ -155,6 +166,13 @@ export function DynamicResources() {
                         <div style={{ textAlign: "center" }}>
                             <p>目前有{priority1}/5 个“1”, {priority2}/无限 个“2”</p>
                         </div>
+                        <Form.Item label="类型" name="type">
+                            <Select defaultValue="" onChange={handleTypeChange} value={type}>
+                                <Option value="校园生活">校园生活</Option>
+                                <Option value="校园新闻">校园新闻</Option>
+                                <Option value="社团活动">社团活动</Option>
+                            </Select>
+                        </Form.Item>
                         <Form.Item label="图片" name="img">
                             <Input
                                 type="file"

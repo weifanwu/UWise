@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './Wb.css';
+import './WelcomeBoard.css';
 
 export function WelcomeBoard(props) {
     const [slideWidth, setwidth] = useState(1000)
     const [click, setclick] = useState(false)
     const [clickT, setclickT] = useState(false)
+    const [selectedTab, setSelectedTab] = useState('全部');
 
     const switchleft = () => {
         if (!clickT) {
@@ -74,38 +75,60 @@ export function WelcomeBoard(props) {
         })
     }
 
-    let div2 = null
-    if (props.priority2.length > 0) {
-        div2 = props.priority2.map((item) => {
-            const introContent = item.Intro.split("\n");
-            console.log("this is the intro content: ");
-            console.log(introContent);
-            return (
-              <div className='eachNews' key={item.id}>
-                <img src={item.Img} alt="boardimg" />
-                <h2 className='newTitle' >{item.Title}</h2>
-                <a href={item.URL} target="_blank" rel="noopener noreferrer">
-                  <div className='hover'>
-                    {introContent.map((intro, index) => (
-                      <p key={index} className='intro'>{intro}</p>
-                    ))}
-                  </div>
-                </a>
-              </div>
-            );
-          });          
-    }
+    let filteredPriority2Events = props.priority2.filter(item => 
+        item.type === selectedTab || 
+        (selectedTab === '全部' && ( !item.type || item.type === "" || item.type === null))
 
-    return (
-        <div className='dr_container'>
-            <div className='welcomeBoard'>
+    );
+
+
+    let div2 = null;
+if (props.priority2.length > 0) {
+    div2 =  filteredPriority2Events.map((item) => {
+        const introContent = item.Intro.split("\n");
+
+        return (
+            <div className='eachNews' key={item.id}>
+                    <a href={item.URL} target="_blank" rel="noopener noreferrer">
+                        <img src={item.Img} alt="boardimg" />
+                    </a>
+                
+                <div className='event-p2-content'>
+                    <h3>{item.Title}</h3>
+                    {introContent.map((intro, index) => (
+                        <p key={index} className='intro'>{intro}</p>
+                    ))}
+                    <a href={item.URL} target="_blank" rel="noopener noreferrer" className="learn-more">Learn More</a>
+                </div>
+            </div>
+        );
+    });          
+}
+
+return (
+    <div>
+        <div className="event_p1-container">
+            <div className='event_p1_slider'>
                 <div className='slides'>
                     {div}
                 </div>
                 <div className="prev" onClick={switchleft}>❮</div>
                 <div className="next" onClick={switchright}>❯</div>
-            </div >
+            </div>
+        </div>
+
+        {/* Tab selection */} 
+        <div className="tabs-container">
+            <p className={selectedTab === '全部' ? 'active' : ''} onClick={() => setSelectedTab('全部')}>全部</p>
+            <p className={selectedTab === '校园活动' ? 'active' : ''} onClick={() => setSelectedTab('校园活动')}>校园活动</p>
+            <p className={selectedTab === '校园新闻' ? 'active' : ''} onClick={() => setSelectedTab('校园新闻')}>校园新闻</p>
+            <p className={selectedTab === '社团活动' ? 'active' : ''} onClick={() => setSelectedTab('社团活动')}>社团活动</p>
+        </div>
+
+
+        <div className='event_p2_container'>
             {div2}
         </div>
+    </div>
     );
 }

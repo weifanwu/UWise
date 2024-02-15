@@ -10,7 +10,7 @@ import Student from './components/pages/StaticResources.js';
 import ClassHome from './components/pages/Class';
 import ResourceMap from './components/pages/ResourceMap';
 import Payment from './components/pages/Payment';
-import {Dr} from './components/pages/Dr';
+import {Dr} from './components/pages/DynamicResources.js';
 import VideoDisplay from './components/pages/VideoDisplay.js';
 
 const host = process.env.REACT_APP_BACKEND_HOST;

@@ -33,6 +33,10 @@ function App() {
     if (!window.location.pathname.includes("mobile") && /(Mobile)/i.test(navigator.userAgent)) {
       message.warning("最佳效果请在电脑端查看哦～");
     }
+    const script = document.createElement("script");
+    script.src = "//githubcdn.qiushaocloud.top/gh/qiushaocloud/site-counter@master/dist/qiushaocloud_site_counter.min.js";
+    document.body.appendChild(script);
+    localStorage.setItem('qiushaocloud_sitecounter_max_session_duration', 24 * 60 * 60 * 1000);
     getUser();
   }, []);
 
@@ -102,7 +106,7 @@ function App() {
       <Router>
         <Navbar profileInfo={profileInfo ? profileInfo : ""} email={profile? profile.email : ""} getClasses={getClasses} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} picture={(profile) ? profile.picture : ""} />
         <Routes>
-          <Route path='/' exact element={<Home />} />
+          <Route path='/' exact element={<Home email={profile ? profile.email : ""}/>} />
           <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />
           <Route path='/reviews' element={<CourseReview />} />
           <Route path='/class/:id' element={<ProtectedRoute ><ClassHome /></ProtectedRoute>} />

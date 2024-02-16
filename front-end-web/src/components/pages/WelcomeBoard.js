@@ -77,7 +77,7 @@ export function WelcomeBoard(props) {
 
     let filteredPriority2Events = props.priority2.filter(item => 
         item.Type === selectedTab || 
-        (selectedTab === '全部' && ( !item.Type || item.Type === "" || item.Type === null))
+        (selectedTab === '全部')
 
     );
 

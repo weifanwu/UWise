@@ -1,4 +1,4 @@
-import Moderation from "./Moderation.js";
+import Moderation from "./   .js";
 import { useState, useEffect } from "react";
 import "./App.css"
 

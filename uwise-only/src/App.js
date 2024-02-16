@@ -24,6 +24,7 @@ function App() {
         <Buy />
         <StaticResources />
         <DynamicResources />
+        <ContentModeration />
       </Flex>
     </div>
   );

@@ -169,24 +169,24 @@ function Navbar(props) {
               </Link>
             </li>
             <li className='nav-item' data-bs-toggle="dropdown">
-                <Dropdown
-                  dropdownRender={() => (
-                    <div style={contentStyle}>
-                      <Input
-                      onChange={handleChange}
-                      placeholder="请输入激活码" />
-                      <Divider style={{ margin: 0 }} />
-                      <Space style={{ padding: 8 }}>
-                      <Button onClick={handleActivation} type="primary">激活</Button>
-                      </Space>
-                    </div>
-                  )}
-                >
-                <Link
-                to='/classes'
-                className='nav-links'
-                >课程</Link>
-                </Dropdown>
+              <Dropdown
+                dropdownRender={() => (
+                  <div style={contentStyle}>
+                    <Input
+                    onChange={handleChange}
+                    placeholder="请输入激活码" />
+                    <Divider style={{ margin: 0 }} />
+                    <Space style={{ padding: 8 }}>
+                    <Button onClick={handleActivation} type="primary">激活</Button>
+                    </Space>
+                  </div>
+                )}
+              >
+              <Link
+              to='/classes'
+              className='nav-links'
+              >课程</Link>
+              </Dropdown>
             </li>
             <li className ='nav-item'>
               <Link
@@ -195,6 +195,25 @@ function Navbar(props) {
               >
                 新闻/活动
               </Link>
+            </li>
+            <li className = "nav-item" data-bs-toggle="dropdown">
+            <Dropdown
+                dropdownRender={() => (
+                  <div style={contentStyle}>
+                    <Input
+                    onChange={handleChange}/>
+                    <Divider style={{ margin: 0 }} />
+                    <Space style={{ padding: 8 }}>
+                    <Button onClick={handleActivation} type="primary">搜索</Button>
+                    </Space>
+                  </div>
+                )}
+              >
+              <Link
+              to='/classes'
+              className='nav-links'
+              >搜索</Link>
+              </Dropdown>
             </li>
           </ul>
 

@@ -19,7 +19,9 @@ p {
     display: grid;
     grid-template-columns: auto; 
     grid-template-rows: auto; 
-    width: 100%;
+    width: 900px;
+    height: 200px;
+    object-fit: fill;
     max-width: 1200px;
     margin: auto;
     gap: 20px; 
@@ -87,6 +89,10 @@ p {
     width: 736px;
 }
 
+.slide h2 {
+    font-size: 20px;
+}
+
 .prev,
 .next {
     cursor: pointer;
@@ -124,7 +130,8 @@ p {
 
 .eachNews img {
     width: 300px; 
-    height: auto; 
+    height: 200px;
+    object-fit: cover; 
     margin-right: 20px; 
     border-radius: 7px;
 }

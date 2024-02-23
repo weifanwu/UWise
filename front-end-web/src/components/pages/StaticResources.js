@@ -97,7 +97,7 @@ export default function Student(props) {
                            
                         </DrawerNav>
                     ) : (
-                        <DrawerNav static-resources-nav variant="permanent">
+                        <DrawerNav id="static-resources-nav" variant="permanent">
                             {drawer}
                         </DrawerNav>
                     )}

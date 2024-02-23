@@ -79,7 +79,9 @@ export default function Student(props) {
     );
 
     return (
-        <div>
+        <div style={{
+          display: "flex"
+        }}>
             <div className='menu-button' onClick={toggleDrawer}>
               <i className='fas fa-bars'/>
            </div>

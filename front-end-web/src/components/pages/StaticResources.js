@@ -88,8 +88,10 @@ export default function Student(props) {
             {(
                 <>
                     {isSmallScreen ? (
-                        <DrawerNav
-                            id="static-resources-nav"
+                        <Drawer
+                            style={{
+                              position: "fixed"
+                            }}
                             variant="temporary"
                             open={isDrawerOpen}
                             onClose={toggleDrawer}
@@ -97,11 +99,15 @@ export default function Student(props) {
                              <i className='fas fa-times' onClick={toggleDrawer}/>
                             {drawer}
                            
-                        </DrawerNav>
+                        </Drawer>
                     ) : (
-                        <DrawerNav id="static-resources-nav" variant="permanent">
+                        <Drawer 
+                            style={{
+                              position: "fixed"
+                            }}                            
+                            variant="permanent">
                             {drawer}
-                        </DrawerNav>
+                        </Drawer>
                     )}
 
                     {isSmallScreen && selectedType && (

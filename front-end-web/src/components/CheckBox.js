@@ -1,21 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Checkbox extends Component {
-  render() {
-    const { id, title, name, handleChange, checked, defaultChecked } = this.props;
+const Checkbox = ({
+  id,
+  title,
+  name,
+  handleChange,
+  checked,
+  defaultChecked,
+}) => {
+  return (
+    <div className="box">
+      <input
+        id={id}
+        type="checkbox"
+        name={name}
+        onChange={handleChange}
+        defaultChecked={defaultChecked}
+        checked={checked}
+      />
+      <label htmlFor={id}>{title}</label>
+    </div>
+  );
+};
 
-    return (
-      <div className="box">
-        <input
-          id={id}
-          type="checkbox"
-          name={name}
-          onChange={handleChange}
-          defaultChecked={defaultChecked}
-          checked={checked}
-        />
-        <label htmlFor={id}>{title}</label>
-      </div>
-    );
-  }
-}
+export default Checkbox;

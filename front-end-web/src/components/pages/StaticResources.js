@@ -35,7 +35,6 @@ export default function Student(props) {
       })
       .catch((error) => console.error(error));
     handle("专业申请"); // Default type or initial type
-    console.log("MyComponent rendered");
   }, []);
 
   const handle = (type) => {
@@ -61,6 +60,7 @@ export default function Student(props) {
 
   const drawer = (
     <div className="drawer">
+      {console.log("MyComponent rendered")}
       <List>
         {types.map((type, index) => (
           <ListItem className={"selected-drawer"} key={type} disablePadding>

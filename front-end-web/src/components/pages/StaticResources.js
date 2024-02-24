@@ -1,132 +1,137 @@
 import React, { useState, useEffect } from "react";
-import ViewCard from './ViewCard';
+import ViewCard from "./ViewCard";
 import "./ViewCard.css";
 import "./Article.css";
-import Drawer from '@mui/material/Drawer';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import { styled } from '@mui/system';
-import MenuIcon from '@mui/icons-material/Menu'; 
+import Drawer from "@mui/material/Drawer";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MailIcon from "@mui/icons-material/Mail";
+import { styled } from "@mui/system";
+import MenuIcon from "@mui/icons-material/Menu";
 import "./StaticResources.css";
 
 export default function Student(props) {
-    const [cards, setCards] = useState([]);
-    const [types, setTypes] = useState([]); // State to store the types for tabs
-    const [selectedType, setSelectedType] = useState(null);
-    const host = process.env.REACT_APP_BACKEND_HOST;
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-    // Fetch the types for the tabs and initial data
-    useEffect(() => {
-        fetch(host + '/resources/getTypes')
-          .then(response => response.json())
-          .then(data => {
-            const rent = data.indexOf("租房攻略");
-            const dorm = data.indexOf("宿舍攻略");
-            data.splice(rent, 1);
-            data.splice(dorm, 1);
-            data.push("租房攻略");
-            data.push("宿舍攻略");
-            setTypes(data);
+  const [cards, setCards] = useState([]);
+  const [types, setTypes] = useState([]); // State to store the types for tabs
+  const [selectedType, setSelectedType] = useState(null);
+  const host = process.env.REACT_APP_BACKEND_HOST;
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  // Fetch the types for the tabs and initial data
+  useEffect(() => {
+    fetch(host + "/resources/getTypes")
+      .then((response) => response.json())
+      .then((data) => {
+        const rent = data.indexOf("租房攻略");
+        const dorm = data.indexOf("宿舍攻略");
+        data.splice(rent, 1);
+        data.splice(dorm, 1);
+        data.push("租房攻略");
+        data.push("宿舍攻略");
+        setTypes(data);
+      })
+      .catch((error) => console.error(error));
+    handle("专业申请"); // Default type or initial type
+  }, []);
 
-          })
-          .catch(error => console.error(error));
-        handle("专业申请"); // Default type or initial type
-    }, []);
+  const handle = (type) => {
+    fetch(host + "/resources/getStaticResource?type=" + type)
+      .then((response) => response.json())
+      .then((data) => {
+        setCards(data);
+        setSelectedType(type);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      })
+      .catch((error) => console.error(error));
+  };
 
-    const handle = (type) => {
-        fetch(host + '/resources/getStaticResource?type=' + type)
-          .then(response => response.json())
-          .then(data => {
-            setCards(data);
-            setSelectedType(type);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          })
-          .catch(error => console.error(error));
-    };
+  const StyledDrawer = styled(Drawer)({
+    position: "fixed",
+  });
 
-    const DrawerNav = styled(Drawer)({
-        position: "fixed",
-    });
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
-    const toggleDrawer = () => {
-      setIsDrawerOpen(!isDrawerOpen);
-    };
+  const isSmallScreen = window.innerWidth < 600;
 
-    const isSmallScreen = window.innerWidth < 600;
+  const drawer = (
+    <div className="drawer">
+      <List>
+        {types.map((type, index) => (
+          <ListItem className={"selected-drawer"} key={type} disablePadding>
+            <ListItemButton
+              onClick={() => handle(type)}
+              style={{
+                backgroundColor:
+                  selectedType === type ? "#f0f0f0" : "transparent",
+              }}
+            >
+              <ListItemIcon className="nav-icon">
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText className="nav-text" primary={type} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
+  return (
+    <div
+      style={{
+        display: "flex",
+      }}
+    >
+      <div className="menu-button" onClick={toggleDrawer}>
+        <i className="fas fa-bars" />
+      </div>
+      {
+        <>
+          {isSmallScreen ? (
+            <StyledDrawer
+              style={{
+                position: "fixed",
+              }}
+              variant="temporary"
+              open={isDrawerOpen}
+              onClose={toggleDrawer}
+            >
+              <i className="fas fa-times" onClick={toggleDrawer} />
+              {drawer}
+            </StyledDrawer>
+          ) : (
+            <StyledDrawer
+              style={{
+                position: "fixed",
+              }}
+              variant="permanent"
+            >
+              {drawer}
+            </StyledDrawer>
+          )}
 
-    const drawer = (
-        <div className="drawer">
-          <List>
-              {types.map((type, index) => (
-                <ListItem className={"selected-drawer"} key={type} disablePadding>
-                  <ListItemButton onClick={() => handle(type)} 
-                  style={{backgroundColor: selectedType === type ? '#f0f0f0' : 'transparent'}}>
-                    <ListItemIcon className="nav-icon">
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText className="nav-text" primary={type} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-          </List>
-        </div>
-    );
+          {isSmallScreen && selectedType && (
+            <h1 className="page-heading">{selectedType}</h1>
+          )}
 
-    return (
-        <div style={{
-          display: "flex"
-        }}>
-            <div className='menu-button' onClick={toggleDrawer}>
-              <i className='fas fa-bars'/>
-           </div>
-            {(
-                <>
-                    {isSmallScreen ? (
-                        <Drawer
-                            style={{
-                              position: "fixed"
-                            }}
-                            variant="temporary"
-                            open={isDrawerOpen}
-                            onClose={toggleDrawer}
-                        >
-                             <i className='fas fa-times' onClick={toggleDrawer}/>
-                            {drawer}
-                           
-                        </Drawer>
-                    ) : (
-                        <Drawer 
-                            style={{
-                              position: "fixed"
-                            }}                            
-                            variant="permanent">
-                            {drawer}
-                        </Drawer>
-                    )}
-
-                    {isSmallScreen && selectedType && (
-                        <h1 className="page-heading">{selectedType}</h1>
-                    )}
-
-                    <div className="staticRecourseCards">
-                        {cards.map((card) => (
-                            <ViewCard
-                                key={card._id}
-                                title={card.title}
-                                intro={card.intro}
-                                img={card.img}
-                                url={card.url}
-                            />
-                        ))}
-                    </div>
-                </>
-            )}
-        </div>
-    );
+          <div className="staticRecourseCards">
+            {cards.map((card) => (
+              <ViewCard
+                key={card._id}
+                title={card.title}
+                intro={card.intro}
+                img={card.img}
+                url={card.url}
+              />
+            ))}
+          </div>
+        </>
+      }
+    </div>
+  );
 }

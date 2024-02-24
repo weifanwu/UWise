@@ -35,6 +35,7 @@ export default function Student(props) {
       })
       .catch((error) => console.error(error));
     handle("专业申请"); // Default type or initial type
+    console.log("MyComponent rendered");
   }, []);
 
   const handle = (type) => {

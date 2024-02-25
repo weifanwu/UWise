@@ -22,21 +22,27 @@ export default function Student(props) {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     // Fetch the types for the tabs and initial data
     useEffect(() => {
-        fetch(host + '/resources/getTypes')
-          .then(response => response.json())
-          .then(data => {
-            const rent = data.indexOf("租房攻略");
-            const dorm = data.indexOf("宿舍攻略");
-            data.splice(rent, 1);
-            data.splice(dorm, 1);
-            data.push("租房攻略");
-            data.push("宿舍攻略");
-            setTypes(data);
-
-          })
-          .catch(error => console.error(error));
-        handle("专业申请"); // Default type or initial type
+      fetch(host + '/resources/getTypes')
+        .then(response => response.json())
+        .then(data => {
+          const orderedTypes = ["社团汇总", "专业申请", "宿舍攻略", "租房攻略", "证件攻略"];
+          
+          const sortedTypes = data.sort((a, b) => {
+            let indexA = orderedTypes.indexOf(a);
+            let indexB = orderedTypes.indexOf(b);
+            indexA = indexA === -1 ? 999 : indexA;
+            indexB = indexB === -1 ? 999 : indexB;
+            
+            return indexA - indexB;
+          });
+  
+          setTypes(sortedTypes);
+  
+        })
+        .catch(error => console.error(error));
+      handle("社团汇总"); // Default type or initial type
     }, []);
+
 
     const handle = (type) => {
         fetch(host + '/resources/getStaticResource?type=' + type)

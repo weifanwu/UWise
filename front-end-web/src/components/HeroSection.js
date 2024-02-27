@@ -22,7 +22,7 @@ function HeroSection() {
             <img src="images/uw.webp" alt="uw scene" />
           </div>
           
-          <h1>Be Wise With UWise</h1>
+          <h1>华大优智</h1>
           <p>"在智慧中发现成功"</p>
         </div>
         <div id="weChat" onClick={

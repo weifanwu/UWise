@@ -138,8 +138,7 @@ function Navbar(props) {
       <nav className='nav'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            <img src="../images/uwise5.png" className="logo" />
-            UWise EDU
+            UWise
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

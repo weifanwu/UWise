@@ -7,7 +7,7 @@ function Home(props) {
   return (
     <>
       <HeroSection />
-      <Footer email={props.email}/>
+      {/* <Footer email={props.email}/> */}
     </>
   );
 }

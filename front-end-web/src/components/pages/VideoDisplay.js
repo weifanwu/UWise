@@ -9,28 +9,6 @@ function VideoDisplay(props) {
 
   const host = process.env.REACT_APP_BACKEND_HOST;
 
-  //   const videoUrl = `${host}/courses/getVideo?courseName=${encodeURIComponent(
-  //     currentLecture.courseName
-  //   )}&lecture=${encodeURIComponent(currentLecture.title)}`;
-
-  //   const handlePlayButtonClick = () => {
-  //     fetch(
-  //       `${host}/courses/getVideo?courseName=${encodeURIComponent(
-  //         currentLecture.courseName
-  //       )}&lecture=${encodeURIComponent(currentLecture.title)}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then((url) => {
-  //         const iframe = document.getElementById("videoIframe");
-  //         setVideoUrl(url[0]);
-  //         iframe.style.display = "block";
-  //         const VideoPlayButtonClick = document.getElementById("video-play-btn");
-  //         VideoPlayButtonClick.style.display = "none";
-  //         const cover = document.getElementById("cover");
-  //         cover.style.display = "none";
-  //       });
-  //   };
-
   const handlePlayButtonClick = () => {
     const videoUrl = `${host}/courses/getVideo?courseName=${encodeURIComponent(
       currentLecture.courseName

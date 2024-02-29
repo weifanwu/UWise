@@ -17,7 +17,6 @@ import ResourceMap from "./components/pages/ResourceMap";
 import Payment from "./components/pages/Payment";
 import { Dr } from "./components/pages/DynamicResources.js";
 import VideoDisplay from "./components/pages/VideoDisplay.js";
-import VideoPlayer from "./components/pages/VideoPlayer.js";
 
 const host = process.env.REACT_APP_BACKEND_HOST;
 
@@ -158,7 +157,6 @@ function App() {
             }
           />
           <Route path="/video/:videoId" element={<VideoDisplay />} />
-          <Route path="/video" element={<VideoPlayer />} />
           <Route path="/resources" element={<Student />} />
           <Route path="/map" element={<ResourceMap />} />
           <Route path="/news" element={<Dr />} />

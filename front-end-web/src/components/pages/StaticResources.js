@@ -66,6 +66,7 @@ export default function Student(props) {
     const isSmallScreen = window.innerWidth < 600;
 
 
+
     const drawer = (
         <div className="drawer">
           <List>
@@ -119,7 +120,7 @@ export default function Student(props) {
                                 title={card.title}
                                 intro={card.intro}
                                 img={card.img}
-                                url={card.url}
+                                urls={card.urls}
                             />
                         ))}
                     </div>

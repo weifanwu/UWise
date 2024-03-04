@@ -1,5 +1,52 @@
 import React, { useState } from 'react';
-import { Button, Card, Form, Input, message } from 'antd';
+import { Button, Card, Form, Input, message, Space} from 'antd';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+
+const DynamicLinkForm = ({ form }) => {
+  const onFinish = (values) => {
+    console.log('Received values of form:', values);
+  };
+
+  return (
+    <Form form={form} name="dynamic_link_form" onFinish={onFinish} autoComplete="off">
+      <Form.List
+        name="urls"
+        initialValue={[{ text: '', url: '' }]} 
+      >
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                <Form.Item
+                  {...restField}
+                  name={[name, 'text']}
+                  rules={[{ required: true, message: 'Missing link text' }]}
+                  label="显示文字"
+                >
+                  <Input placeholder="text" />
+                </Form.Item>
+                <Form.Item
+                  {...restField}
+                  name={[name, 'url']}
+                  rules={[{ required: true, message: 'Missing URL' }]}
+                  label="链接"
+                >
+                  <Input placeholder="https://" />
+                </Form.Item>
+                <MinusCircleOutlined onClick={() => remove(name)} />
+              </Space>
+            ))}
+            <Form.Item>
+              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                Add Link
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+    </Form>
+  );
+};
 
 
 const StaticResources = () => {
@@ -15,6 +62,13 @@ const StaticResources = () => {
 
   const handleSubmit = async (values) => {
     try {
+      const links = values.links || [];
+      const linksMap = {};
+      links.forEach(link => {
+        linksMap[link.text] = link.url;
+      });
+
+      console.log("Links hashmap:", linksMap);
 
       const apiKey = process.env.REACT_APP_SMMS_API_KEY;
       const formData = new FormData();
@@ -46,7 +100,8 @@ const StaticResources = () => {
       console.log("this is the ");
       console.log(values);
       console.log(values["简介"]);
-      const payload = { ...values, img: url };
+
+      const payload = { ...values, img: url, url: linksMap };
 
       await fetch(host + 'resources/addStaticResource', {
         method: 'POST',
@@ -93,9 +148,12 @@ const StaticResources = () => {
             name="img"
             onChange={(e) => handleFileUpload(e)} />
         </Form.Item>
-        <Form.Item label="链接" name="url">
+        {/* <Form.Item label="链接" name="url">
           <Input />
-        </Form.Item>
+        </Form.Item> */}
+
+       <DynamicLinkForm form={form} />
+        
         <Form.Item>
           <Button type="primary" htmlType="submit">
             录入

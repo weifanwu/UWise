@@ -108,7 +108,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home email={profile ? profile.email : ""}/>} />
           <Route path='/classes' element={<Services isLoggedIn={profile ? true : false} />} />
-          <Route path='/reviews' element={<CourseReview />} />
+          {/* <Route path='/reviews' element={<CourseReview />} /> */}
           <Route path='/class/:id' element={<ProtectedRoute ><ClassHome /></ProtectedRoute>} />
           <Route path='/payment' element={<Payment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} userInfo={profile} classNames={classNames} />} />
           <Route path="/video/:videoId" element={<VideoDisplay/>} />

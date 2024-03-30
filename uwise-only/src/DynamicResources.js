@@ -168,7 +168,7 @@ export function DynamicResources() {
                         </div>
                         <Form.Item label="类型" name="type">
                             <Select defaultValue="" onChange={handleTypeChange} value={type}>
-                                <Option value="校园生活">校园生活</Option>
+                                <Option value="校园活动">校园活动</Option>
                                 <Option value="校园新闻">校园新闻</Option>
                                 <Option value="社团活动">社团活动</Option>
                             </Select>

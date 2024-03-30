@@ -86,15 +86,19 @@ export default function Student(props) {
     );
 
     return (
-        <div>
+        <div style={{
+          display: "flex"
+        }}>
             <div className='menu-button' onClick={toggleDrawer}>
               <i className='fas fa-bars'/>
            </div>
             {(
                 <>
                     {isSmallScreen ? (
-                        <DrawerNav
-                            id="static-resources-nav"
+                        <Drawer
+                            style={{
+                              position: "fixed"
+                            }}
                             variant="temporary"
                             open={isDrawerOpen}
                             onClose={toggleDrawer}
@@ -102,11 +106,15 @@ export default function Student(props) {
                              <i className='fas fa-times' onClick={toggleDrawer}/>
                             {drawer}
                            
-                        </DrawerNav>
+                        </Drawer>
                     ) : (
-                        <DrawerNav static-resources-nav variant="permanent">
+                        <Drawer 
+                            style={{
+                              position: "fixed"
+                            }}                            
+                            variant="permanent">
                             {drawer}
-                        </DrawerNav>
+                        </Drawer>
                     )}
 
                     {isSmallScreen && selectedType && (

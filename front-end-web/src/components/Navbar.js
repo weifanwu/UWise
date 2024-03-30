@@ -150,7 +150,7 @@ function Navbar(props) {
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link
                 to='/reviews'
                 className='nav-links'
@@ -158,7 +158,7 @@ function Navbar(props) {
               >
                 Course Review
               </Link>
-            </li>
+            </li> */}
             <li className='nav-item'>
               <Link
                 to='/resources'

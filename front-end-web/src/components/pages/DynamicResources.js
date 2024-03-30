@@ -13,8 +13,8 @@ export function Dr() {
     const [priority1, setpriority1] = useState([])
     const [priority2, setpriority2] = useState([])
     useEffect(() => {
-        setpriority1(data.filter(item => item.Priority == "1"))
-        setpriority2(data.filter(item => item.Priority == "2"))
+        setpriority1(data.filter(item => item.Priority === "1"))
+        setpriority2(data.filter(item => item.Priority === "2"))
     }, [data])
     return (
         <div id="Dr">

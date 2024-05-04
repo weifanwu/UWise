@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../../App.css";
 import "./CourseReview.css";
+import ReviewForm from "../ReviewForm.js";
 import {
   Button,
   DatePicker,
@@ -11,11 +12,15 @@ import {
   Upload,
   Card,
   message,
+  Rate,
+  Flex,
 } from "antd";
 
 function CourseReview() {
   let { courseName } = useParams();
   const navigate = useNavigate();
+  const { Option } = Select;
+  const { TextArea } = Input;
 
   const frontendHost = process.env.REACT_APP_FRONTEND_HOST;
   const backendHost = process.env.REACT_APP_BACKEND_HOST;
@@ -110,14 +115,10 @@ function CourseReview() {
           <h2>课程评价</h2>
           <p>{JSON.stringify(reviews)}</p>
         </section>
-        <form className="review-form">
+        <section className="course-review">
           <h2>添加评价</h2>
-          <label>
-            Please rate the course:
-            <input type="range" min="1" max="5" />
-          </label>
-          <button type="submit">Submit Feedback</button>
-        </form>
+          <ReviewForm />
+        </section>
       </div>
     </>
   );

@@ -117,7 +117,7 @@ function CourseReview() {
         </section>
         <section className="course-review">
           <h2>添加评价</h2>
-          <ReviewForm />
+          <ReviewForm courseName={courseName} />
         </section>
       </div>
     </>

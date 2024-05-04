@@ -1,13 +1,113 @@
-import React from "react";
-import { Form, Select, DatePicker, Rate, Input, Button, Col, Row } from "antd";
+import React, { useState } from "react";
+import {
+  Form,
+  Select,
+  DatePicker,
+  Rate,
+  Input,
+  Button,
+  Col,
+  Row,
+  message,
+} from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 const { TextArea } = Input;
 
 function ReviewForm({ courseName }) {
+  const [form] = Form.useForm();
+  const [difficulty, setDifficulty] = useState(3);
+  const [recommendation, setRecommendation] = useState(3);
+  const [popularity, setPopularity] = useState(3);
+
+  const backendHost = process.env.REACT_APP_BACKEND_HOST;
+
+  //   const handleSubmit = (values) => {
+  //     console.log({ values, ratings: [difficulty, recommendation, popularity] });
+  //     message.success("提交成功，请等待审核");
+  //     form.resetFields();
+  //     setDifficulty(3);
+  //     setRecommendation(3);
+  //     setPopularity(3);
+  //   };
+
+  const handleSubmit = async (values) => {
+    try {
+      // Extract values and format as required
+      console.log("Values: " + JSON.stringify(values));
+      const { quarter, year, instructor, comment } = values;
+      const ratings = [difficulty, recommendation, popularity];
+
+      // Format the year correctly from the DatePicker value
+      const formattedYear = year ? year.format("YYYY") : "";
+
+      // Combine quarter and year as expected by backend
+      //   const quarterYear = `${quarter} ${formattedYear}`;
+
+      // Prepare data for backend submission
+      const reviewData = {
+        courseName,
+        instructor,
+        quarter,
+        year: formattedYear,
+        ratings,
+        comment,
+      };
+
+      console.log("ReviewData: " + JSON.stringify(reviewData));
+
+      // Send the POST request to the backend using fetch
+      const response = await fetch(
+        `${backendHost}/courseReview/addReviewsForCourse`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reviewData),
+        }
+      );
+
+      // Handle the response from the backend
+      if (response.ok) {
+        console.log("111111");
+        const responseBody = await response.json();
+        message.success("提交成功，请等待审核");
+        form.resetFields(); // Reset form fields after successful submission
+        setDifficulty(3);
+        setRecommendation(3);
+        setPopularity(3);
+        return;
+      } else {
+        // Handle HTTP errors
+        console.log("222222");
+        const errorResponse = await response.text(); // or response.json() if the server responds with JSON
+        console.log("Server error:", errorResponse);
+        message.error("提交失败，请稍后重试");
+        return;
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.log("333333");
+      console.log("Network or other error:", error);
+      message.error("提交失败，请检查网络和输入后重试");
+    }
+  };
+
+  const handleFailedSubmission = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    message.error("提交失败，请检查输入后重试");
+  };
+
   return (
-    <Form layout="vertical" className="review-form">
+    <Form
+      form={form}
+      layout="vertical"
+      className="review-form"
+      onFinish={handleSubmit}
+      onSubmitFailed={handleFailedSubmission}
+    >
       <Row gutter={16}>
         <Col span={4}>
           <Form.Item
@@ -33,7 +133,7 @@ function ReviewForm({ courseName }) {
           </Form.Item>
         </Col>
         <Col span={4}>
-          <Form.Item label="教授名称" name="instrutor">
+          <Form.Item label="教授名称" name="instructor">
             <Input />
           </Form.Item>
         </Col>
@@ -51,20 +151,32 @@ function ReviewForm({ courseName }) {
           </Form.Item>
         </Col>
         <Col span={10}>
-          {" "}
+          {/* {" "} */}
           {/* Adjusted from 12 to 10 to make the ratio approximately 6:4 */}
           <Form.Item label="选择评分" name="ratings">
             <div>
-              <Rate defaultValue={3} allowClear={false} />
-              <span className="rate-label">难度</span>
+              <Rate
+                value={difficulty}
+                onChange={setDifficulty}
+                allowClear={false}
+              />
+              <span className="rate-label"> | 难度</span>
             </div>
             <div>
-              <Rate defaultValue={3} allowClear={false} />
-              <span className="rate-label">推荐指数</span>
+              <Rate
+                value={recommendation}
+                onChange={setRecommendation}
+                allowClear={false}
+              />
+              <span className="rate-label"> | 推荐指数</span>
             </div>
             <div>
-              <Rate defaultValue={3} allowClear={false} />
-              <span className="rate-label">热门度</span>
+              <Rate
+                value={popularity}
+                onChange={setPopularity}
+                allowClear={false}
+              />
+              <span className="rate-label"> | 热门度</span>
             </div>
           </Form.Item>
         </Col>

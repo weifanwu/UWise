@@ -37,6 +37,10 @@ function CourseReview() {
     getReviews();
   }, []);
 
+  const onReviewSubmitted = () => {
+    getReviews(); // Refetch the reviews after a new one is added
+  };
+
   // const formatCourseName = (courseName) => {
   //   // Replace underscore in the course name with space
   //   setName(courseName.replace(/_/g, " "));
@@ -117,7 +121,10 @@ function CourseReview() {
         </section>
         <section className="course-review">
           <h2>添加评价</h2>
-          <ReviewForm courseName={courseName} />
+          <ReviewForm
+            courseName={courseName}
+            onReviewSubmitted={onReviewSubmitted}
+          />
         </section>
       </div>
     </>

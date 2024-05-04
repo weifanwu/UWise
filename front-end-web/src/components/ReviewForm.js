@@ -15,7 +15,7 @@ import { CalendarOutlined } from "@ant-design/icons";
 const { Option } = Select;
 const { TextArea } = Input;
 
-function ReviewForm({ courseName }) {
+function ReviewForm({ courseName, onReviewSubmitted }) {
   const [form] = Form.useForm();
   const [difficulty, setDifficulty] = useState(3);
   const [recommendation, setRecommendation] = useState(3);
@@ -75,6 +75,9 @@ function ReviewForm({ courseName }) {
         const responseBody = await response.json();
         message.success("提交成功，请等待审核");
         form.resetFields(); // Reset form fields after successful submission
+        if (onReviewSubmitted) {
+          onReviewSubmitted(); // Trigger the callback to refetch reviews
+        }
         setDifficulty(3);
         setRecommendation(3);
         setPopularity(3);

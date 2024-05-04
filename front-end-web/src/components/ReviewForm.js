@@ -9,9 +9,13 @@ function ReviewForm({ courseName }) {
   return (
     <Form layout="vertical" className="review-form">
       <Row gutter={16}>
-        <Col span={8}>
-          <Form.Item label="选择学期" name="semester">
-            <Select defaultValue="AU" placeholder="Select a semester">
+        <Col span={4}>
+          <Form.Item
+            label="选择学期"
+            name="quarter"
+            rules={[{ required: true, message: "请选择学期!" }]}
+          >
+            <Select placeholder="Select a quarter">
               <Option value="AU">Autumn</Option>
               <Option value="WI">Winter</Option>
               <Option value="SP">Spring</Option>
@@ -19,9 +23,18 @@ function ReviewForm({ courseName }) {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={8}>
-          <Form.Item label="选择年份" name="year">
+        <Col span={4}>
+          <Form.Item
+            label="选择年份"
+            name="year"
+            rules={[{ required: true, message: "请选择年份!" }]}
+          >
             <DatePicker picker="year" suffixIcon={<CalendarOutlined />} />
+          </Form.Item>
+        </Col>
+        <Col span={4}>
+          <Form.Item label="教授名称" name="instrutor">
+            <Input />
           </Form.Item>
         </Col>
       </Row>

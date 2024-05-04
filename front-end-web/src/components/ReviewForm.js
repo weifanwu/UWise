@@ -1,47 +1,68 @@
-// reviewForm.js
-
 import React from "react";
-import { Form, Select, DatePicker, Rate, Input, Flex } from "antd";
+import { Form, Select, DatePicker, Rate, Input, Button, Col, Row } from "antd";
+import { CalendarOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 const { TextArea } = Input;
 
 function ReviewForm({ courseName }) {
   return (
-    <Form>
-      <Form.Item label="选择学期">
-        <Select defaultValue="AU" style={{ width: 120 }} onChange={null}>
-          <Option value="AU">AU</Option>
-          <Option value="WI">WI</Option>
-          <Option value="SP">SP</Option>
-          <Option value="SU">SU</Option>
-        </Select>
-      </Form.Item>
-
-      <Form.Item label="选择年份">
-        <DatePicker picker="year" />
-      </Form.Item>
-      <Form.Item label="选择评分">
-        <Flex gap="middle">
-          <span>难度 |</span>
-          <Rate defaultValue={3} allowClear={false} />
-        </Flex>
-        <Flex gap="middle">
-          <span>推荐指数 |</span>
-          <Rate defaultValue={3} allowClear={false} />
-        </Flex>
-        <Flex gap="middle">
-          <span>热门度 |</span>
-          <Rate defaultValue={3} allowClear={false} />
-        </Flex>
-      </Form.Item>
-      <Form.Item label="输入评价">
-        <TextArea
-          rows={4}
-          placeholder={"为" + courseName + "添加评价吧！"}
-          maxLength={6}
-        />
-      </Form.Item>
+    <Form layout="vertical" className="review-form">
+      <Row gutter={16}>
+        <Col span={8}>
+          <Form.Item label="选择学期" name="semester">
+            <Select defaultValue="AU" placeholder="Select a semester">
+              <Option value="AU">Autumn</Option>
+              <Option value="WI">Winter</Option>
+              <Option value="SP">Spring</Option>
+              <Option value="SU">Summer</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item label="选择年份" name="year">
+            <DatePicker picker="year" suffixIcon={<CalendarOutlined />} />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={16}>
+        <Col span={14}>
+          {" "}
+          {/* Adjusted from 12 to 14 to make the ratio approximately 6:4 */}
+          <Form.Item label="输入评价" name="comment">
+            <TextArea
+              rows={4}
+              placeholder={"为" + courseName + "添加评价吧！"}
+              maxLength={200}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={10}>
+          {" "}
+          {/* Adjusted from 12 to 10 to make the ratio approximately 6:4 */}
+          <Form.Item label="选择评分" name="ratings">
+            <div>
+              <Rate defaultValue={3} allowClear={false} />
+              <span className="rate-label">难度</span>
+            </div>
+            <div>
+              <Rate defaultValue={3} allowClear={false} />
+              <span className="rate-label">推荐指数</span>
+            </div>
+            <div>
+              <Rate defaultValue={3} allowClear={false} />
+              <span className="rate-label">热门度</span>
+            </div>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row justify="end">
+        <Col>
+          <Button type="primary" htmlType="submit">
+            提交评价
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 }

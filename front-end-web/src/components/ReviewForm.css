@@ -1,0 +1,23 @@
+.review-form .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.rate-label {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+}
+
+.ant-row {
+  margin-top: 10px;
+}
+
+.ant-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ant-form-vertical .ant-form-item-label {
+  padding-bottom: 0;
+}

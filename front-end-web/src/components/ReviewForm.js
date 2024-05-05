@@ -123,20 +123,26 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col span={14}>
+        <Col span={16}>
           {" "}
-          {/* Adjusted from 12 to 14 to make the ratio approximately 6:4 */}
           <Form.Item label="输入评价" name="comment">
             <TextArea
+              showCount
               rows={4}
               placeholder={"为" + courseName + "添加评价吧！"}
-              maxLength={200}
+              maxLength={300}
+              rules={[
+                {
+                  required: true,
+                  message: "请输入您的评价！",
+                  whitespace: true,
+                },
+              ]}
             />
           </Form.Item>
         </Col>
-        <Col span={10}>
-          {/* {" "} */}
-          {/* Adjusted from 12 to 10 to make the ratio approximately 6:4 */}
+        <div className="vertical-divider"></div>
+        <Col span={6}>
           <Form.Item label="选择评分" name="ratings">
             <div>
               <Rate

@@ -21,3 +21,10 @@
 .ant-form-vertical .ant-form-item-label {
   padding-bottom: 0;
 }
+
+.vertical-divider {
+  width: 1px;
+  background-color: #ccc; /* Light grey color for the divider */
+  height: 100%; /* Adjust height as needed based on content */
+  margin: 0 20px; /* Spacing around the divider */
+}

@@ -4,33 +4,16 @@ import "../../App.css";
 import "./CourseReview.css";
 import ReviewForm from "../ReviewForm.js";
 import ReviewItem from "../ReviewItem.js";
-import {
-  Button,
-  DatePicker,
-  Form,
-  Input,
-  Select,
-  Upload,
-  Card,
-  message,
-  Rate,
-  Flex,
-} from "antd";
+import { Button, message } from "antd";
 
 function CourseReview() {
   let { courseName } = useParams();
   const navigate = useNavigate();
-  const { Option } = Select;
-  const { TextArea } = Input;
 
-  const frontendHost = process.env.REACT_APP_FRONTEND_HOST;
   const backendHost = process.env.REACT_APP_BACKEND_HOST;
 
-  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [inputRatings, setInputRatings] = useState([]);
-  const [inputComment, setInputComment] = useState("");
 
   useEffect(() => {
     // formatCourseName(courseName);
@@ -92,56 +75,31 @@ function CourseReview() {
 
   return (
     <>
-      {/* <h1>Hello World</h1>
-      <h2>{courseName}</h2>
-
-      <h2>{description}</h2> */}
-
-      {/* Iterate through the reviews and show the stringified json */}
-      {/* {reviews.map((review) => (
-        <p>{JSON.stringify(review)}</p>
-      ))} */}
-
-      <div className="App">
+      <div className="course-reviews">
         <header className="main-header">
-          <button onClick={handleBack} className="left-button">
+          <Button onClick={handleBack} className="left-button" type="link">
             返回主页
-          </button>
+          </Button>
           <h1>{courseName}</h1>
-          <button onClick={handleShare} className="right-button">
+          <Button onClick={handleShare} className="right-button" type="link">
             分享
-          </button>
+          </Button>
         </header>
+        <br />
         <section className="course-description">
-          <h2>介绍</h2>
+          <h3>介绍</h3>
           <p>{description}</p>
         </section>
+        <br />
         <section className="course-review">
-          <h2>同学评价</h2>
-          {/* <p>{JSON.stringify(reviews)}</p> */}
-          {/* Iterate through each reviews and show them in the cards */}
+          <h3>同学评价</h3>
           {reviews.map((review) => (
-            // <Card key={review._id} className="review-card">
-            //   <div className="review-header">
-            //     <div className="review-course-name">{review.courseName}</div>
-            //     <div className="review-instructor">{review.instructor}</div>
-            //   </div>
-            //   <div className="review-content">
-            //     <div className="review-quarter">{review.quarter}</div>
-            //     <div className="review-year">{review.year}</div>
-            //     <div className="review-ratings">
-            //       <div>难度: {review.ratings[0]}</div>
-            //       <div>推荐度: {review.ratings[1]}</div>
-            //       <div>受欢迎度: {review.ratings[2]}</div>
-            //     </div>
-            //     <div className="review-comment">{review.comment}</div>
-            //   </div>
-            // </Card>
             <ReviewItem review={review} />
           ))}
         </section>
+        <br />
         <section className="course-review">
-          <h2>添加评价</h2>
+          <h3>添加评价</h3>
           <ReviewForm
             courseName={courseName}
             onReviewSubmitted={onReviewSubmitted}

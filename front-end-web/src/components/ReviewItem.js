@@ -12,10 +12,8 @@ function ReviewItem({ review }) {
           {" - "}
           <span>{review.instructor ? review.instructor : "Unknown"}</span>
         </div>
-        {/* <div className="review-instructor">{review.instructor}</div> */}
       </div>
       <div className="review-body">
-        {/* Adjusted the layout for comment and ratings */}
         <div className="review-comment" style={{ width: "70%" }}>
           {review.comment}
         </div>

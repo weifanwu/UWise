@@ -23,15 +23,6 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
 
   const backendHost = process.env.REACT_APP_BACKEND_HOST;
 
-  //   const handleSubmit = (values) => {
-  //     console.log({ values, ratings: [difficulty, recommendation, popularity] });
-  //     message.success("提交成功，请等待审核");
-  //     form.resetFields();
-  //     setDifficulty(3);
-  //     setRecommendation(3);
-  //     setPopularity(3);
-  //   };
-
   const handleSubmit = async (values) => {
     try {
       // Extract values and format as required

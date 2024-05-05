@@ -33,10 +33,6 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
       // Format the year correctly from the DatePicker value
       const formattedYear = year ? year.format("YYYY") : "";
 
-      // Combine quarter and year as expected by backend
-      //   const quarterYear = `${quarter} ${formattedYear}`;
-
-      // Prepare data for backend submission
       const reviewData = {
         courseName,
         instructor,
@@ -62,8 +58,6 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
 
       // Handle the response from the backend
       if (response.ok) {
-        console.log("111111");
-        const responseBody = await response.json();
         message.success("提交成功，请等待审核");
         form.resetFields(); // Reset form fields after successful submission
         if (onReviewSubmitted) {
@@ -74,17 +68,13 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         setPopularity(3);
         return;
       } else {
-        // Handle HTTP errors
-        console.log("222222");
-        const errorResponse = await response.text(); // or response.json() if the server responds with JSON
-        console.log("Server error:", errorResponse);
+        const errorResponse = await response.text();
+        console.log("Submission error:", errorResponse);
         message.error("提交失败，请稍后重试");
         return;
       }
     } catch (error) {
-      // Handle network or other errors
-      console.log("333333");
-      console.log("Network or other error:", error);
+      console.log("Submission error:", error);
       message.error("提交失败，请检查网络和输入后重试");
     }
   };

@@ -1,0 +1,33 @@
+.review-card {
+  margin-bottom: 20px; /* Adds space between cards */
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.review-quarter-year {
+  font-weight: bold;
+}
+
+.review-instructor {
+  font-style: italic;
+}
+
+.review-body {
+  display: flex;
+  align-items: start;
+}
+
+.review-comment {
+  margin-right: 20px; /* Ensure some space between comment and divider */
+}
+
+.vertical-divider {
+  width: 1px;
+  background-color: #ccc; /* Light grey color for the divider */
+  height: 100%; /* Adjust height as needed based on content */
+  margin: 0 20px; /* Spacing around the divider */
+}

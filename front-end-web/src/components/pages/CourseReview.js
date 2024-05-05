@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../../App.css";
 import "./CourseReview.css";
 import ReviewForm from "../ReviewForm.js";
+import ReviewItem from "../ReviewItem.js";
 import {
   Button,
   DatePicker,
@@ -116,8 +117,28 @@ function CourseReview() {
           <p>{description}</p>
         </section>
         <section className="course-review">
-          <h2>课程评价</h2>
-          <p>{JSON.stringify(reviews)}</p>
+          <h2>同学评价</h2>
+          {/* <p>{JSON.stringify(reviews)}</p> */}
+          {/* Iterate through each reviews and show them in the cards */}
+          {reviews.map((review) => (
+            // <Card key={review._id} className="review-card">
+            //   <div className="review-header">
+            //     <div className="review-course-name">{review.courseName}</div>
+            //     <div className="review-instructor">{review.instructor}</div>
+            //   </div>
+            //   <div className="review-content">
+            //     <div className="review-quarter">{review.quarter}</div>
+            //     <div className="review-year">{review.year}</div>
+            //     <div className="review-ratings">
+            //       <div>难度: {review.ratings[0]}</div>
+            //       <div>推荐度: {review.ratings[1]}</div>
+            //       <div>受欢迎度: {review.ratings[2]}</div>
+            //     </div>
+            //     <div className="review-comment">{review.comment}</div>
+            //   </div>
+            // </Card>
+            <ReviewItem review={review} />
+          ))}
         </section>
         <section className="course-review">
           <h2>添加评价</h2>

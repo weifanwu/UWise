@@ -47,30 +47,19 @@ export default function CourseReview() {
 
   return (
     <>
-      {/* <div style={{display: "flex"}}>
-        {(
-          <>
-            <Drawer 
-              style={{
-                position: "fixed"
-              }}                            
-              variant="permanent">
-              {drawer}
-            </Drawer>
-          </>
-        )}
-      </div> */}
       <div className="filter">
         <filter/>
       </div>
-      <div className="courseReviweCard">
-          {cards.map((card) => (
-              <courseReviewCard
-                  key={card._id}
-                  instructor={card.instructor}
-                  course={card.course}
-              />
-          ))}
+      <div className="display">
+        <div className="courseReviweCard">
+            {cards.map((card) => (
+                <courseReviewCard
+                    key={card._id}
+                    instructor={card.instructor}
+                    course={card.course}
+                />
+            ))}
+        </div>
       </div>
     </>
   );

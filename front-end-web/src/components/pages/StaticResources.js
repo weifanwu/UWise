@@ -79,54 +79,54 @@ export default function Student(props) {
     );
 
     return (
-        <div style={{
-          display: "flex"
-        }}>
-            <div className='menu-button' onClick={toggleDrawer}>
-              <i className='fas fa-bars'/>
-           </div>
-            {(
-                <>
-                    {isSmallScreen ? (
-                        <Drawer
-                            style={{
-                              position: "fixed"
-                            }}
-                            variant="temporary"
-                            open={isDrawerOpen}
-                            onClose={toggleDrawer}
-                        >
-                             <i className='fas fa-times' onClick={toggleDrawer}/>
-                            {drawer}
-                           
-                        </Drawer>
-                    ) : (
-                        <Drawer 
-                            style={{
-                              position: "fixed"
-                            }}                            
-                            variant="permanent">
-                            {drawer}
-                        </Drawer>
-                    )}
-
-                    {isSmallScreen && selectedType && (
-                        <h1 className="page-heading">{selectedType}</h1>
-                    )}
-
-                    <div className="staticRecourseCards">
-                        {cards.map((card) => (
-                            <ViewCard
-                                key={card._id}
-                                title={card.title}
-                                intro={card.intro}
-                                img={card.img}
-                                url={card.url}
-                            />
-                        ))}
-                    </div>
-                </>
-            )}
+      <div style={{
+        display: "flex"
+      }}>
+        <div className='menu-button' onClick={toggleDrawer}>
+          <i className='fas fa-bars'/>
         </div>
+        {(
+          <>
+            {isSmallScreen ? (
+              <Drawer
+                style={{
+                  position: "fixed"
+                }}
+                variant="temporary"
+                open={isDrawerOpen}
+                onClose={toggleDrawer}
+              >
+                <i className='fas fa-times' onClick={toggleDrawer}/>
+                {drawer}
+                  
+              </Drawer>
+              ) : (
+              <Drawer 
+                style={{
+                  position: "fixed"
+                }}                            
+                variant="permanent">
+                {drawer}
+              </Drawer>
+          )}
+
+          {isSmallScreen && selectedType && (
+              <h1 className="page-heading">{selectedType}</h1>
+          )}
+
+          <div className="staticRecourseCards">
+              {cards.map((card) => (
+                <ViewCard
+                  key={card._id}
+                  title={card.title}
+                  intro={card.intro}
+                  img={card.img}
+                  url={card.url}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     );
 }

@@ -14,52 +14,86 @@
 
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import '../../App.css';
 import './CourseReview.css';
-import Footer from '../Footer';
-import { Space } from 'antd';
-import Drawer from '@mui/material/Drawer';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import courseReviewCard from '../courseReviewCard';
-import { filter } from '../CourseFilter';
+import CourseReviewCard from '../courseReviewCard';
+import Filter from '../CourseFilter';
 
 export default function CourseReview() {
-  const [types, setTypes] = useState([]);
-  const [cards, setCards] = useState([]);
-  const [selectedType, setSelectedType] = useState(null);
+  const [majors, setMajors] = useState([]);
+  const [courses, setCourses] = useState([]);
   const host = process.env.REACT_APP_BACKEND_HOST;
+  let major, level;
+  let navigate = useNavigate()
+
   useEffect(() => {
-    fetch(host + '/resources/getMajors')
-    .then(response => response.json())
-    // .then(majors => displayData(majors))
-    .catch(error => console.log('Error fetching majors:', error));
-    fetch(host + '/resources/getCourseReview')
-    .then(response => response.json())
-    // .then(courses => displayData(courses))
-    .catch(error => console.log('Error fectching courses:', error));
+    getAllMajors();
+    getAllCourses();
   })
+
+  const getAllMajors = () => {
+    fetch(host + '/resources/getMajors')
+    .then(response => {
+      return response.json()
+    })
+    .then((resObject) => {
+      console.log(resObject.course)
+      setMajors(resObject.course);
+    })
+    .catch(error => {
+      console.log('Error fetching majors:', error)
+    });
+  }
+
+  const getAllCourses = () => {
+    fetch(host + '/resources/filter')
+    .then(response => {
+      return response.json()
+    })
+    .then((resObject) => {
+      setCourses(resObject);
+    })
+    .catch(error => {
+      console.log('Error fetching courses:', error)
+    });
+  }
+
+  // TODO: get parameters based on checkbox
+  const getFilteredCourses = () => {
+    fetch(host + '/resources/filter?major=' + major + '&level=' + level)  // !!!!!!!!!!!!
+    .then(response => {
+      return response.json()
+    })
+    .then((resObject) => {
+      setCourses(resObject);
+    })
+    .catch(error => {
+      console.log('Error fetching courses:', error);
+    });
+  }
+
+  function handleClick(course) {
+    navigate(host + '/reviews/' + course);
+  }
 
   return (
     <>
-      <div className="filter">
-        <filter/>
+      <div className="filterContainer">
+        <Filter majors={majors}/>
       </div>
       <div className="display">
-        <div className="courseReviweCard">
-            {cards.map((card) => (
-                <courseReviewCard
-                    key={card._id}
-                    instructor={card.instructor}
-                    course={card.course}
-                />
-            ))}
-        </div>
+        {courses.map((course) => (
+          <CourseReviewCard
+          key={course._id}
+          course={course.course}
+          // intro={course.intro}
+          // credits={course.credits}
+          // type={course.type}
+          // difficulty={course.difficulty}
+          onClick={handleClick(course.course)}
+          />
+        ))}
       </div>
     </>
   );

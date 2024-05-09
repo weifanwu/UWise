@@ -6,6 +6,7 @@ const { createRoot } = ReactDOM;
 const onChange = (checkedValues) => {
   console.log('checked = ', checkedValues);
 };
+
 // const options = [
 //   {
 //     label: 'Apple',
@@ -35,6 +36,7 @@ const onChange = (checkedValues) => {
 //     disabled: false,
 //   },
 // ];
+
 export default function Filter(props) {
   const majors = props.majors
   const levels = ['100', '200', '300', '400', '400+'];
@@ -42,7 +44,8 @@ export default function Filter(props) {
   return (
     <>
       <h3>专业</h3>
-      <Checkbox.Group options={majors} 
+      <Checkbox.Group 
+        options={majors} 
         defaultValue={['major']} 
         onChange={onChange} 
         style={{display: 'flex', flexDirection: 'column'}}

@@ -19,6 +19,7 @@ import '../../App.css';
 import './CourseReview.css';
 import CourseReviewCard from '../courseReviewCard';
 import Filter from '../CourseFilter';
+// import FilterContainer from '../FilterContainer';
 
 export default function CourseReview() {
   const [majors, setMajors] = useState([]);
@@ -33,12 +34,13 @@ export default function CourseReview() {
   })
 
   const getAllMajors = () => {
-    fetch(host + '/resources/getMajors')
+    fetch(host + '/courseReviews/getMajors')
     .then(response => {
       return response.json()
     })
     .then((resObject) => {
-      console.log(resObject.course)
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+      console.log(resObject);
       setMajors(resObject.course);
     })
     .catch(error => {
@@ -47,7 +49,7 @@ export default function CourseReview() {
   }
 
   const getAllCourses = () => {
-    fetch(host + '/resources/filter')
+    fetch(host + '/courseReviews/filter')
     .then(response => {
       return response.json()
     })
@@ -61,7 +63,7 @@ export default function CourseReview() {
 
   // TODO: get parameters based on checkbox
   const getFilteredCourses = () => {
-    fetch(host + '/resources/filter?major=' + major + '&level=' + level)  // !!!!!!!!!!!!
+    fetch(host + '/courseReviews/filter?major=' + major + '&level=' + level)  // !!!!!!!!!!!!
     .then(response => {
       return response.json()
     })
@@ -80,6 +82,7 @@ export default function CourseReview() {
   return (
     <>
       <div className="filterContainer">
+        {/* <FilterContainer majors={majors}/> */}
         <Filter majors={majors}/>
       </div>
       <div className="display">

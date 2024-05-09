@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { Checkbox } from "antd";
 
-const { createRoot } = ReactDOM;
+// const { createRoot } = ReactDOM;
 
 const onChange = (checkedValues) => {
   console.log('checked = ', checkedValues);

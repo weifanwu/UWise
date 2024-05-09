@@ -75,17 +75,17 @@ function CourseReview() {
 
   return (
     <>
+      <header className="main-header">
+        <Button onClick={handleBack} className="left-button" type="link">
+          返回主页
+        </Button>
+        <h1>{courseName}</h1>
+        <Button onClick={handleShare} className="right-button" type="link">
+          分享
+        </Button>
+      </header>
+      <br />
       <div className="course-reviews">
-        <header className="main-header">
-          <Button onClick={handleBack} className="left-button" type="link">
-            返回主页
-          </Button>
-          <h1>{courseName}</h1>
-          <Button onClick={handleShare} className="right-button" type="link">
-            分享
-          </Button>
-        </header>
-        <br />
         <section className="course-description">
           <h3>介绍</h3>
           <p>{description}</p>

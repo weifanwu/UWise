@@ -57,7 +57,6 @@ export default function CourseReview() {
     });
   }
 
-  // abandoned
   const getAllMajors = () => {
     fetch(host + '/courseReviews/getMajors')
     .then(response => {
@@ -65,8 +64,9 @@ export default function CourseReview() {
     })
     .then((resObject) => {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-      console.log(resObject);
-      setMajors(resObject.course);
+      // console.log(resObject);
+      setMajors(resObject);
+      console.log(majors)
     })
     .catch(error => {
       console.log('Error fetching majors:', error)

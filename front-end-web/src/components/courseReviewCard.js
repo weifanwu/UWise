@@ -34,7 +34,8 @@ const courseReviewCard = ({key, instructor, course}) => (
   <Card
     hoverable
     style={{
-      width: 240,
+      width: 150,
+      height: 200,
     }}
     cover={<img alt="courseReviewCardImg" src="../../uwise.png" />}
   >

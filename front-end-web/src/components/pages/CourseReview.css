@@ -2,3 +2,15 @@
     height: 1000px;
     width: 100%;
 }
+
+.filterContainer {
+    width: 25%;
+}
+
+.display {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 40px;
+}

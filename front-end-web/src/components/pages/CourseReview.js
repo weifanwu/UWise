@@ -1,18 +1,3 @@
-// import React from 'react';
-// import '../../App.css';
-// import './CourseReview.css';
-// import Footer from '../Footer';
-
-// export default function CourseReview() {
-//   return <>
-//             <body>
-//                 <iframe className="service" src="https://uwise-course-review.netlify.app/#/" frameborder="0"></iframe>
-//             </body>
-//             {/* <Footer /> */}
-//          </>
-// }
-
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../App.css';
@@ -21,6 +6,7 @@ import { Input } from "antd";
 import CourseReviewCard from '../courseReviewCard';
 import Filter1 from '../Filter1';
 import Filter2 from '../Filter2';
+import Filter3 from '../Filter3';
 
 export default function CourseReview() {
   const [majors, setMajors] = useState([]);
@@ -115,8 +101,9 @@ export default function CourseReview() {
             size="large"
             onSearch={onSearch}
           />
-          <Filter1 majors={majors}/>
+          {/* <Filter1 majors={majors}/> */}
           {/* <Filter2 majors={majors}/> */}
+          <Filter3 majors={majors}/>
         </div>
         <div className="display">
           {courses.map((course) => (

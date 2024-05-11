@@ -49,7 +49,7 @@ export default function CourseReview() {
       return response.json()
     })
     .then((resObject) => {
-      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+      // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
       // console.log(resObject);
       setMajors(resObject);
       console.log(majors)

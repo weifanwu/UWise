@@ -1,4 +1,5 @@
 import { Cascader } from "antd";
+import { Checkbox } from "antd";
 
 const { SHOW_CHILD } = Cascader;
 const options = [
@@ -115,12 +116,10 @@ const types = [
 ];
 
 export default function Filter(props) {
-    const majors = [
-        props.majors.map((major) => ({
-            label: major,
-            value: major
-        }))
-    ];
+    const majors = props.majors.map((major) => ({
+        label: major,
+        value: major,
+    }))
     const onChange = (value) => {
         console.log(value);
     };
@@ -143,34 +142,25 @@ export default function Filter(props) {
                 // ]}
             />
             <h3>等级</h3>
-            <Cascader
-                style={{
-                width: '100%',
-                }}
-                options={levels}
-                onChange={onChange}
-                multiple
-                maxTagCount="responsive"
+            <Checkbox.Group 
+                options={levels} 
+                defaultValue={['major']} 
+                onChange={onChange} 
+                style={{display: 'flex', flexDirection: 'column'}}
             />
             <h3>学分（待完成）</h3>
-            <Cascader
-                style={{
-                width: '100%',
-                }}
-                options={credits}
-                onChange={onChange}
-                multiple
-                maxTagCount="responsive"
+            <Checkbox.Group 
+                options={credits} 
+                defaultValue={['major']} 
+                onChange={onChange} 
+                style={{display: 'flex', flexDirection: 'column'}}
             />
             <h3>类型（待完成）</h3>
-            <Cascader
-                style={{
-                width: '100%',
-                }}
-                options={types}
-                onChange={onChange}
-                multiple
-                maxTagCount="responsive"
+            <Checkbox.Group 
+                options={types} 
+                defaultValue={['major']} 
+                onChange={onChange} 
+                style={{display: 'flex', flexDirection: 'column'}}
             />
         </>
     );

@@ -4,7 +4,7 @@ import "../../App.css";
 import "./CourseReview.css";
 import ReviewForm from "../ReviewForm.js";
 import ReviewItem from "../ReviewItem.js";
-import { Button, message } from "antd";
+import { Button, message, Rate } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 
 function CourseReview() {
@@ -16,13 +16,19 @@ function CourseReview() {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [avgRatings, setAvgRatings] = useState(null);
 
   useEffect(() => {
     // formatCourseName(courseName);
     getDescription();
     getTitle();
     getReviews();
+    getAverageRating();
   }, []);
+
+  useEffect(() => {
+    console.log("avgRatings: ", avgRatings);
+  }, [avgRatings]);
 
   const onReviewSubmitted = () => {
     getReviews(); // Refetch the reviews after a new one is added
@@ -80,6 +86,23 @@ function CourseReview() {
       });
   };
 
+  const getAverageRating = () => {
+    fetch(
+      backendHost + "/courseReview/getAverageRatings?courseName=" + courseName
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((resObject) => {
+        console.log("resObject: " + resObject);
+        setAvgRatings(resObject);
+        console.log("avgRatings: " + avgRatings);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     message.success("已复制到剪贴板");
@@ -108,6 +131,40 @@ function CourseReview() {
         <section className="course-description">
           <h3>课程介绍</h3>
           <p>{description}</p>
+          <br />
+          {avgRatings !== null ? (
+            <div className="review-ratings" style={{ width: "30%" }}>
+              <div>
+                <Rate
+                  disabled
+                  allowHalf
+                  defaultValue={avgRatings[0]}
+                  style={{ color: "#4b2e83" }}
+                />
+                <span> | 课程质量</span>
+              </div>
+              <div>
+                <Rate
+                  disabled
+                  allowHalf
+                  defaultValue={avgRatings[1]}
+                  style={{ color: "#4b2e83" }}
+                />
+                <span> | 作业量</span>
+              </div>
+              <div>
+                <Rate
+                  disabled
+                  allowHalf
+                  defaultValue={avgRatings[2]}
+                  style={{ color: "#4b2e83" }}
+                />
+                <span> | GPA友好程度</span>
+              </div>
+            </div>
+          ) : (
+            <p>暂无评分</p>
+          )}
         </section>
         <br />
         <section className="course-review">

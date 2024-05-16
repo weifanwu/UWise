@@ -23,6 +23,7 @@ function ReviewItem({ review }) {
             <div>
               <Rate
                 disabled
+                allowHalf
                 defaultValue={review.ratings[0]}
                 style={{ color: "#4b2e83" }}
               />
@@ -31,6 +32,7 @@ function ReviewItem({ review }) {
             <div>
               <Rate
                 disabled
+                allowHalf
                 defaultValue={review.ratings[1]}
                 style={{ color: "#4b2e83" }}
               />
@@ -39,6 +41,7 @@ function ReviewItem({ review }) {
             <div>
               <Rate
                 disabled
+                allowHalf
                 defaultValue={review.ratings[2]}
                 style={{ color: "#4b2e83" }}
               />

@@ -146,6 +146,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
           <Form.Item label="选择评分" name="ratings">
             <div>
               <Rate
+                allowHalf
                 value={difficulty}
                 onChange={setDifficulty}
                 allowClear={false}
@@ -155,6 +156,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
             </div>
             <div>
               <Rate
+                allowHalf
                 value={recommendation}
                 onChange={setRecommendation}
                 allowClear={false}
@@ -164,6 +166,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
             </div>
             <div>
               <Rate
+                allowHalf
                 value={popularity}
                 onChange={setPopularity}
                 allowClear={false}

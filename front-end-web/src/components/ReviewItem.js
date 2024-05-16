@@ -21,16 +21,28 @@ function ReviewItem({ review }) {
         {review.ratings[0] !== null && review.ratings[0] !== undefined ? (
           <div className="review-ratings" style={{ width: "30%" }}>
             <div>
-              <Rate disabled defaultValue={review.ratings[0]} />
-              <span> | 难度</span>
+              <Rate
+                disabled
+                defaultValue={review.ratings[0]}
+                style={{ color: "#4b2e83" }}
+              />
+              <span> | 课程质量</span>
             </div>
             <div>
-              <Rate disabled defaultValue={review.ratings[1]} />
-              <span> | 推荐度</span>
+              <Rate
+                disabled
+                defaultValue={review.ratings[1]}
+                style={{ color: "#4b2e83" }}
+              />
+              <span> | 作业量</span>
             </div>
             <div>
-              <Rate disabled defaultValue={review.ratings[2]} />
-              <span> | 受欢迎度</span>
+              <Rate
+                disabled
+                defaultValue={review.ratings[2]}
+                style={{ color: "#4b2e83" }}
+              />
+              <span> | GPA友好程度</span>
             </div>
           </div>
         ) : (

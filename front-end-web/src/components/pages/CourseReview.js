@@ -5,6 +5,7 @@ import "./CourseReview.css";
 import ReviewForm from "../ReviewForm.js";
 import ReviewItem from "../ReviewItem.js";
 import { Button, message } from "antd";
+import { LeftOutlined } from "@ant-design/icons";
 
 function CourseReview() {
   let { courseName } = useParams();
@@ -13,11 +14,13 @@ function CourseReview() {
   const backendHost = process.env.REACT_APP_BACKEND_HOST;
 
   const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     // formatCourseName(courseName);
     getDescription();
+    getTitle();
     getReviews();
   }, []);
 
@@ -41,6 +44,19 @@ function CourseReview() {
       })
       .then((resObject) => {
         setDescription(resObject);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getTitle = () => {
+    fetch(backendHost + "/courseReview/getCourseTitle?courseName=" + courseName)
+      .then((response) => {
+        return response.json();
+      })
+      .then((resObject) => {
+        setTitle(resObject);
       })
       .catch((err) => {
         console.log(err);
@@ -77,25 +93,21 @@ function CourseReview() {
     <>
       <header className="main-header">
         <Button onClick={handleBack} className="left-button" type="link">
+          {/* <LeftOutlined style={{ color: "#FFFFFF" }} /> */}
           返回主页
         </Button>
         <h1>{courseName}</h1>
+        <h2>{title}</h2>
         <Button onClick={handleShare} className="right-button" type="link">
           分享
         </Button>
       </header>
+
       <br />
       <div className="course-reviews">
         <section className="course-description">
-          <h3>介绍</h3>
+          <h3>课程介绍</h3>
           <p>{description}</p>
-        </section>
-        <br />
-        <section className="course-review">
-          <h3>同学评价</h3>
-          {reviews.map((review) => (
-            <ReviewItem review={review} />
-          ))}
         </section>
         <br />
         <section className="course-review">
@@ -104,6 +116,13 @@ function CourseReview() {
             courseName={courseName}
             onReviewSubmitted={onReviewSubmitted}
           />
+        </section>
+        <br />
+        <section className="course-review">
+          <h3>同学评价</h3>
+          {reviews.map((review) => (
+            <ReviewItem review={review} />
+          ))}
         </section>
       </div>
     </>

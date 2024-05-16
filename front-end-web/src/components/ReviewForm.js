@@ -109,7 +109,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
         <Col span={4}>
           <Form.Item
-            label="选择年份"
+            label="选择学年"
             name="year"
             rules={[{ required: true, message: "请选择年份!" }]}
           >
@@ -149,24 +149,27 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
                 value={difficulty}
                 onChange={setDifficulty}
                 allowClear={false}
+                style={{ color: "#4b2e83" }}
               />
-              <span className="rate-label"> | 难度</span>
+              <span className="rate-label"> | 课程质量</span>
             </div>
             <div>
               <Rate
                 value={recommendation}
                 onChange={setRecommendation}
                 allowClear={false}
+                style={{ color: "#4b2e83" }}
               />
-              <span className="rate-label"> | 推荐指数</span>
+              <span className="rate-label"> | 作业量</span>
             </div>
             <div>
               <Rate
                 value={popularity}
                 onChange={setPopularity}
                 allowClear={false}
+                style={{ color: "#4b2e83" }}
               />
-              <span className="rate-label"> | 热门度</span>
+              <span className="rate-label"> | GPA友好程度</span>
             </div>
           </Form.Item>
         </Col>
@@ -174,7 +177,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
       <Row justify="end">
         <Col>
           <Button type="primary" htmlType="submit">
-            提交评价
+            提交
           </Button>
         </Col>
       </Row>

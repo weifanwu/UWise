@@ -11,11 +11,11 @@ import { SyncOutlined } from '@ant-design/icons';
 export default function CourseReview() {
   const [majors, setMajors] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [found, setFound] = useState(true)
   const { Search } = Input;
   // const {  SearchOutlined  } = icons;
   const host = process.env.REACT_APP_BACKEND_HOST;
   let major, level;
-  let found = true;
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -35,17 +35,17 @@ export default function CourseReview() {
     .then(data => {
         console.log('Course existence status:', data.exists);
         if (data.exists) {
-          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+          setFound(true);
           const courseData = {
             course: value,
             major: null,
             number: null,
             description: null
-          }
+          };
           setCourses([courseData]);
           console.log("Course exists!");
         } else {
-          found = false
+          setFound(false);
           setCourses([]);
           console.log("Course does not exist!");
         }
@@ -103,6 +103,7 @@ export default function CourseReview() {
 
   const reset = () => {
     getAllCourses();
+    setFound(true);
   }
 
   return (
@@ -110,11 +111,13 @@ export default function CourseReview() {
       <div className="menu" style={{display: 'flex'}}>
         <div className="filterContainer">
           <Search
-            placeholder="input search text"
-            allowClear
+            placeholder="e.g. MATH 126"
+            // allowClear
             enterButton="Search"
             size="large"
             onSearch={onSearch}
+            maxLength={11}
+            // onChange={getAllCourses}
           />
           <Button 
             type="primary" 
@@ -128,7 +131,7 @@ export default function CourseReview() {
           <Filter majors={majors}/>
         </div>
         <div className="display">
-          {found > 0 ? (
+          {found ? (
             courses.map((course) => (
               <CourseReviewCard
                 key={course._id}
@@ -142,7 +145,7 @@ export default function CourseReview() {
               />
             ))
           ) : (
-            <div className="notFound">
+            <div className="notFound"style={{display:'flex'}}>
               No courses found.
             </div>
           )}

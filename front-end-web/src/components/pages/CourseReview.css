@@ -1,6 +1,5 @@
-.service {
-    height: 1000px;
-    width: 100%;
+.menu {
+    margin-left: 30px;
 }
 
 .filterContainer {
@@ -17,4 +16,11 @@
     flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 40px;
+}
+
+.notFound {
+    margin-top: 100px;
+    font-size: large;
+    font-weight:bold;
+    text-align: center;
 }

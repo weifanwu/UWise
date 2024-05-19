@@ -4,41 +4,54 @@ import '../../App.css';
 import './CourseReview.css';
 import { Input } from "antd";
 import CourseReviewCard from '../courseReviewCard';
-import Filter1 from '../Filter1';
-import Filter2 from '../Filter2';
-import Filter3 from '../Filter3';
+import Filter from '../Filter';
+import { Button } from "antd";
+import { SyncOutlined } from '@ant-design/icons';
 
 export default function CourseReview() {
   const [majors, setMajors] = useState([]);
   const [courses, setCourses] = useState([]);
   const { Search } = Input;
+  // const {  SearchOutlined  } = icons;
   const host = process.env.REACT_APP_BACKEND_HOST;
   let major, level;
+  let found = true;
   let navigate = useNavigate()
 
   useEffect(() => {
     getAllMajors();
     getAllCourses();
-    console.log("useEffect ran")
+    console.log("useEffect ran");
   }, [])
 
   const onSearch = (value) => {
     fetch(host + '/courseReviews/search?courseName=' + value)
     .then(response => {
       if (!response.ok) {
-          throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok');
       }
       return response.json();
     })
     .then(data => {
         console.log('Course existence status:', data.exists);
         if (data.exists) {
-            console.log("Course exists!");
+          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+          const courseData = {
+            course: value,
+            major: null,
+            number: null,
+            description: null
+          }
+          setCourses([courseData]);
+          console.log("Course exists!");
         } else {
-            console.log("Course does not exist!");
+          found = false
+          setCourses([]);
+          console.log("Course does not exist!");
         }
     })
     .catch(error => {
+      setCourses([]);
       console.log('Error fetching courses:', error)
     });
   }
@@ -49,10 +62,8 @@ export default function CourseReview() {
       return response.json()
     })
     .then((resObject) => {
-      // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-      // console.log(resObject);
       setMajors(resObject);
-      console.log(majors)
+      // console.log(majors);
     })
     .catch(error => {
       console.log('Error fetching majors:', error)
@@ -90,9 +101,13 @@ export default function CourseReview() {
     navigate('/reviews/' + course);
   }
 
+  const reset = () => {
+    getAllCourses();
+  }
+
   return (
     <>
-      <div style={{display: 'flex'}}>
+      <div className="menu" style={{display: 'flex'}}>
         <div className="filterContainer">
           <Search
             placeholder="input search text"
@@ -101,23 +116,36 @@ export default function CourseReview() {
             size="large"
             onSearch={onSearch}
           />
-          {/* <Filter1 majors={majors}/> */}
-          {/* <Filter2 majors={majors}/> */}
-          <Filter3 majors={majors}/>
+          <Button 
+            type="primary" 
+            icon={<SyncOutlined />}
+            onClick={reset}
+            display='flex'
+            justyfyContent="center">
+            Reset
+          </Button>
+          <p>请在专业和数字之间加上空格，如'CSE 143'</p>
+          <Filter majors={majors}/>
         </div>
         <div className="display">
-          {courses.map((course) => (
-            <CourseReviewCard
-            key={course._id}
-            course={course.course}
-            // intro={course.intro}
-            // credits={course.credits}
-            // type={course.type}
-            // difficulty={course.difficulty}
-            onClick={() => handleClick(course.course)}
-            // onClick={handleClick(course.course)}
-            />
-          ))}
+          {found > 0 ? (
+            courses.map((course) => (
+              <CourseReviewCard
+                key={course._id}
+                course={course.course}
+                // intro={course.intro}
+                // credits={course.credits}
+                // type={course.type}
+                // difficulty={course.difficulty}
+                onClick={() => handleClick(course.course)}
+                // onClick={handleClick(course.course)}
+              />
+            ))
+          ) : (
+            <div className="notFound">
+              No courses found.
+            </div>
+          )}
         </div>
       </div>
     </>

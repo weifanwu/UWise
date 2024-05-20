@@ -2,40 +2,6 @@ import { Cascader } from "antd";
 import { Checkbox } from "antd";
 
 const { SHOW_CHILD } = Cascader;
-const options = [
-  {
-    label: 'Light',
-    value: 'light',
-    children: new Array(20).fill(null).map((_, index) => ({
-      label: `Number ${index}`,
-      value: index,
-    })),
-  },
-  {
-    label: 'Bamboo',
-    value: 'bamboo',
-    children: [
-      {
-        label: 'Little',
-        value: 'little',
-        children: [
-          {
-            label: 'Toy Fish',
-            value: 'fish',
-          },
-          {
-            label: 'Toy Cards',
-            value: 'cards',
-          },
-          {
-            label: 'Toy Bird',
-            value: 'bird',
-          },
-        ],
-      },
-    ],
-  },
-];
 const levels = [
     {
         label: '100',
@@ -125,7 +91,7 @@ export default function Filter(props) {
     };
     return (
         <>
-            <h3>专业</h3>
+            <h5>专业</h5>
             <Cascader
                 style={{
                 width: '100%',
@@ -135,27 +101,22 @@ export default function Filter(props) {
                 multiple
                 maxTagCount="responsive"
                 showCheckedStrategy={SHOW_CHILD}
-                // defaultValue={[
-                // ['bamboo', 'little', 'fish'],
-                // ['bamboo', 'little', 'cards'],
-                // ['bamboo', 'little', 'bird'],
-                // ]}
             />
-            <h3>等级</h3>
+            <h5>等级</h5>
             <Checkbox.Group 
                 options={levels} 
                 defaultValue={['major']} 
                 onChange={onChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
-            <h3>学分（待完成）</h3>
+            <h5>学分（待完成）</h5>
             <Checkbox.Group 
                 options={credits} 
                 defaultValue={['major']} 
                 onChange={onChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
-            <h3>类型（待完成）</h3>
+            <h5>类型（待完成）</h5>
             <Checkbox.Group 
                 options={types} 
                 defaultValue={['major']} 

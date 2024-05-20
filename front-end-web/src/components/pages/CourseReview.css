@@ -16,11 +16,12 @@
     flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 40px;
+    justify-content: center;
 }
 
 .notFound {
     margin-top: 100px;
-    font-size: large;
+    font-size: larger;
     font-weight:bold;
     text-align: center;
 }

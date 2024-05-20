@@ -145,7 +145,7 @@ export default function CourseReview() {
               />
             ))
           ) : (
-            <div className="notFound"style={{display:'flex'}}>
+            <div className="notFound">
               No courses found.
             </div>
           )}

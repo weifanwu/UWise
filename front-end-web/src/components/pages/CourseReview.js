@@ -175,13 +175,15 @@ function CourseReview() {
           />
         </section>
         <br />
-        <section className="course-review">
-          <h3>同学评价</h3>
-          {reviews.map((review) => (
-            <ReviewItem review={review} />
-          ))}
-        </section>
       </div>
+      <section className="review-items">
+        {/* <div className="review-body"> */}
+        <h3>同学评价</h3>
+        {reviews.map((review) => (
+          <ReviewItem review={review} />
+        ))}
+        {/* </div> */}
+      </section>
     </>
   );
 }

@@ -92,14 +92,22 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
       onFinish={handleSubmit}
       onSubmitFailed={handleFailedSubmission}
     >
-      <Row gutter={16}>
+      <Row gutter={12}>
         <Col span={4}>
           <Form.Item
-            label="选择学期"
+            // label="教授名称"
+            name="instructor"
+          >
+            <Input placeholder="教授名称" />
+          </Form.Item>
+        </Col>
+        <Col span={4}>
+          <Form.Item
+            // label="选择学期"
             name="quarter"
             rules={[{ required: true, message: "请选择学期!" }]}
           >
-            <Select placeholder="Select a quarter">
+            <Select placeholder="选择学期">
               <Option value="AU">Autumn</Option>
               <Option value="WI">Winter</Option>
               <Option value="SP">Spring</Option>
@@ -107,25 +115,27 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
             </Select>
           </Form.Item>
         </Col>
-        <Col span={4}>
+        <Col span={5}>
           <Form.Item
-            label="选择学年"
+            // label="选择学年"
             name="year"
             rules={[{ required: true, message: "请选择年份!" }]}
           >
-            <DatePicker picker="year" suffixIcon={<CalendarOutlined />} />
-          </Form.Item>
-        </Col>
-        <Col span={4}>
-          <Form.Item label="教授名称" name="instructor">
-            <Input />
+            <DatePicker
+              picker="year"
+              placeholder="选择学年"
+              suffixIcon={<CalendarOutlined />}
+            />
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={16}>
         <Col span={16}>
           {" "}
-          <Form.Item label="输入评价" name="comment">
+          <Form.Item
+            // label="输入评价"
+            name="comment"
+          >
             <TextArea
               showCount
               rows={4}

@@ -18,6 +18,8 @@ function CourseReview() {
   const [reviews, setReviews] = useState([]);
   const [avgRatings, setAvgRatings] = useState(null);
 
+  const [showForm, toggleForm] = useState(false);
+
   useEffect(() => {
     // formatCourseName(courseName);
     getDescription();
@@ -112,6 +114,10 @@ function CourseReview() {
     navigate("/reviews");
   };
 
+  const displayForm = () => {
+    toggleForm(!showForm);
+  };
+
   return (
     <>
       <header className="main-header">
@@ -167,22 +173,27 @@ function CourseReview() {
           )}
         </section>
         <br />
-        <section className="course-review">
-          <h3>添加评价</h3>
-          <ReviewForm
-            courseName={courseName}
-            onReviewSubmitted={onReviewSubmitted}
-          />
-        </section>
+
+        <Button onClick={displayForm} type="primary">
+          {showForm ? "取消" : "添加你的课程评价"}
+        </Button>
+        {showForm ? (
+          <section className="course-review">
+            <br />
+            {/* <h3>添加评价</h3> */}
+            <ReviewForm
+              courseName={courseName}
+              onReviewSubmitted={onReviewSubmitted}
+            />
+          </section>
+        ) : null}
         <br />
       </div>
       <section className="review-items">
-        {/* <div className="review-body"> */}
         <h3>同学评价</h3>
         {reviews.map((review) => (
           <ReviewItem review={review} />
         ))}
-        {/* </div> */}
       </section>
     </>
   );

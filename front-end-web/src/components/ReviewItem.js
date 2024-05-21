@@ -14,38 +14,47 @@ function ReviewItem({ review }) {
         </div>
       </div>
       <div className="review-body">
-        <div className="review-comment" style={{ width: "70%" }}>
+        <div
+          className="review-comment"
+          // style={{ width: "70%" }}
+        >
           {review.comment}
         </div>
         <div className="vertical-divider"></div>
         {review.ratings[0] !== null && review.ratings[0] !== undefined ? (
-          <div className="review-ratings" style={{ width: "30%" }}>
+          <div
+            className="review-ratings"
+            // style={{ width: "30%" }}
+          >
             <div>
               <Rate
+                className="star-rating"
                 disabled
                 allowHalf
                 defaultValue={review.ratings[0]}
                 style={{ color: "#4b2e83" }}
               />
-              <span> | 课程质量</span>
+              <span className="desc"> | 课程质量</span>
             </div>
             <div>
               <Rate
+                className="star-rating"
                 disabled
                 allowHalf
                 defaultValue={review.ratings[1]}
                 style={{ color: "#4b2e83" }}
               />
-              <span> | 作业量</span>
+              <span className="desc"> | 作业量</span>
             </div>
             <div>
               <Rate
+                className="star-rating"
                 disabled
                 allowHalf
                 defaultValue={review.ratings[2]}
                 style={{ color: "#4b2e83" }}
               />
-              <span> | GPA友好程度</span>
+              <span className="desc"> | GPA友好程度</span>
             </div>
           </div>
         ) : (

@@ -1,5 +1,6 @@
 .review-form .ant-form-item {
   margin-bottom: 16px;
+  border: 1px solid #ccc;
 }
 
 .rate-label {

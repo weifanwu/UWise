@@ -189,7 +189,12 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
       </Row>
       <Row justify="end">
         <Col>
-          <Button type="primary" htmlType="submit">
+          <Button
+            className="submit"
+            type="primary"
+            htmlType="submit"
+            style={{ backgroundColor: "#4b2e83" }}
+          >
             提交
           </Button>
         </Col>

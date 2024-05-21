@@ -135,50 +135,66 @@ function CourseReview() {
       <br />
       <div className="course-reviews">
         <section className="course-description">
-          <h3>课程介绍</h3>
-          <p>{description}</p>
+          <p className="heading3">课程介绍</p>
+          <p className="description">{description}</p>
           <br />
-          {avgRatings !== null ? (
-            <div className="review-ratings" style={{ width: "30%" }}>
-              <div>
-                <Rate
-                  disabled
-                  allowHalf
-                  defaultValue={avgRatings[0]}
-                  style={{ color: "#4b2e83" }}
-                />
-                <span> | 课程质量</span>
+          <div className="ratings-and-button">
+            {avgRatings !== null ? (
+              <div className="review-ratings" style={{ width: "30%" }}>
+                <div>
+                  <Rate
+                    disabled
+                    allowHalf
+                    defaultValue={avgRatings[0]}
+                    style={{ color: "#4b2e83" }}
+                  />
+                  <span> | 课程质量</span>
+                </div>
+                <div>
+                  <Rate
+                    disabled
+                    allowHalf
+                    defaultValue={avgRatings[1]}
+                    style={{ color: "#4b2e83" }}
+                  />
+                  <span> | 作业量</span>
+                </div>
+                <div>
+                  <Rate
+                    disabled
+                    allowHalf
+                    defaultValue={avgRatings[2]}
+                    style={{ color: "#4b2e83" }}
+                  />
+                  <span> | GPA友好程度</span>
+                </div>
               </div>
-              <div>
-                <Rate
-                  disabled
-                  allowHalf
-                  defaultValue={avgRatings[1]}
-                  style={{ color: "#4b2e83" }}
-                />
-                <span> | 作业量</span>
-              </div>
-              <div>
-                <Rate
-                  disabled
-                  allowHalf
-                  defaultValue={avgRatings[2]}
-                  style={{ color: "#4b2e83" }}
-                />
-                <span> | GPA友好程度</span>
-              </div>
-            </div>
-          ) : (
-            <p>暂无评分</p>
-          )}
+            ) : (
+              <p>暂无评分</p>
+            )}
+
+            <Button
+              onClick={displayForm}
+              type="primary"
+              style={{ backgroundColor: "#4b2e83" }}
+            >
+              {showForm ? "取消" : "添加你的课程评价"}
+            </Button>
+          </div>
         </section>
         <br />
 
-        <Button onClick={displayForm} type="primary">
-          {showForm ? "取消" : "添加你的课程评价"}
-        </Button>
+        <br />
+        <img
+          className="gpa-distribution"
+          src={require("../../assets/gpa.jpg")}
+          alt="gpa distribution"
+          style={{ width: "40%", height: "auto" }}
+        />
+      </div>
+      <div>
         {showForm ? (
-          <section className="course-review">
+          <section className="form">
             <br />
             {/* <h3>添加评价</h3> */}
             <ReviewForm
@@ -187,8 +203,8 @@ function CourseReview() {
             />
           </section>
         ) : null}
-        <br />
       </div>
+
       <section className="review-items">
         <h3>同学评价</h3>
         {reviews.map((review) => (

@@ -1,4 +1,4 @@
-.review-form .ant-form-item {
+/* .review-form .ant-form-item {
   margin-bottom: 16px;
   border: 1px solid #ccc;
 }
@@ -25,7 +25,20 @@
 
 .vertical-divider {
   width: 1px;
-  background-color: #ccc; /* Light grey color for the divider */
-  height: 100%; /* Adjust height as needed based on content */
-  margin: 0 20px; /* Spacing around the divider */
+  background-color: #ccc;
+  height: 100%;
+  margin: 0 20px;
+} */
+
+.rating-input {
+  text-align: right;
+  font-size: 1.1em;
 }
+
+.star-input {
+  font-size: 1.1em;
+}
+
+/* .rating-inputs {
+  align-items: bottom;
+} */

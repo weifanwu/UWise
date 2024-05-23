@@ -7,7 +7,6 @@ function ReviewItem({ review }) {
   return (
     <Card key={review._id} className="review-card">
       <div className="review-header">
-        {/* Moved quarter and year to the header */}
         <div className="review-quarter-year">
           <span>{review.quarter}</span> <span>{review.year}</span>
           {" - "}
@@ -15,12 +14,7 @@ function ReviewItem({ review }) {
         </div>
       </div>
       <div className="review-body">
-        <div
-          className="review-comment"
-          // style={{ width: "70%" }}
-        >
-          {review.comment}
-        </div>
+        <div className="review-comment">{review.comment}</div>
         <div className="vertical-divider"></div>
         {review.ratings[0] !== null && review.ratings[0] !== undefined ? (
           <RatingsDisplay ratings={review.ratings} size="small" />

@@ -11,6 +11,7 @@ import {
   message,
 } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
+import "./ReviewForm.css";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -118,7 +119,6 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
         <Col span={5}>
           <Form.Item
-            // label="选择学年"
             name="year"
             rules={[{ required: true, message: "请选择年份!" }]}
           >
@@ -131,10 +131,8 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col span={16}>
-          {" "}
+        <Col span={14}>
           <Form.Item
-            // label="输入评价"
             name="comment"
             rules={[{ required: true, message: "请填写评价!" }]}
           >
@@ -154,42 +152,44 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
           </Form.Item>
         </Col>
         <div className="vertical-divider"></div>
-        <Col span={6}>
-          <Form.Item
-            // label="选择评分"
-            name="ratings"
-          >
-            <div>
-              <Rate
-                allowHalf
-                value={difficulty}
-                onChange={setDifficulty}
-                allowClear={false}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="rate-label"> | 课程质量</span>
-            </div>
-            <div>
-              <Rate
-                allowHalf
-                value={recommendation}
-                onChange={setRecommendation}
-                allowClear={false}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="rate-label"> | 作业量</span>
-            </div>
-            <div>
-              <Rate
-                allowHalf
-                value={popularity}
-                onChange={setPopularity}
-                allowClear={false}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="rate-label"> | GPA友好程度</span>
-            </div>
-          </Form.Item>
+        <Col span={8}>
+          <div className="rating-inputs">
+            <Form.Item name="ratings">
+              <div className="rating-input">
+                <span className="rate-label"> 课程质量 | </span>
+                <Rate
+                  allowHalf
+                  value={difficulty}
+                  onChange={setDifficulty}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+              <div className="rating-input">
+                <span className="rate-label"> 作业量 | </span>
+                <Rate
+                  allowHalf
+                  value={recommendation}
+                  onChange={setRecommendation}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+              <div className="rating-input">
+                <span className="rate-label"> GPA友好程度 | </span>
+                <Rate
+                  allowHalf
+                  value={popularity}
+                  onChange={setPopularity}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+            </Form.Item>
+          </div>
         </Col>
       </Row>
       <Row justify="end">

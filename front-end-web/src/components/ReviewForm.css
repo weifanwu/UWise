@@ -1,8 +1,17 @@
 .rating-input {
-  text-align: right;
-  font-size: 1.1em;
+  display: flex;
+  align-items: center; /* This aligns the text and stars vertically */
+  justify-content: flex-end; /* This aligns the content to the right, which can be adjusted */
+  gap: 6px;
 }
 
 .star-input {
   font-size: 1.1em;
+}
+
+.divider {
+  width: 1px;
+  background-color: #000; /* This is the color of your divider */
+  height: 22px;
+  margin: 0 0 px;
 }

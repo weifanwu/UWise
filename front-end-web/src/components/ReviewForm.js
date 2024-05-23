@@ -131,7 +131,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col span={14}>
+        <Col span={16}>
           <Form.Item
             name="comment"
             rules={[{ required: true, message: "请填写评价!" }]}
@@ -151,12 +151,13 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
             />
           </Form.Item>
         </Col>
-        <div className="vertical-divider"></div>
         <Col span={8}>
           <div className="rating-inputs">
             <Form.Item name="ratings">
               <div className="rating-input">
-                <span className="rate-label"> 课程质量 | </span>
+                <span className="rate-label"> 课程质量 </span>
+                <div className="divider"></div>
+
                 <Rate
                   allowHalf
                   value={difficulty}
@@ -167,7 +168,8 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
                 />
               </div>
               <div className="rating-input">
-                <span className="rate-label"> 作业量 | </span>
+                <span className="rate-label"> 作业量 </span>
+                <div className="divider"></div>
                 <Rate
                   allowHalf
                   value={recommendation}
@@ -178,7 +180,8 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
                 />
               </div>
               <div className="rating-input">
-                <span className="rate-label"> GPA友好程度 | </span>
+                <span className="rate-label"> GPA友好程度 </span>
+                <div className="divider"></div>
                 <Rate
                   allowHalf
                   value={popularity}

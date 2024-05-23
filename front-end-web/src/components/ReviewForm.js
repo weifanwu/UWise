@@ -97,6 +97,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
           <Form.Item
             // label="教授名称"
             name="instructor"
+            rules={[{ required: true, message: "请输入教授名称!" }]}
           >
             <Input placeholder="教授名称" />
           </Form.Item>
@@ -135,6 +136,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
           <Form.Item
             // label="输入评价"
             name="comment"
+            rules={[{ required: true, message: "请填写评价!" }]}
           >
             <TextArea
               showCount

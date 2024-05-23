@@ -206,7 +206,10 @@ function CourseReview() {
       </div>
 
       <section className="review-items">
-        <h3>同学评价</h3>
+        <div className="heading-wrapper">
+          <p className="heading3">同学评价</p>
+          <p>共{reviews.length}条评价</p>
+        </div>
         {reviews.map((review) => (
           <ReviewItem review={review} />
         ))}

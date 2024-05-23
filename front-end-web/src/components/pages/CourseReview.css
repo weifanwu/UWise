@@ -16,6 +16,7 @@
 
 .course-description {
   bottom: 10px;
+  vertical-align: top;
 }
 
 .course-reviews {
@@ -104,4 +105,11 @@
   background-repeat: repeat;
   padding-left: 20%;
   padding-right: 20%;
+}
+
+.heading-wrapper {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: flex-end;
+  gap: 1%;
 }

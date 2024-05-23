@@ -1,3 +1,32 @@
+.rating-item {
+  display: flex;
+  align-items: center; /* This aligns the text and stars vertically */
+  justify-content: flex-end; /* This aligns the content to the right, which can be adjusted */
+}
+
+.review-ratings.large .rating-item {
+  gap: 12px;
+}
+
+.review-ratings.small .rating-item {
+  gap: 6px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #000; /* This is the color of your divider */
+}
+
+.review-ratings.large .divider {
+  height: 30px;
+  margin: 5 10px;
+}
+
+.review-ratings.small .divider {
+  height: 20px;
+  margin: 0 0px;
+}
+
 .review-ratings.default .star-rating {
   font-size: 1em;
 }
@@ -22,12 +51,4 @@
 
 .review-ratings.small .desc {
   font-size: 1em; /* Smaller text */
-}
-
-.review-ratings.large .rating-item {
-  text-align: right;
-}
-
-.review-ratings.small .rating-item {
-  text-align: right;
 }

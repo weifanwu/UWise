@@ -9,7 +9,8 @@ function RatingsDisplay({ ratings, size }) {
   return (
     <div className={`review-ratings ${fontSize}`}>
       <div className="rating-item">
-        <span className="desc"> 课程质量 | </span>
+        <span className="desc">课程质量</span>
+        <div className="divider"></div>
         <Rate
           className="star-rating"
           disabled
@@ -19,7 +20,8 @@ function RatingsDisplay({ ratings, size }) {
         />
       </div>
       <div className="rating-item">
-        <span className="desc"> 作业量 | </span>
+        <span className="desc">作业量</span>
+        <div className="divider"></div>
         <Rate
           className="star-rating"
           disabled
@@ -29,7 +31,8 @@ function RatingsDisplay({ ratings, size }) {
         />
       </div>
       <div className="rating-item">
-        <span className="desc"> GPA友好程度 | </span>
+        <span className="desc">GPA友好程度</span>
+        <div className="divider"></div>
         <Rate
           className="star-rating"
           disabled

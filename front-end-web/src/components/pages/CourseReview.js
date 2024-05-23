@@ -7,6 +7,8 @@ import ReviewItem from "../ReviewItem.js";
 import RatingsDisplay from "../RatingsDisplay.js";
 import { Button, message, Rate } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
+import ShareSVG from "../../assets/share.svg";
+import BackSVG from "../../assets/back.svg";
 
 function CourseReview() {
   let { courseName } = useParams();
@@ -123,12 +125,21 @@ function CourseReview() {
     <>
       <header className="main-header">
         <Button onClick={handleBack} className="left-button" type="link">
-          {/* <LeftOutlined style={{ color: "#FFFFFF" }} /> */}
+          <img
+            src={BackSVG}
+            alt="back"
+            style={{ width: "15px", marginRight: "10px" }}
+          />
           返回主页
         </Button>
         <h1>{courseName}</h1>
         <h2>{title}</h2>
         <Button onClick={handleShare} className="right-button" type="link">
+          <img
+            src={ShareSVG}
+            alt="share"
+            style={{ width: "20px", marginRight: "10px" }}
+          />
           分享
         </Button>
       </header>

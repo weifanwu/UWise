@@ -1,0 +1,35 @@
+.review-ratings.default .star-rating {
+  font-size: 1em;
+}
+
+.review-ratings.default .desc {
+  font-size: 1em;
+}
+
+/* Large size */
+.review-ratings.large .star-rating {
+  font-size: 1.2em; /* Larger stars */
+}
+
+.review-ratings.large .desc {
+  font-size: 1.2em; /* Larger text */
+}
+
+/* Small size */
+.review-ratings.small .star-rating {
+  font-size: 1em; /* Smaller stars */
+}
+
+.review-ratings.small .desc {
+  font-size: 1em; /* Smaller text */
+}
+
+.review-ratings.large .rating-item {
+  text-align: right;
+}
+
+.review-ratings.small .rating-item {
+  /* display: flex; */
+  /* align-items: center; */
+  text-align: right;
+}

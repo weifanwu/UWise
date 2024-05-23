@@ -4,6 +4,7 @@ import "../../App.css";
 import "./CourseReview.css";
 import ReviewForm from "../ReviewForm.js";
 import ReviewItem from "../ReviewItem.js";
+import RatingsDisplay from "../RatingsDisplay.js";
 import { Button, message, Rate } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 
@@ -133,6 +134,7 @@ function CourseReview() {
       </header>
 
       <br />
+      <br />
       <div className="course-reviews">
         <section className="course-description">
           <p className="heading3">课程介绍</p>
@@ -140,34 +142,8 @@ function CourseReview() {
           <br />
           <div className="ratings-and-button">
             {avgRatings !== null ? (
-              <div className="review-ratings" style={{ width: "30%" }}>
-                <div>
-                  <Rate
-                    disabled
-                    allowHalf
-                    defaultValue={avgRatings[0]}
-                    style={{ color: "#4b2e83" }}
-                  />
-                  <span> | 课程质量</span>
-                </div>
-                <div>
-                  <Rate
-                    disabled
-                    allowHalf
-                    defaultValue={avgRatings[1]}
-                    style={{ color: "#4b2e83" }}
-                  />
-                  <span> | 作业量</span>
-                </div>
-                <div>
-                  <Rate
-                    disabled
-                    allowHalf
-                    defaultValue={avgRatings[2]}
-                    style={{ color: "#4b2e83" }}
-                  />
-                  <span> | GPA友好程度</span>
-                </div>
+              <div className="ratings">
+                <RatingsDisplay ratings={avgRatings} size="large" />
               </div>
             ) : (
               <p>暂无评分</p>
@@ -177,6 +153,8 @@ function CourseReview() {
               onClick={displayForm}
               type="primary"
               style={{ backgroundColor: "#4b2e83" }}
+              className="add-review-button"
+              size="large"
             >
               {showForm ? "取消" : "添加你的课程评价"}
             </Button>
@@ -204,7 +182,7 @@ function CourseReview() {
           </section>
         ) : null}
       </div>
-
+      <br />
       <section className="review-items">
         <div className="heading-wrapper">
           <p className="heading3">同学评价</p>

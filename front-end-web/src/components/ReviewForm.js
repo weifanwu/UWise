@@ -155,7 +155,10 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
         </Col>
         <div className="vertical-divider"></div>
         <Col span={6}>
-          <Form.Item label="选择评分" name="ratings">
+          <Form.Item
+            // label="选择评分"
+            name="ratings"
+          >
             <div>
               <Rate
                 allowHalf

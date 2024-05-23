@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Rate } from "antd";
 import "./ReviewItem.css";
+import RatingsDisplay from "./RatingsDisplay.js";
 
 function ReviewItem({ review }) {
   return (
@@ -22,41 +23,7 @@ function ReviewItem({ review }) {
         </div>
         <div className="vertical-divider"></div>
         {review.ratings[0] !== null && review.ratings[0] !== undefined ? (
-          <div
-            className="review-ratings"
-            // style={{ width: "30%" }}
-          >
-            <div>
-              <Rate
-                className="star-rating"
-                disabled
-                allowHalf
-                defaultValue={review.ratings[0]}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="desc"> | 课程质量</span>
-            </div>
-            <div>
-              <Rate
-                className="star-rating"
-                disabled
-                allowHalf
-                defaultValue={review.ratings[1]}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="desc"> | 作业量</span>
-            </div>
-            <div>
-              <Rate
-                className="star-rating"
-                disabled
-                allowHalf
-                defaultValue={review.ratings[2]}
-                style={{ color: "#4b2e83" }}
-              />
-              <span className="desc"> | GPA友好程度</span>
-            </div>
-          </div>
+          <RatingsDisplay ratings={review.ratings} size="small" />
         ) : (
           <p>暂无评分</p>
         )}

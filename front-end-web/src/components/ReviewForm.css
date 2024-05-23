@@ -1,35 +1,3 @@
-/* .review-form .ant-form-item {
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-}
-
-.rate-label {
-  display: block;
-  margin-top: 8px;
-  color: #666;
-}
-
-.ant-row {
-  margin-top: 10px;
-}
-
-.ant-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.ant-form-vertical .ant-form-item-label {
-  padding-bottom: 0;
-}
-
-.vertical-divider {
-  width: 1px;
-  background-color: #ccc;
-  height: 100%;
-  margin: 0 20px;
-} */
-
 .rating-input {
   text-align: right;
   font-size: 1.1em;
@@ -38,7 +6,3 @@
 .star-input {
   font-size: 1.1em;
 }
-
-/* .rating-inputs {
-  align-items: bottom;
-} */

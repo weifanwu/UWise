@@ -4,7 +4,7 @@
 }
 
 .menuContainer {
-    background-color:lightslategrey;
+    /* background-color:lightslategrey; */
     max-width: 250px;
     display: flex;
     flex-direction: column;

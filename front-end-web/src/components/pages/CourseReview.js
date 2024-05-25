@@ -79,32 +79,44 @@ export default function CourseReview() {
 
   const getFilteredCourses = (selectedMajor, selectedLevel) => {
     console.log("________________________________________________");
+    // console.log("key of selectedLevel: " + Object.keys(selectedLevel));
+    // console.log("value of selectedLevel: " + Object.values(selectedLevel));
     let filteredCourses = originalCourses;
-    console.log("selectedMajor: " + selectedMajor);
-    console.log("type of selectedMajor: " + typeof(selectedMajor));
-    if (selectedMajor != "") {
+    // console.log("selectedMajor: " + selectedMajor);
+    // console.log("type of selectedMajor: " + typeof(selectedMajor));
+    if (selectedMajor && String(selectedMajor) !== '') {
       selectedMajor = String(selectedMajor);
-      filteredCourses.map((course) => (
-        // console.log(typeof(course.major) + " " + typeof(selectedMajor))
-        console.log(course.major)
-      ))
-      console.log("!!!!!!!!!!!" + selectedMajor);
+      // console.log("+++++++++++");
+      // console.log(selectedMajor);
+      // filteredCourses.map((course) => (
+      //   console.log(typeof(course.major) + " " + typeof(selectedMajor))
+      //   // console.log(course.major)
+      // ))
+      // console.log("!!!!!!!!!!!" + selectedMajor);
       // console.log(filteredCourses);
       filteredCourses = filteredCourses.filter((course) => course.major === selectedMajor);
       // console.log(filteredCourses)
     }
-    if (selectedLevel) {
-      selectedLevel = String(selectedLevel);
-      filteredCourses.map(course => (
-        console.log(course.number.charAt(0) + " " + selectedLevel.charAt(0))
-      ))
+    if (selectedLevel && String(selectedLevel) !== '') {
+      // selectedLevel = String(selectedLevel);
+      // console.log("----------");
+      // console.log("selectedLevel: |||" + selectedLevel + "|||");
+      // console.log("type of selectedLevel: " + typeof(selectedLevel));
+      // filteredCourses.map(course => (
+      //   console.log(course.number.charAt(0) + " " + selectedLevel.charAt(0))
+      // ))
+      let array = Object.values(selectedLevel);
+      if (array.includes("400+")) {
+        array = array.filter(item => item != "400+");
+        array.push('500');
+      }
+      let num;
+      console.log(array);
       filteredCourses = filteredCourses.filter((course) => {
-        if (selectedLevel === '400+') {
-          return course.number >= 500;
-        } else {
-          console.log(course.number.charAt(0) + " " + selectedLevel.charAt(0));
-          return course.number.charAt(0) === selectedLevel.charAt(0);
-        };
+        // console.log(course.number.charAt(0) + "00");
+        num = String(course.number.charAt(0) + "00");
+        // console.log(typeof(num));
+        return array.includes(num)
       }); 
     }
     setCourses(filteredCourses);

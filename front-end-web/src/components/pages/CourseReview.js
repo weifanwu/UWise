@@ -130,6 +130,7 @@ export default function CourseReview() {
               justifyContent="center">
               Reset
             </Button>
+            <br/>
             <Filter majors={majors} onFilterChange={getFilteredCourses}/>
           </div>
         </div>

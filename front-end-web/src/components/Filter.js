@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Cascader, Checkbox } from "antd";
 
 const { SHOW_CHILD } = Cascader;
@@ -28,29 +28,33 @@ const types = [
 ];
 
 export default function Filter({ majors, onFilterChange }) {
+    const [selected, setSelected] = useState([[], [], [], []]);
+
     const majorOptions = majors.map((major) => ({
         label: major,
         value: major,
     }));
 
     const handleMajorChange = (value) => {
-        onFilterChange(value, null);
+        selected[0] = value;
+        console.log("1 is called. selected is" + selected);
+        onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 
     const handleLevelChange = (value) => {
-        onFilterChange(null, value);
+        selected[1] = value;
+        console.log("2 is called. selected is" + selected);
+        onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 
-    // TODO: call onFilterChange after field credits added to data
-    const handleCreditsChange = (value) => {
-        // onFilterChange(value, null);
-        return null;
+    const handleCreditChange = (value) => {
+        selected[2] = value;
+        onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 
-    // TODO: call onFilterChange after field type added to data
     const handleTypeChange = (value) => {
-        // onFilterChange(null, value);
-        return null;
+        selected[3] = value;
+        onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 
     return (
@@ -77,13 +81,14 @@ export default function Filter({ majors, onFilterChange }) {
             <Checkbox.Group 
                 options={credits} 
                 defaultValue={[]} 
-                onChange={handleCreditsChange} 
+                onChange={handleCreditChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
             <h5>类型</h5>
             <Checkbox.Group 
                 options={types} 
-                defaultValue={[]} onChange={handleTypeChange} 
+                defaultValue={[]} 
+                onChange={handleTypeChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
         </>

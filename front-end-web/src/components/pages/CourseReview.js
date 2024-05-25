@@ -77,51 +77,31 @@ export default function CourseReview() {
     });
   };
 
-  // still fixing bugs
-  const getFilteredCourses = (selectedMajor, selectedLevel) => {
+  // selectedCredits and selectedTypes are not used because no such fields in data now
+  const getFilteredCourses = (selectedMajor, selectedLevel, selectedCredits, selectedTypes) => {
     console.log("_____________________________");
-    // console.log("key of selectedLevel: " + Object.keys(selectedLevel));
-    // console.log("value of selectedLevel: " + Object.values(selectedLevel));
     let filteredCourses = originalCourses;
     let array;
-    // console.log("selectedMajor: " + selectedMajor);
-    // console.log("type of selectedMajor: " + typeof(selectedMajor));
     if (selectedMajor && String(selectedMajor) !== '') {
-      // selectedMajor = String(selectedMajor);
       array = Object.values(selectedMajor).map(item => String(item));
-      // console.log("+++++++++++");
-      // console.log(selectedMajor);
-      filteredCourses.map((course) => (
-        console.log(typeof(course.major) + " " + typeof(array[0]))
-        // console.log(array.includes(course.major))
-      ))
-      // console.log("!!!!!!!!!!!" + selectedMajor);
-      console.log("array: " + array);
       filteredCourses = filteredCourses.filter(course => array.includes(course.major));
-      console.log("filteredCourses: " + (filteredCourses))
     }
+    console.log("1");
+    console.log(filteredCourses);
     if (selectedLevel && String(selectedLevel) !== '') {
-      // selectedLevel = String(selectedLevel);
-      // console.log("----------");
-      // console.log("selectedLevel: |||" + selectedLevel + "|||");
-      // console.log("type of selectedLevel: " + typeof(selectedLevel));
-      // filteredCourses.map(course => (
-      //   console.log(course.number.charAt(0) + " " + selectedLevel.charAt(0))
-      // ))
       array = Object.values(selectedLevel);
       if (array.includes("400+")) {
         array = array.filter(item => item !== "400+");
         array.push('500', '600', '700', '800');
       }
       let num;
-      console.log(array);
       filteredCourses = filteredCourses.filter(course => {
-        // console.log(course.number.charAt(0) + "00");
         num = String(course.number.charAt(0) + "00");
-        // console.log(typeof(num));
         return array.includes(num)
       }); 
     }
+    console.log("2");
+    console.log(filteredCourses);
     setCourses(filteredCourses);
   };
 

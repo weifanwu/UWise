@@ -79,15 +79,12 @@ export default function CourseReview() {
 
   // selectedCredits and selectedTypes are not used because no such fields in data now
   const getFilteredCourses = (selectedMajor, selectedLevel, selectedCredits, selectedTypes) => {
-    console.log("_____________________________");
     let filteredCourses = originalCourses;
     let array;
     if (selectedMajor && String(selectedMajor) !== '') {
       array = Object.values(selectedMajor).map(item => String(item));
       filteredCourses = filteredCourses.filter(course => array.includes(course.major));
     }
-    console.log("1");
-    console.log(filteredCourses);
     if (selectedLevel && String(selectedLevel) !== '') {
       array = Object.values(selectedLevel);
       if (array.includes("400+")) {
@@ -100,8 +97,6 @@ export default function CourseReview() {
         return array.includes(num)
       }); 
     }
-    console.log("2");
-    console.log(filteredCourses);
     setCourses(filteredCourses);
   };
 

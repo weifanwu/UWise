@@ -37,13 +37,11 @@ export default function Filter({ majors, onFilterChange }) {
 
     const handleMajorChange = (value) => {
         selected[0] = value;
-        console.log("1 is called. selected is" + selected);
         onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 
     const handleLevelChange = (value) => {
         selected[1] = value;
-        console.log("2 is called. selected is" + selected);
         onFilterChange(selected[0], selected[1], selected[2], selected[3]);
     };
 

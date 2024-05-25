@@ -1,13 +1,22 @@
-.menu {
-    margin-left: 30px;
+.page {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-.filterContainer {
+.menuContainer {
+    background-color:lightslategrey;
     max-width: 250px;
     display: flex;
     flex-direction: column;
     row-gap: 30px;
     width: 25%;
+}
+
+.menu {
+    /* margin: 5px, 5px, 5px, 5px; */
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .display {

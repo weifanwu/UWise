@@ -71,7 +71,8 @@ export default function Filter({ majors, onFilterChange }) {
                 onChange={handleLevelChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
-            <h5>已在功能待完成，选中后无效果</h5>
+            <br/>
+            <h5>以下功能待完成，选中后无效果</h5>
             <h5>学分</h5>
             <Checkbox.Group 
                 options={credits} 

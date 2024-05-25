@@ -77,25 +77,28 @@ export default function CourseReview() {
     });
   };
 
+  // still fixing bugs
   const getFilteredCourses = (selectedMajor, selectedLevel) => {
-    console.log("________________________________________________");
+    console.log("_____________________________");
     // console.log("key of selectedLevel: " + Object.keys(selectedLevel));
     // console.log("value of selectedLevel: " + Object.values(selectedLevel));
     let filteredCourses = originalCourses;
+    let array;
     // console.log("selectedMajor: " + selectedMajor);
     // console.log("type of selectedMajor: " + typeof(selectedMajor));
     if (selectedMajor && String(selectedMajor) !== '') {
-      selectedMajor = String(selectedMajor);
+      // selectedMajor = String(selectedMajor);
+      array = Object.values(selectedMajor).map(item => String(item));
       // console.log("+++++++++++");
       // console.log(selectedMajor);
-      // filteredCourses.map((course) => (
-      //   console.log(typeof(course.major) + " " + typeof(selectedMajor))
-      //   // console.log(course.major)
-      // ))
+      filteredCourses.map((course) => (
+        console.log(typeof(course.major) + " " + typeof(array[0]))
+        // console.log(array.includes(course.major))
+      ))
       // console.log("!!!!!!!!!!!" + selectedMajor);
-      // console.log(filteredCourses);
-      filteredCourses = filteredCourses.filter((course) => course.major === selectedMajor);
-      // console.log(filteredCourses)
+      console.log("array: " + array);
+      filteredCourses = filteredCourses.filter(course => array.includes(course.major));
+      console.log("filteredCourses: " + (filteredCourses))
     }
     if (selectedLevel && String(selectedLevel) !== '') {
       // selectedLevel = String(selectedLevel);
@@ -105,14 +108,14 @@ export default function CourseReview() {
       // filteredCourses.map(course => (
       //   console.log(course.number.charAt(0) + " " + selectedLevel.charAt(0))
       // ))
-      let array = Object.values(selectedLevel);
+      array = Object.values(selectedLevel);
       if (array.includes("400+")) {
-        array = array.filter(item => item != "400+");
-        array.push('500');
+        array = array.filter(item => item !== "400+");
+        array.push('500', '600', '700', '800');
       }
       let num;
       console.log(array);
-      filteredCourses = filteredCourses.filter((course) => {
+      filteredCourses = filteredCourses.filter(course => {
         // console.log(course.number.charAt(0) + "00");
         num = String(course.number.charAt(0) + "00");
         // console.log(typeof(num));
@@ -133,41 +136,43 @@ export default function CourseReview() {
 
   return (
     <>
-      <div className="menu" style={{display: 'flex'}}>
-        <div className="filterContainer">
-          <Search
-            placeholder="e.g. MATH 126"
-            enterButton="Search"
-            size="large"
-            onSearch={onSearch}
-            maxLength={11}
-          />
-          <p>请在专业和数字之间加上空格，如'CSE 143'</p>
-          <Button 
-            type="primary" 
-            icon={<SyncOutlined />}
-            onClick={reset}
-            display='flex'
-            justifyContent="center">
-            Reset
-          </Button>
-          <Filter majors={majors} onFilterChange={getFilteredCourses}/>
+      <div className="page" style={{display: 'flex'}}>
+        <div className="menuContainer">
+          <div className="menu">
+            <Search
+              placeholder="e.g. MATH 126"
+              enterButton="Search"
+              size="large"
+              onSearch={onSearch}
+              maxLength={11}
+            />
+            <p>请在专业和数字之间加上空格，如'CSE 143'</p>
+            <Button 
+              type="primary" 
+              icon={<SyncOutlined />}
+              onClick={reset}
+              display='flex'
+              justifyContent="center">
+              Reset
+            </Button>
+            <Filter majors={majors} onFilterChange={getFilteredCourses}/>
+          </div>
         </div>
-        <div className="display">
-          {found ? (
-            courses.map((course) => (
-              <CourseReviewCard
-                key={course._id}
-                course={course.course}
-                onClick={() => handleClick(course.course)}
-              />
-            ))
-          ) : (
-            <div className="notFound">
-              No courses found.
-            </div>
-          )}
-        </div>
+          <div className="display">
+            {found ? (
+              courses.map((course) => (
+                <CourseReviewCard
+                  key={course._id}
+                  course={course.course}
+                  onClick={() => handleClick(course.course)}
+                />
+              ))
+            ) : (
+              <div className="notFound">
+                No courses found.
+              </div>
+            )}
+          </div>
       </div>
     </>
   );

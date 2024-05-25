@@ -57,6 +57,7 @@ export default function Filter({ majors, onFilterChange }) {
 
     return (
         <>
+            <br/>
             <h5>专业</h5>
             <Cascader
                 style={{ width: '100%' }}
@@ -66,6 +67,8 @@ export default function Filter({ majors, onFilterChange }) {
                 maxTagCount="responsive"
                 showCheckedStrategy={SHOW_CHILD}
             />
+            <br/>
+            <br/>
             <h5>等级</h5>
             <Checkbox.Group 
                 options={levels} 
@@ -82,6 +85,7 @@ export default function Filter({ majors, onFilterChange }) {
                 onChange={handleCreditChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
+            <br/>
             <h5>类型</h5>
             <Checkbox.Group 
                 options={types} 

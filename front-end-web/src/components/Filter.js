@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Divider } from "antd";
 import { Cascader, Checkbox } from "antd";
 
 const { SHOW_CHILD } = Cascader;
@@ -57,7 +58,7 @@ export default function Filter({ majors, onFilterChange }) {
 
     return (
         <>
-            <br/>
+            <Divider />
             <h5>专业</h5>
             <Cascader
                 style={{ width: '100%' }}
@@ -76,7 +77,7 @@ export default function Filter({ majors, onFilterChange }) {
                 onChange={handleLevelChange} 
                 style={{display: 'flex', flexDirection: 'column'}}
             />
-            <br/>
+            <Divider />
             <h5>以下功能待完成，选中后无效果</h5>
             <h5>学分</h5>
             <Checkbox.Group 

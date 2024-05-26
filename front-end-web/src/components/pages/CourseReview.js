@@ -114,41 +114,46 @@ export default function CourseReview() {
       <div className="page" style={{display: 'flex'}}>
         <div className="menuContainer">
           <div className="menu">
-            <Search
-              placeholder="e.g. MATH 126"
-              enterButton="Search"
-              size="large"
-              onSearch={onSearch}
-              maxLength={11}
-            />
+            <div className="search">
+              <Search
+                placeholder="e.g. MATH 126"
+                enterButton="Search"
+                size="large"
+                onSearch={onSearch}
+                maxLength={11}
+              />
+              <Button 
+                type="primary" 
+                icon={<SyncOutlined />}
+                onClick={reset}
+                display='flex'
+                justifyContent="center"
+                size='large'>
+              </Button>
+            </div>
             <p>请在专业和数字之间加上空格，如'CSE 143'</p>
-            <Button 
-              type="primary" 
-              icon={<SyncOutlined />}
-              onClick={reset}
-              display='flex'
-              justifyContent="center">
-              Reset
-            </Button>
-            <br/>
             <Filter majors={majors} onFilterChange={getFilteredCourses}/>
           </div>
         </div>
-          <div className="display">
-            {found ? (
-              courses.map((course) => (
+        <div className="cardsContainer">
+          {found ? (
+            <div className="cards">
+              {courses.map((course) => (
                 <CourseReviewCard
                   key={course._id}
+                  major={course.major}
                   course={course.course}
                   onClick={() => handleClick(course.course)}
                 />
-              ))
-            ) : (
-              <div className="notFound">
-                No courses found.
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="notFoundContainer">
+              <div className="notFound">No courses found</div>
+            </div>
+          )}
+          
+        </div>
       </div>
     </>
   );

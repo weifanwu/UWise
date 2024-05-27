@@ -4,17 +4,17 @@ import { Card } from "antd";
 const { createRoot } = ReactDOM;
 
 const { Meta } = Card;
-const courseReviewCard = ({key, description, course, major}) => {
+const courseReviewCard = ({key, description, course, major, onClick}) => {
   const getImageSrc = (major) => {
-    console.log(typeof(major));
+    // console.log(typeof(major));
     switch (major) {
       case "CSE":
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cse");
+        // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cse");
         return './images/cse.jpg';
       case "MATH":
         return "./images/math.webp";
       default:
-        console.log("default");
+        // console.log("default");
         return "./images/uwise.png";
     }
   };
@@ -27,9 +27,11 @@ const courseReviewCard = ({key, description, course, major}) => {
       style={{
         width: 150,
         height: 200,
+        cursor: "pointer",
       }}
       cover={<img alt="courseReviewCardImg" src={imgSrc} />}
       // cover={<img alt="courseReviewCardImg" src="../../uwise.png" />}
+      onClick={onClick}
     >
       <Meta 
       title={<div style={{ textAlign: 'center' }}>{course}</div>}  

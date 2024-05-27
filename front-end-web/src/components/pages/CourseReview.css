@@ -38,6 +38,10 @@
     column-gap: 40px;
 }
 
+.course-review-card:hover {
+    background-color: #f0f0f0; /* Example of a hover effect */
+  }
+
 .notFoundContainer {
     display: flex;
     justify-content: center;

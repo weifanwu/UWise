@@ -101,7 +101,8 @@ export default function CourseReview() {
   };
 
   const handleClick = (course) => {
-    navigate('/reviews/' + course);
+    console.log("/reviews/" + course);
+    navigate("/reviews/" + course);
   };
 
   const reset = () => {

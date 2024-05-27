@@ -1,10 +1,10 @@
 .page {
-    margin-top: 10px;
-    margin-left: 10px;
+    /* margin-top: 10px;
+    margin-left: 10px; */
 }
 
 .menuContainer {
-    /* background-color:lightslategrey; */
+    background-color:rgb(246, 241, 249);
     max-width: 250px;
     display: flex;
     flex-direction: column;

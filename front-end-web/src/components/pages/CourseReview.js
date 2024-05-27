@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../App.css';
 import './CourseReview.css';
-import { Input, Button } from "antd";
+import { Input, Button, Divider } from "antd";
 import { SyncOutlined } from '@ant-design/icons';
 import CourseReviewCard from '../courseReviewCard';
 import Filter from '../Filter';

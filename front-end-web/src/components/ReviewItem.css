@@ -1,0 +1,41 @@
+.review-card {
+  margin-bottom: 20px; /* Adds space between cards */
+  background-color: #fafbfc;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: 1px solid #ccc;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.review-quarter-year {
+  font-weight: bold;
+}
+
+.review-instructor {
+  font-style: italic;
+}
+
+.review-body {
+  display: flex;
+  align-items: start;
+}
+
+.review-comment {
+  margin-right: 20px;
+  /* font-size: 1.2em; */
+}
+
+.vertical-divider {
+  width: 1px;
+  background-color: #ccc; /* Light grey color for the divider */
+  height: 100%; /* Adjust height as needed based on content */
+  margin: 0 20px; /* Spacing around the divider */
+}
+
+.desc {
+  font-size: 1em;
+}

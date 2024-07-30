@@ -1,0 +1,214 @@
+import React, { useState } from "react";
+import {
+  Form,
+  Select,
+  DatePicker,
+  Rate,
+  Input,
+  Button,
+  Col,
+  Row,
+  message,
+} from "antd";
+import { CalendarOutlined } from "@ant-design/icons";
+import "./ReviewForm.css";
+
+const { Option } = Select;
+const { TextArea } = Input;
+
+function ReviewForm({ courseName, onReviewSubmitted }) {
+  const [form] = Form.useForm();
+  const [difficulty, setDifficulty] = useState(3);
+  const [recommendation, setRecommendation] = useState(3);
+  const [popularity, setPopularity] = useState(3);
+
+  const backendHost = process.env.REACT_APP_BACKEND_HOST;
+
+  const handleSubmit = async (values) => {
+    try {
+      // Extract values and format as required
+      console.log("Values: " + JSON.stringify(values));
+      const { quarter, year, instructor, comment } = values;
+      const ratings = [difficulty, recommendation, popularity];
+
+      // Format the year correctly from the DatePicker value
+      const formattedYear = year ? year.format("YYYY") : "";
+
+      const reviewData = {
+        courseName,
+        instructor,
+        quarter,
+        year: formattedYear,
+        ratings,
+        comment,
+      };
+
+      console.log("ReviewData: " + JSON.stringify(reviewData));
+
+      // Send the POST request to the backend using fetch
+      const response = await fetch(
+        `${backendHost}/courseReview/addReviewsForCourse`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reviewData),
+        }
+      );
+
+      // Handle the response from the backend
+      if (response.ok) {
+        message.success("提交成功，请等待审核");
+        form.resetFields(); // Reset form fields after successful submission
+        if (onReviewSubmitted) {
+          onReviewSubmitted(); // Trigger the callback to refetch reviews
+        }
+        setDifficulty(3);
+        setRecommendation(3);
+        setPopularity(3);
+        return;
+      } else {
+        const errorResponse = await response.text();
+        console.log("Submission error:", errorResponse);
+        message.error("提交失败，请稍后重试");
+        return;
+      }
+    } catch (error) {
+      console.log("Submission error:", error);
+      message.error("提交失败，请检查网络和输入后重试");
+    }
+  };
+
+  const handleFailedSubmission = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    message.error("提交失败，请检查输入后重试");
+  };
+
+  return (
+    <Form
+      form={form}
+      layout="vertical"
+      className="review-form"
+      onFinish={handleSubmit}
+      onSubmitFailed={handleFailedSubmission}
+    >
+      <Row gutter={12}>
+        <Col span={4}>
+          <Form.Item
+            // label="教授名称"
+            name="instructor"
+            rules={[{ required: true, message: "请输入教授名称!" }]}
+          >
+            <Input placeholder="教授名称" />
+          </Form.Item>
+        </Col>
+        <Col span={4}>
+          <Form.Item
+            // label="选择学期"
+            name="quarter"
+            rules={[{ required: true, message: "请选择学期!" }]}
+          >
+            <Select placeholder="选择学期">
+              <Option value="AU">Autumn</Option>
+              <Option value="WI">Winter</Option>
+              <Option value="SP">Spring</Option>
+              <Option value="SU">Summer</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={5}>
+          <Form.Item
+            name="year"
+            rules={[{ required: true, message: "请选择年份!" }]}
+          >
+            <DatePicker
+              picker="year"
+              placeholder="选择学年"
+              suffixIcon={<CalendarOutlined />}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={16}>
+        <Col span={16}>
+          <Form.Item
+            name="comment"
+            rules={[{ required: true, message: "请填写评价!" }]}
+          >
+            <TextArea
+              showCount
+              rows={4}
+              placeholder={"为" + courseName + "添加评价吧！"}
+              maxLength={300}
+              rules={[
+                {
+                  required: true,
+                  message: "请输入您的评价！",
+                  whitespace: true,
+                },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <div className="rating-inputs">
+            <Form.Item name="ratings">
+              <div className="rating-input">
+                <span className="rate-label"> 课程质量 </span>
+                <div className="divider"></div>
+
+                <Rate
+                  allowHalf
+                  value={difficulty}
+                  onChange={setDifficulty}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+              <div className="rating-input">
+                <span className="rate-label"> 作业量 </span>
+                <div className="divider"></div>
+                <Rate
+                  allowHalf
+                  value={recommendation}
+                  onChange={setRecommendation}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+              <div className="rating-input">
+                <span className="rate-label"> GPA友好程度 </span>
+                <div className="divider"></div>
+                <Rate
+                  allowHalf
+                  value={popularity}
+                  onChange={setPopularity}
+                  allowClear={false}
+                  style={{ color: "#4b2e83" }}
+                  className="star-input"
+                />
+              </div>
+            </Form.Item>
+          </div>
+        </Col>
+      </Row>
+      <Row justify="end">
+        <Col>
+          <Button
+            className="submit"
+            type="primary"
+            htmlType="submit"
+            style={{ backgroundColor: "#4b2e83" }}
+          >
+            提交
+          </Button>
+        </Col>
+      </Row>
+    </Form>
+  );
+}
+
+export default ReviewForm;

@@ -23,7 +23,7 @@ export default function CourseReview() {
   }, []);
 
   const onSearch = (value) => {
-    fetch(host + '/courseReviews/search?courseName=' + value)
+    fetch(host + '/courseReviewPage/search?courseName=' + value)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -55,7 +55,7 @@ export default function CourseReview() {
   };
 
   const getAllMajors = () => {
-    fetch(host + '/courseReviews/getMajors')
+    fetch(host + '/courseReviewPage/getMajors')
     .then(response => response.json())
     .then((resObject) => {
       setMajors(resObject);
@@ -66,7 +66,7 @@ export default function CourseReview() {
   };
 
   const getAllCourses = () => {
-    fetch(host + '/courseReviews/filter')
+    fetch(host + '/courseReviewPage/filter')
     .then(response => response.json())
     .then((resObject) => {
       setCourses(resObject);

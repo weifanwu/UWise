@@ -1,0 +1,29 @@
+.service {
+  height: 1000px;
+  width: 100%;
+}
+
+.course-reviews {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.main-header h1 {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.left-button,
+.right-button {
+  flex: 0 0 auto;
+}

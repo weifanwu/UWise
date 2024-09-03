@@ -1,0 +1,30 @@
+.review-form .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.rate-label {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+}
+
+.ant-row {
+  margin-top: 10px;
+}
+
+.ant-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ant-form-vertical .ant-form-item-label {
+  padding-bottom: 0;
+}
+
+.vertical-divider {
+  width: 1px;
+  background-color: #ccc; /* Light grey color for the divider */
+  height: 100%; /* Adjust height as needed based on content */
+  margin: 0 20px; /* Spacing around the divider */
+}

@@ -156,7 +156,7 @@ function Navbar(props) {
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                课评
+                Course Reivew
               </Link>
             </li>
             <li className='nav-item'>

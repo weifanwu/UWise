@@ -10,7 +10,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import Services from "./components/pages/Services";
-import CourseReview from "./components/pages/CourseReviewPage.js";
+import CourseReviewPage from "./components/pages/CourseReviewPage.js";
+import CourseReview from "./components/pages/CourseReview.js";
 import Student from "./components/pages/StaticResources.js";
 import ClassHome from "./components/pages/Class";
 import ResourceMap from "./components/pages/ResourceMap";
@@ -136,6 +137,7 @@ function App() {
             path="/classes"
             element={<Services isLoggedIn={profile ? true : false} />}
           />
+          <Route path="/reviews" element={<CourseReviewPage />} />
           <Route path="/reviews/:courseName" element={<CourseReview />} />
           <Route
             path="/class/:id"

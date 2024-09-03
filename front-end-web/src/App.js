@@ -10,7 +10,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Services from "./components/pages/Services";
-import CourseReview from "./components/pages/CourseReview";
+import CourseReview from "./components/pages/CourseReviewPage.js";
 import Student from "./components/pages/StaticResources.js";
 import ClassHome from "./components/pages/Class";
 import ResourceMap from "./components/pages/ResourceMap";

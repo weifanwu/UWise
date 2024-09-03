@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../App.css';
-import './CourseReview.css';
+import './CourseReviewPage.css';
 import { Input, Button, Divider } from "antd";
 import { SyncOutlined } from '@ant-design/icons';
 import CourseReviewCard from '../courseReviewCard';

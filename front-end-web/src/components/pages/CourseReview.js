@@ -33,7 +33,7 @@ function CourseReview() {
   const getDescription = () => {
     fetch(
       backendHost +
-        "/courseReview/getCourseDescription?courseName=" +
+        "/courseDetail/getCourseDescription?courseName=" +
         courseName
     )
       .then((response) => {
@@ -49,7 +49,7 @@ function CourseReview() {
 
   const getReviews = () => {
     fetch(
-      backendHost + "/courseReview/getReviewsForCourse?courseName=" + courseName
+      backendHost + "/courseDetail/getReviewsForCourse?courseName=" + courseName
     )
       .then((response) => {
         return response.json();

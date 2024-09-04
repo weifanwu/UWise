@@ -46,7 +46,7 @@ function ReviewForm({ courseName, onReviewSubmitted }) {
 
       // Send the POST request to the backend using fetch
       const response = await fetch(
-        `${backendHost}/courseReview/addReviewsForCourse`,
+        `${backendHost}/courseDetail/addReviewsForCourse`,
         {
           method: "POST",
           headers: {

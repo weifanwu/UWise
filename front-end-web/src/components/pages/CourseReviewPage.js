@@ -117,7 +117,7 @@ export default function CourseReview() {
           <div className="menu">
             <div className="search">
               <Search
-                placeholder="MATH 126"
+                placeholder="e.g. MATH 126"
                 enterButton="Search"
                 size="large"
                 onSearch={onSearch}

@@ -9,7 +9,7 @@ const courseReviewCard = ({key, description, course, major, onClick}) => {
     // console.log(major);
   switch (major.toLowerCase()) {
     case "cse":
-      // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cse");
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cse");
       imgSrc =  './images/cse.jpg';
       break;
     case "math":

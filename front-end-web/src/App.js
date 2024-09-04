@@ -137,8 +137,14 @@ function App() {
             path="/classes"
             element={<Services isLoggedIn={profile ? true : false} />}
           />
-          <Route path="/reviews" element={<CourseReviewPage />} />
-          <Route path="/reviews/:courseName" element={<CourseReview />} />
+          <Route 
+            path="/reviews" 
+            element={<CourseReviewPage />} 
+          />
+          <Route 
+            path="/reviews/:courseName" 
+            element={<CourseReview />} 
+          />
           <Route
             path="/class/:id"
             element={

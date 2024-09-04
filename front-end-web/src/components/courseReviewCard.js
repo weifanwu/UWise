@@ -6,7 +6,7 @@ const { createRoot } = ReactDOM;
 const { Meta } = Card;
 const courseReviewCard = ({key, description, course, major, onClick}) => {
   let imgSrc;
-    console.log(major);
+    // console.log(major);
   switch (major.toLowerCase()) {
     case "cse":
       // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cse");

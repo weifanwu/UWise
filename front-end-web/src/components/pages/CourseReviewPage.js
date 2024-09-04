@@ -36,8 +36,8 @@ export default function CourseReview() {
           setFound(true);
           const courseData = {
             course: value,
-            major: null,
-            number: null,
+            major: value.split(' ')[0],
+            number: value.split(' ')[1],
             description: null
           };
           setCourses([courseData]);
@@ -117,7 +117,7 @@ export default function CourseReview() {
           <div className="menu">
             <div className="search">
               <Search
-                placeholder="e.g. MATH 126"
+                placeholder="MATH 126"
                 enterButton="Search"
                 size="large"
                 onSearch={onSearch}
@@ -132,7 +132,7 @@ export default function CourseReview() {
                 size='large'>
               </Button>
             </div>
-            <p>请在专业和数字之间加上空格，如'CSE 143'</p>
+            <p>请在专业（大写）和数字之间加上空格，如'CSE 143'</p>
             <Filter majors={majors} onFilterChange={getFilteredCourses}/>
           </div>
         </div>

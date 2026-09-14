@@ -4,6 +4,10 @@
 
 <h1 align="center">UWise</h1>
 
+> **Legacy codebase · Started in 2023**
+>
+> Originally built in 2023 during my undergraduate years, this codebase is no longer under development or maintained. It is preserved as a record of UWise's early product, engineering, and cross-functional teamwork. The overview below describes that original implementation.
+
 <p align="center">
   <strong>A student success platform for Chinese-speaking international students at the University of Washington.</strong><br />
   Academic support, trusted campus information, and local community knowledge—all in one place.

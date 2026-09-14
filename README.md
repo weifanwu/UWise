@@ -1,44 +1,54 @@
-<div align="center">
-  <img src="front-end-web/public/images/uwise2.png" alt="UWise logo" width="120" />
-  <h1>UWise</h1>
-  <p><strong>Academic support and campus guidance for Chinese-speaking international students.</strong></p>
-</div>
+<p align="center">
+  <img src="front-end-web/public/images/uwise-readme-banner.png" alt="UWise — learning, campus life, and community" width="100%" />
+</p>
 
-## What is UWise?
+<h1 align="center">UWise</h1>
 
-UWise is a student-focused platform created for the Chinese-speaking international student community at the University of Washington. It brings together the academic and practical information that students would otherwise have to find across university websites, group chats, social media, and word of mouth.
+<p align="center">
+  <strong>A student success platform for Chinese-speaking international students at the University of Washington.</strong><br />
+  Academic support, trusted campus information, and local community knowledge—all in one place.
+</p>
 
-The goal is simple: help students make better academic decisions, adapt to life abroad faster, and spend less time searching for reliable, locally relevant information.
+<p align="center">
+  <img src="https://img.shields.io/badge/Product-Student%20Platform-24358E?style=flat-square" alt="Student platform" />
+  <img src="https://img.shields.io/badge/Operations-Content%20%26%20Moderation-D6A84B?style=flat-square" alt="Content and moderation operations" />
+  <img src="https://img.shields.io/badge/Model-Free%20Content%20%2B%20Paid%20Support-24358E?style=flat-square" alt="Business model" />
+</p>
 
-## What the platform offers
+## Why UWise
 
-- **Academic support** — course-specific tutoring, live Q&A, lesson recordings, and practice materials.
-- **Course insights** — student reviews, ratings, course descriptions, and grade-distribution context.
-- **Campus guides** — practical resources for housing, major applications, immigration documents, insurance, transportation, and everyday life.
-- **News and opportunities** — curated campus events, student-club activities, career fairs, research opportunities, and internships.
-- **Internal operations tools** — dedicated workflows that enable the Content Team to publish resources and staff members to manage course access and moderate student reviews.
+Important student information is often scattered across university websites, group chats, social media, and word of mouth. UWise brings it together in one locally relevant experience, helping students make better decisions and adapt to life abroad faster.
+
+## What students get
+
+| Academic success | Campus life |
+| --- | --- |
+| Course-specific tutoring, live Q&A, recordings, and practice materials | Practical guides for housing, immigration documents, insurance, transportation, and daily life |
+| **Better decisions** | **Timely opportunities** |
+| Peer course reviews, ratings, descriptions, and grade-distribution context | Curated events, club activities, career fairs, research opportunities, and internships |
+
+## One product, three experiences
+
+| Experience | Primary user | Purpose |
+| --- | --- | --- |
+| **Student platform** | Students | Discover trusted information, evaluate courses, and access academic support |
+| **Content operations** | Content Team | Publish campus guides, news, events, course recordings, and manage access codes |
+| **Review moderation** | Internal staff | Audit submissions, approve appropriate reviews, and remove harmful or misleading content |
 
 ## Business model
 
-UWise combines free information services with paid academic support. Campus guides and curated updates help the platform earn trust and become useful throughout a student's university journey, while tutoring packages and premium course resources address urgent, outcome-driven needs.
+UWise combines free, high-value campus information with paid tutoring and premium course resources. Free content builds trust and recurring engagement; paid academic support addresses urgent, outcome-driven student needs.
 
-The initial focus on one university and one student community makes the product more relevant than a generic education marketplace: language, local knowledge, and peer trust are central to the experience.
+## Cross-functional by design
 
-## Built for both students and internal teams
+The Engineering Team built the student and internal platforms, while the Content Team kept the information useful, relevant, and current. Shared publishing and moderation workflows connected product development, content operations, and community trust.
 
-UWise was designed as an end-to-end product, not only a public-facing website. Alongside the student experience, the repository includes two employee-facing platforms:
+<details>
+<summary><strong>Technical foundation</strong></summary>
+<br />
 
-- **Content operations platform** — used by the Content Team to publish campus guides, news, events, and course recordings, as well as manage course access codes.
-- **Course-review moderation platform** — used by staff members to audit student submissions, approve appropriate reviews, and remove offensive, illegal, or misleading content.
-
-## Cross-functional collaboration
-
-UWise was more than a software project. It brought together an Engineering Team responsible for the product and internal systems, and a Content Team responsible for keeping the platform useful, relevant, and current.
-
-The internal tools connected these functions through repeatable workflows: content could be prepared and published by the Content Team, while community submissions could be reviewed before appearing on the student platform. This cross-functional operating model allowed the team to manage both the technology and the information quality behind the product.
-
-## Technical overview
-
-The repository contains three React applications: the student platform, an internal content and course-operations platform, and a course-review moderation platform. The product uses REST APIs for authentication, course access, reviews, and content delivery, with Google and WeChat sign-in, activation-code-based access, and a Leaflet/OpenStreetMap campus resource map. The backend is maintained separately and is not included in this repository.
+The repository contains three React applications connected to a separately maintained REST API backend. The product includes Google and WeChat authentication, activation-code-based course access, and a Leaflet/OpenStreetMap campus resource map.
 
 **Core technologies:** React, Redux, React Router, Ant Design, Material UI, and Leaflet.
+
+</details>
